@@ -7,17 +7,18 @@ body {
 
 /* Styling for the header section */
 header {
-    background-color: #ADD8E6;
-    color: black;
+    background-color: #DC4405;
+    color: white;
     padding: 20px;
     text-align: center;
+    border-bottom: 4px solid #373737;
 }
 
 /* Styling for the navigation menu */
 nav ul {
     list-style-type: none;
     padding: 0;
-    background-color: #FFFDD0;
+    background-color: #F3D08E;
     text-align: center;
     margin: 0;
 }
@@ -28,7 +29,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: black;
+    color: #373737;
     text-decoration: none;
     font-weight: bold;
 }
@@ -38,6 +39,12 @@ section {
     padding: 20px;
     margin: 20px;
     border-bottom: 1px solid #ddd;
+}
+
+.osu-section {
+    padding: 30px;
+    background-color: #fff8ee;
+    border-top: 3px solid #D3832B;
 }
 
 h1, h2 {
