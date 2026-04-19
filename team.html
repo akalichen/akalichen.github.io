@@ -7,64 +7,84 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header style="text-align: center; background-color: #DC4405; color: white; padding: 20px; border-bottom: 4px solid #373737;">
-        <img src="images/lablogov1.png" alt="Lab Logo" style="width: 150px; vertical-align: middle;">
-        <h1>Meet Our Team</h1>
+
+    <header>
+        <div class="site-header-content">
+            <img src="images/lablogov1.png" alt="Electrobiotech Lab Logo" class="site-logo">
+            <h1>Meet Our Team</h1>
+        </div>
     </header>
-    
-    <nav style="background-color: #F3D08E; padding: 10px 0; text-align: center;">
-        <ul style="list-style: none; margin: 0; padding: 0;">
-            <li style="display: inline-block; margin: 0 15px;"><a href="index.html" style="text-decoration: none; color: #373737; font-weight: bold;">Home</a></li>
-            <li style="display: inline-block; margin: 0 15px;"><a href="research.html" style="text-decoration: none; color: #373737; font-weight: bold;">Research</a></li>
-            <li style="display: inline-block; margin: 0 15px;"><a href="teaching.html" style="text-decoration: none; color: #373737; font-weight: bold;">Teaching</a></li>
-            <li style="display: inline-block; margin: 0 15px;"><a href="team.html" style="text-decoration: none; color: #373737; font-weight: bold;">Team</a></li>
-            <li style="display: inline-block; margin: 0 15px;"><a href="publications.html" style="text-decoration: none; color: #373737; font-weight: bold;">Publications</a></li>
-            <li style="display: inline-block; margin: 0 15px;"><a href="contact.html" style="text-decoration: none; color: #373737; font-weight: bold;">About Me</a></li>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="teaching.html">Teaching</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="contact.html">About Me</a></li>
         </ul>
     </nav>
 
-    <section id="team-members" class="osu-section">
-        <h2>Our Team Members</h2>
-        <ul>
-            <img src="images/Cheng1.jpg" alt="Cheng" style="width:150px;">
-            <li><strong>Cheng Li</strong> - Assistant Professor</li>
-            <p>As an environmental engineer, I study electroactive microorganisms that can interact with electricity. Yes, some of them are conductive! How cool are they! </p>
+    <div class="page-content">
 
+        <section class="page-section">
+            <h2 class="section-title">Current Members</h2>
+            <div class="team-grid">
 
-            <img src="images/IMG_5472.JPG" alt="Jenna Porter" style="width:150px;">
-            <li><strong>Jenna Porter</strong> - PhD Student</li>
-            <p>I am a PhD student in the Biological and Ecological Engineering department at Oregon State University, working with marine microbial fuel cells. Specifically, I focus on culturing the bacterial electrogens involved using novel methods. I am hoping to generate isolated cultures to study interactions within defined microbial communities. I graduated with my BS in Microbiology (2023) and a MS in Food Science and Technology (2025) at Oregon State University. I started working in the Food Safety and Quality Laboratory at OSU as an undergraduate student assisting on various projects involving foodborne pathogens and bacterial spoilage organisms. My master's thesis focused on the analysis of Salmonella enterica strains and their antimicrobial resistance plasmids found in Oregon's small scale poultry production system. During this time, I also conducted a project in cooperation with the University of Vermont and North Carolina State University to survey S. enterica and Campylobacter spp. presence in agritourism businesses.</p>
+                <div class="team-card">
+                    <img src="images/Cheng1.jpg" alt="Dr. Cheng Li" class="team-photo">
+                    <p class="team-name">Cheng Li</p>
+                    <span class="team-role">Assistant Professor</span>
+                    <p class="team-bio">As an environmental engineer, I study electroactive microorganisms that can interact with electricity. Yes, some of them are conductive — how cool are they!</p>
+                </div>
 
+                <div class="team-card">
+                    <img src="images/IMG_5472.JPG" alt="Jenna Porter" class="team-photo">
+                    <p class="team-name">Jenna Porter</p>
+                    <span class="team-role">PhD Student</span>
+                    <p class="team-bio">I am a PhD student in the Biological and Ecological Engineering department at Oregon State University, working with marine microbial fuel cells. Specifically, I focus on culturing the bacterial electrogens involved using novel methods. I am hoping to generate isolated cultures to study interactions within defined microbial communities. I graduated with my BS in Microbiology (2023) and a MS in Food Science and Technology (2025) at Oregon State University.</p>
+                </div>
 
-            <img src="images/IMG_Keira.jpeg" alt="Keira Wilson" style="width:150px;">
-            <li><strong>Keira Wilson</strong> - Undergraduate Research Assistant</li>
-            <p>I am a sophomore undergraduate majoring in microbiology with a minor in chemistry. Currently, my focus is on maintaining, isolating, and analyzing cultures of cable bacteria from local sediments. I am also assisting with the maintenance and construction of marine microbial fuel cells.</p>
+                <div class="team-card">
+                    <img src="images/IMG_Keira.jpeg" alt="Keira Wilson" class="team-photo">
+                    <p class="team-name">Keira Wilson</p>
+                    <span class="team-role">Undergraduate Research Assistant</span>
+                    <p class="team-bio">I am a sophomore undergraduate majoring in microbiology with a minor in chemistry. Currently, my focus is on maintaining, isolating, and analyzing cultures of cable bacteria from local sediments. I am also assisting with the maintenance and construction of marine microbial fuel cells.</p>
+                </div>
 
+            </div>
+        </section>
 
-            <!-- Add more team members as needed -->
-        </ul>
-    </section>
+        <section class="page-section">
+            <h2 class="section-title">Past Students</h2>
+            <ul class="past-students-list">
+                <li><strong>Erik Leer</strong> — Undergraduate Research Assistant, JMU</li>
+                <li><strong>Abigail Fischer</strong> — Undergraduate Research Assistant, JMU</li>
+                <li><strong>Maria Kruml</strong> — Undergraduate Research Assistant, FYRE Scholar, JMU</li>
+                <li><strong>Davaunte Murray</strong> — Undergraduate Research Assistant, JMU</li>
+            </ul>
+        </section>
 
-    <section id="past-students" class="osu-section">
-        <h2>Past Students</h2>
-        <ul>
-            <li><strong>Erik Leer</strong> - Undergraduate Research Assistant JMU</li>
-            <li><strong>Abigail Fischer</strong> - Undergraduate Research Assistant JMU </li>
-            <li><strong>Maria Kruml</strong> - Undergraduate Research Assistant, FYRE Scholar JMU</li>
-            <li><strong>Davaunte Murray</strong> - Undergraduate Research Assistant JMU</li>
-        </ul>
-    </section>
+        <section class="page-section">
+            <h2 class="section-title">What We Do</h2>
+            <div class="intro-card">
+                <p>Our team is dedicated to pioneering research in electrobiotechnology. We work on innovative solutions in environmental technology, aiming to address sustainability challenges. Our focus areas include bioenergy, wastewater treatment, and microbial electrochemistry.</p>
+            </div>
+        </section>
 
-    <!-- GIF Section in the Middle -->
-    <section id="working on it" class="osu-section" style="text-align: center; margin: 20px 0;">
-        <h2>Our Team in Action</h2>
-        <img src="images/fatcatzcouple-yellow-cat.gif" alt="Team Working Together" style="width:300px;">
-        <!-- Replace 'team-action.gif' with the actual filename of your GIF -->
-    </section>
+        <section class="page-section" style="text-align: center;">
+            <h2 class="section-title">Our Team in Action</h2>
+            <img src="images/fatcatzcouple-yellow-cat.gif" alt="Team Working Together" style="width: 300px; margin: 0 auto; border-radius: 8px; box-shadow: var(--shadow);">
+        </section>
 
-    <section id="team-description" class="osu-section">
-        <h2>What We Do</h2>
-        <p>Our team is dedicated to pioneering research in electrobiotechnology. We work on innovative solutions in environmental technology, aiming to address sustainability challenges. Our focus areas include bioenergy, wastewater treatment, and microbial electrochemistry.</p>
-    </section>
+    </div>
+
+    <footer>
+        <p>Electrobiotech Lab &middot; Oregon State University &middot; Department of Biological &amp; Ecological Engineering</p>
+        <p>Gilmore Hall, 124 SW 26th Street, Corvallis, OR 97331 &middot; <a href="mailto:Cheng.Li@Oregonstate.edu">Cheng.Li@Oregonstate.edu</a></p>
+        <p><a href="https://x.com/OSUelectroB" target="_blank">@OSUelectroB</a> &middot; &copy; 2025 Electrobiotech Lab</p>
+    </footer>
+
 </body>
 </html>

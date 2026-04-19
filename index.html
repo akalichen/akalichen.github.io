@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-    
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Electrobiotechlab - Home</title>
+    <meta name="description" content="Electrobiotech Lab at Oregon State University — research at the intersection of microbiology, electrochemistry, and environmental engineering.">
     <link rel="stylesheet" href="style.css">
     <script type="application/ld+json">
       {
@@ -11,9 +13,7 @@
         "name": "Electrobiotechlab",
         "url": "https://www.electrobiotechlab.com/",
         "logo": "https://www.electrobiotechlab.com/logo.png",
-        "sameAs": [
-          "https://x.com/OSUelectroB"
-        ],
+        "sameAs": ["https://x.com/OSUelectroB"],
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+1-540-568-2708",
@@ -28,91 +28,105 @@
           "addressCountry": "US"
         }
       }
-      </script>
+    </script>
 </head>
 <body>
-    <header style="text-align: center; background-color: #DC4405; color: white; padding: 20px; border-bottom: 4px solid #373737;">
-        <!-- Add the lab logo here -->
-        <img src="images/lablogov1.png" alt="Lab Logo" style="width: 150px; vertical-align: middle;">
-        <h1>Welcome to Electrobiotech Lab @ Oregon State University BEE</h1>
-        <p>Exploring Electro-Biotechnology and Environmental Sustainability</p>
+
+    <header>
+        <div class="site-header-content">
+            <img src="images/lablogov1.png" alt="Electrobiotech Lab Logo" class="site-logo">
+            <h1>Electrobiotech Lab @ Oregon State University BEE</h1>
+            <p class="tagline">Exploring Electro-Biotechnology and Environmental Sustainability</p>
+        </div>
     </header>
 
-    <nav style="background-color: #F3D08E; padding: 10px 0; text-align: center;">
-        <ul style="list-style: none; margin: 0; padding: 0;">
-            <li style="display: inline-block; margin: 0 15px;"><a href="index.html" style="text-decoration: none; color: #373737; font-weight: bold;">Home</a></li>
-            <li style="display: inline-block; margin: 0 15px;"><a href="research.html" style="text-decoration: none; color: #373737; font-weight: bold;">Research</a></li>
-            <li style="display: inline-block; margin: 0 15px;"><a href="teaching.html" style="text-decoration: none; color: #373737; font-weight: bold;">Teaching</a></li>
-            <li style="display: inline-block; margin: 0 15px;"><a href="team.html" style="text-decoration: none; color: #373737; font-weight: bold;">Team</a></li>
-            <li style="display: inline-block; margin: 0 15px;"><a href="publications.html" style="text-decoration: none; color: #373737; font-weight: bold;">Publications</a></li>
-            <li style="display: inline-block; margin: 0 15px;"><a href="contact.html" style="text-decoration: none; color: #373737; font-weight: bold;">About Me</a></li>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="teaching.html">Teaching</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="contact.html">About Me</a></li>
         </ul>
     </nav>
 
-    <section id="Lab Intro" class="osu-section">
-      <h2>About Electrobiotech Lab</h2>
-      <p>The Electrobiotech Lab at Oregon State University conducts innovative research at the intersection of microbiology, electrochemistry, and environmental engineering. Our mission is to advance electrobiotechnology to address critical challenges in energy, water, and resource sustainability, particularly through circular economy strategies that convert waste into valuable resources.</p>
-      <p>We specialize in harnessing electroactive microbes to power and optimize bioelectrochemical systems such as microbial fuel cells (MFCs) and microbial electrolysis cells (MECs). These systems serve as tools for wastewater treatment, renewable energy generation, carbon capture, and bioproduct recovery. A key focus of our lab is cable bacteria, known for their unique ability to conduct electricity over centimeter-scale distances in sediments, opening new frontiers in sediment remediation and ecological engineering.</p>
-      <p>Our work extends beyond technical innovation to include cultural and community engagement. We collaborate with Indigenous communities to integrate traditional ecological knowledge into our scientific practice, including honoring heritage through species naming and ecological stewardship partnerships.</p>
-      <p>We envision a future where food, energy, and water systems are resilient, circular, and equitable. Our research contributes to this goal by developing scalable, nature-based solutions that align with ecological principles and advance sustainability in biotechnological, agricultural, and environmental domains.</p>
-      <p>Explore the sections above to learn more about our current research projects, publications, educational programs, and team members.</p>
-    </section>
+    <div class="page-content">
 
-    <section id="Lab Updates" class="osu-section">  
-        <h2>Lab Updates</h2>
+        <section class="page-section">
+            <h2 class="section-title">About Electrobiotech Lab</h2>
+            <div class="intro-card">
+                <p>The Electrobiotech Lab at Oregon State University conducts innovative research at the intersection of microbiology, electrochemistry, and environmental engineering. Our mission is to advance electrobiotechnology to address critical challenges in energy, water, and resource sustainability, particularly through circular economy strategies that convert waste into valuable resources.</p>
+                <p>We specialize in harnessing electroactive microbes to power and optimize bioelectrochemical systems such as microbial fuel cells (MFCs) and microbial electrolysis cells (MECs). These systems serve as tools for wastewater treatment, renewable energy generation, carbon capture, and bioproduct recovery. A key focus of our lab is cable bacteria, known for their unique ability to conduct electricity over centimeter-scale distances in sediments, opening new frontiers in sediment remediation and ecological engineering.</p>
+                <p>Our work extends beyond technical innovation to include cultural and community engagement. We collaborate with Indigenous communities to integrate traditional ecological knowledge into our scientific practice, including honoring heritage through species naming and ecological stewardship partnerships.</p>
+                <p>We envision a future where food, energy, and water systems are resilient, circular, and equitable. Our research contributes to this goal by developing scalable, nature-based solutions that align with ecological principles and advance sustainability in biotechnological, agricultural, and environmental domains.</p>
+            </div>
+        </section>
 
-         <!-- New Cable Bacterium talk at ASM2025 -->
-         <div style="text-align: center; margin-top: 15px;">
-          <iframe width="640" height="360" src="https://www.youtube.com/embed/CilCzOFQYuw?si=l316-TfDSc1C6vvF" 
-            title="Ca. Electrothrix yaqonensis Presentation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen style="max-width: 100%;">
-          </iframe>
-          <p style="font-style: italic; margin-top: 10px;">Watch Dr. Cheng Li’s presentation on the discovery of <em>Ca. Electrothrix yaqonensis</em> at ASM Microbe 2025.</p>
-        </div>
-        </figure>
+        <section class="page-section">
+            <h2 class="section-title">Lab Updates</h2>
 
-       
-        <figure>
-          <a href="yaqonensis.html">
-            <img src="images/aem.02502-24.f003.jpg" alt="New Cable Bacterium Discovery" style="max-width: 30%; height: auto;">
-          </a>
-          <figcaption style="text-align: center; font-weight: bold; margin-top: 10px;">
-            <a href="yaqonensis.html" style="text-decoration: none; color: inherit;">
-              Our lab co-discovered a new cable bacterium species, <em>Ca. Electrothrix yaqonensis</em>! Learn more about the awesome yaqonensis →
-            </a>
-          </figcaption>
-        
+            <!-- ASM2025 Video -->
+            <div class="video-wrap">
+                <div class="video-embed">
+                    <iframe src="https://www.youtube.com/embed/CilCzOFQYuw?si=l316-TfDSc1C6vvF"
+                        title="Ca. Electrothrix yaqonensis Presentation"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p class="video-caption">Watch Dr. Cheng Li's presentation on the discovery of <em>Ca. Electrothrix yaqonensis</em> at ASM Microbe 2025.</p>
+            </div>
 
-        <!-- OSU Faculty Appointment -->
-        <figure>
-          <img src="images/vintagebenny_v3.jpg" alt="Oregon State University BEE" style="max-width: 30%; height: auto;">
-          <figcaption style="text-align: center; font-weight: bold; margin-top: 10px;">
-            Big News! Dr. Cheng Li has accepted a faculty position in the Department of Biological & Ecological Engineering at Oregon State University, beginning June 1, 2025.
-          </figcaption>
-        </figure>
-        
-        <!-- DARPA funding -->
-         <figure>
-         <a href="MMFCannounce.html">
-         <img src="images/LChappy.JPG" alt="LC happy" style="max-width: 20%; height: auto;">
-          </a>
-         <figcaption>
-         <a href="MMFCannounce.html" style="text-decoration: none; color: inherit;">
-          Electrobiotech lab received funding to advance marine microbial fuel cells power output!!
-         </a>
-         </figcaption>
-         </figure>
-        <!-- JHU seminar -->
-        <figure>
-        <img src="images/JHU10222024.JPG" alt="Seminar at Johns Hopkins" style="max-width: 60%; height: auto;">
-        <figcaption>Cheng was invited to present at the Wolman Seminar, Johns Hopkins University, October 22nd.</figcaption>
-        </figure>
+            <!-- Update Cards -->
+            <div class="updates-grid">
+                <a href="yaqonensis.html" class="update-card">
+                    <img src="images/aem.02502-24.f003.jpg" alt="New Cable Bacterium Discovery" class="update-card-img">
+                    <div class="update-card-body">
+                        <p>Our lab co-discovered a new cable bacterium species, <em>Ca. Electrothrix yaqonensis</em>!</p>
+                        <span class="update-card-link">Learn more →</span>
+                    </div>
+                </a>
 
-        <!-- Lab Group Photo -->
-        <figure>
-        <img src="images/labgrouppic1.JPG" alt="Electrobiotechlab Group Photo" style="max-width: 100%; height: auto;">
-        <figcaption>Our lab team at The Institute of Biological Engineering (IBE) Annual Conference. Atalanta, GA, USA. September 13-15.</figcaption>
-        </figure>
-    </section>
+                <div class="update-card">
+                    <img src="images/vintagebenny_v3.jpg" alt="Oregon State University BEE" class="update-card-img">
+                    <div class="update-card-body">
+                        <p>Dr. Cheng Li has accepted a faculty position in the Department of Biological &amp; Ecological Engineering at Oregon State University, beginning June 1, 2025.</p>
+                    </div>
+                </div>
 
-</body></html>
+                <a href="MMFCannounce.html" class="update-card">
+                    <img src="images/LChappy.JPG" alt="DARPA Funding Announcement" class="update-card-img">
+                    <div class="update-card-body">
+                        <p>Electrobiotech Lab received funding to advance marine microbial fuel cells power output!</p>
+                        <span class="update-card-link">Read more →</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- JHU Seminar -->
+            <div class="update-card" style="margin-bottom: 1.5rem;">
+                <img src="images/JHU10222024.JPG" alt="Seminar at Johns Hopkins University" class="update-card-img" style="height: 300px; width: 100%; object-fit: cover; border-radius: 8px 8px 0 0;">
+                <div class="update-card-body">
+                    <p>Cheng was invited to present at the Wolman Seminar, Johns Hopkins University, October 22nd.</p>
+                </div>
+            </div>
+
+            <!-- Group Photo -->
+            <figure class="update-full">
+                <img src="images/labgrouppic1.JPG" alt="Electrobiotechlab Group Photo at IBE Annual Conference">
+                <figcaption>Our lab team at The Institute of Biological Engineering (IBE) Annual Conference. Atlanta, GA, USA. September 13–15.</figcaption>
+            </figure>
+
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Electrobiotech Lab &middot; Oregon State University &middot; Department of Biological &amp; Ecological Engineering</p>
+        <p>Gilmore Hall, 124 SW 26th Street, Corvallis, OR 97331 &middot; <a href="mailto:Cheng.Li@Oregonstate.edu">Cheng.Li@Oregonstate.edu</a></p>
+        <p><a href="https://x.com/OSUelectroB" target="_blank">@OSUelectroB</a> &middot; &copy; 2025 Electrobiotech Lab</p>
+    </footer>
+
+</body>
+</html>
