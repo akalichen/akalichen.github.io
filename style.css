@@ -499,6 +499,54 @@ footer p:last-child { margin-bottom: 0; }
 footer a { color: #F3D08E; }
 footer a:hover { color: var(--accent); }
 
+/* === Content Detail Pages === */
+.content-figure {
+  margin: 1.75rem 0;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.content-figure img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  padding: 1rem 1rem 0;
+  background: var(--white);
+  display: block;
+}
+
+.content-figure figcaption {
+  padding: 0.75rem 1.25rem 1rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-style: italic;
+  border-top: 1px solid var(--border);
+  line-height: 1.55;
+}
+
+.content-figure figcaption a { font-style: normal; }
+
+.page-section h3 {
+  color: var(--accent);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+.under-construction {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.under-construction img {
+  margin: 1rem auto 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 360px;
+}
+
 /* === Responsive === */
 @media (max-width: 768px) {
   header h1 { font-size: 1.35rem; }

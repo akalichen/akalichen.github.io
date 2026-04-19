@@ -8,245 +8,190 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header style="text-align: center; background-color: #DC4405; color: white; padding: 20px; border-bottom: 4px solid #373737;">
-        <h1>Microbial Fuel Cells: Powering the Future with Microbes</h1>
-        <nav style="background-color: #F3D08E; padding: 10px 0; text-align: center;">
-            <ul style="list-style: none; margin: 0; padding: 0;">
-                <li style="display: inline-block; margin: 0 15px;"><a href="index.html" style="text-decoration: none; color: #373737; font-weight: bold;">Home</a></li>
-                <li style="display: inline-block; margin: 0 15px;"><a href="research.html" style="text-decoration: none; color: #373737; font-weight: bold;">Research</a></li>
-                <li style="display: inline-block; margin: 0 15px;"><a href="teaching.html" style="text-decoration: none; color: #373737; font-weight: bold;">Teaching</a></li>
-                <li style="display: inline-block; margin: 0 15px;"><a href="team.html" style="text-decoration: none; color: #373737; font-weight: bold;">Team</a></li>
-                <li style="display: inline-block; margin: 0 15px;"><a href="publications.html" style="text-decoration: none; color: #373737; font-weight: bold;">Publications</a></li>
-                <li style="display: inline-block; margin: 0 15px;"><a href="contact.html" style="text-decoration: none; color: #373737; font-weight: bold;">About Me</a></li>
-            </ul>
-        </nav>
+
+    <header>
+        <div class="site-header-content">
+            <img src="images/lablogov1.png" alt="Electrobiotech Lab Logo" class="site-logo">
+            <h1>Microbial Fuel Cells: Powering the Future with Microbes</h1>
+        </div>
     </header>
 
-    <section id="intro" class="osu-section">
-        <h2>Introduction</h2>
-        <p>Microbial Fuel Cells (MFCs) represent a fascinating intersection of biology and electrochemistry, combining biological catalytic activity with basic anodic electrochemical reactions. In an MFC, electroactive bacteria act as natural catalysts to convert chemical energy from organic matter directly into electrical energy through their metabolic processes. This technology has evolved from a scientific curiosity in the early 20th century to a promising platform for sustainable energy generation and environmental remediation.</p>
-        <p>The concept of "animal electricity" was conceived and attributed to Potter in 1911, though experiments with frog legs date back to Galvani's work in the 1780s. Since then, MFCs have progressed significantly, with applications ranging from wastewater treatment and biosensing to powering remote sensors and small electronic devices.</p>
-        <figure>
-            <img src="images/mfc_schematic.jpg" alt="Schematic diagram of a microbial fuel cell" style="width:100%; max-width:700px;">
-            <figcaption>Schematic representation of a typical two-chamber microbial fuel cell showing the anode chamber with electroactive bacteria, cathode chamber with oxygen reduction, and proton exchange membrane separating the two compartments. [PLACEHOLDER IMAGE]</figcaption>
-        </figure>
-    </section>
-
-    <section id="history" class="osu-section">
-        <h2>From Galvani to Modern MFCs</h2>
-        <p>The history of bioelectrochemical systems is rich with scientific breakthroughs. Luigi Galvani, at the University of Bologna, is considered the first electrochemist and bioelectricity pioneer. In 1780, he discovered that frog muscles could be moved when struck by an electrical spark, leading to the term "animal electricity." Alessandro Volta, Galvani's contemporary, checked these experiments and believed the contractions were due to contact with cable materials to complete the circuit in his experiments.</p>
-        <p>In 1838, William Grove described his "gas battery" and is recognized as the father of fuel cells. The term "fuel cell" was coined in 1889 by Charles Langer and Ludwig Mond as they were trying to engineer the first practical fuel cell using air and coal gas. Nearly a century after Grove's experiments, Francis Bacon developed the first successful hydrogen-oxygen fuel cell with alkaline electrolyte, and in 1959 NASA achieved a system of fuel cells.</p>
-        <p>The first report of an actual MFC dates back to the beginning of the 20th century when the English botanist Michael Potter demonstrated that microorganisms could generate a voltage and deliver power. Interest in bioelectrochemical systems was then reinvigorated in the 1960s when NASA showed short-term interest in turning organic waste into electricity on space missions.</p>
-    </section>
-
-    <section id="components" class="osu-section">
-        <h2>Key Components and Architecture</h2>
-        <p>A microbial fuel cell consists of three essential components that work in concert to convert biochemical energy into electrical energy:</p>
-
-        <h3>The Anode: Where Microbial Magic Happens</h3>
-        <p>The anode is the heart of the MFC where electroactive (EA) biofilms colonize the electrode surface. These specialized bacterial communities oxidize organic substrates under anaerobic conditions, releasing electrons that are transferred to the anode electrode. The anode material must possess several critical characteristics including high electrical conductivity, resistance to corrosion, high mechanical strength, large specific surface area, high porosity, biocompatibility, and low cost.</p>
-        <p>Common anode materials include various forms of carbon-based electrodes such as carbon cloth, carbon brush, carbon rod, carbon mesh, carbon veil, carbon paper, carbon felt, granular activated carbon (GAC), and graphite plates. Each material offers different advantages in terms of surface area, conductivity, and bacterial colonization efficiency. Recent research has shown that surface morphology plays a key role, with 3-D structured materials generally outperforming 2-D flat surfaces by providing more attachment sites for bacteria and enhancing bio-interface interactions.</p>
-
-        <h3>The Cathode: Completing the Circuit</h3>
-        <p>The cathode serves as the electron acceptor where the reduction reaction occurs. Oxygen has primarily been used as the oxidant due to its high reduction potential, though metallic oxidants can also be utilized. The oxygen reduction reaction (ORR) represents a significant bottleneck in MFC performance due to high over-potentials and slow kinetics. To address this, various catalysts have been developed, ranging from expensive platinum-based materials to more sustainable platinum-group-metal-free (PGM-free) alternatives based on iron, cobalt, and nitrogen-coordinated carbon structures (M-N-C catalysts).</p>
-        <p>Cathode materials can be carbonaceous-based (similar to anode materials) or metallic-based including stainless steel, titanium, nickel, copper, silver, and gold. Air-breathing cathodes have been developed to eliminate the need for continuous aeration, reducing operational costs and enabling more compact system designs.</p>
-
-        <h3>Proton Exchange Membrane and Separators</h3>
-        <p>The proton exchange membrane (PEM) physically separates the anode and cathode chambers while allowing selective ion transfer. Nafion has been the most commonly used membrane material, though its high cost has driven research into alternatives including ceramic membranes, earthenware, and various biodegradable materials. Interestingly, membrane-less MFCs have also been developed, though these require careful design to prevent oxygen diffusion to the anode and maintain appropriate separation of oxidation and reduction zones.</p>
-
-    </section>
-
-    <section id="electroactive-microorganisms" class="osu-section">
-        <h2>Electroactive Microorganisms and Extracellular Electron Transfer</h2>
-        <p>The ability to gain energy by transferring electrons extracellularly is conserved in a vast collection of phylogenetically diverse microorganisms from all three domains of life. Microorganisms that possess such ability are electroactive microbes (EAMs), which can be ubiquitously found in diverse environments. However, they especially thrive in anoxic to anaerobic environments such as sediment and sludge where soluble electron acceptors/donors are limited by diffusion and insoluble electron acceptors/donors are present at proximity.</p>
-        <p>By transferring electrons extracellularly, EAMs eliminate the need for soluble chemicals to act as electron acceptors or donors, thereby enhancing the efficiency and flexibility of their metabolism. The process of donating or accepting electrons from an insoluble electron acceptor or donor is called extracellular electron transfer (EET). In recent years, EAMs have garnered significant attention, as numerous critical environmental processes—including pyrite formation, anaerobic methane oxidation, and the infection mechanisms of specific pathogens—are directly or partially facilitated by the EET capabilities of EAMs.</p>
-
-        <h3>Model Electroactive Microorganisms</h3>
-        <p>The genera <em>Geobacter</em> and <em>Shewanella</em>, respectively in the phyla Thermodesulfobacteriota and Pseudomonadota, contain the most well-studied EAMs for their exceptional ability to perform EET. Building thick biofilms and cell appendages allows these microbes to exchange electrons with insoluble materials up to a hundred micrometers away from themselves. In natural environments, EAMs donate electrons to oxidized minerals such as Fe(III) to couple the oxidation of organic matter or take electrons from reduced minerals such as Fe(II) to couple carbon fixation.</p>
-        <p>When minerals are substituted with poised electrodes in bioelectrochemical systems, EAMs can either break down reduced substances from waste streams and sediment to generate electricity or produce value-added chemicals from atmospheric carbon dioxide. Recently, newly discovered filamentous cable bacteria (also in the phylum Thermodesulfobacteriota) have revolutionized the understanding of EET in EAMs by extending the conduction distance to the centimeter scale. Cable bacteria construct multicellular long filaments connecting aquatic sediments' sulfidic and oxic zones that are often separated centimeters away.</p>
-
-        <h3>Mechanisms of Extracellular Electron Transfer</h3>
-        <p>To transfer electrons from the metabolisms within the cytoplasm to extracellular electron acceptors or vice versa, EAMs utilize two primary mechanisms for extracellular electron transfer:</p>
+    <nav>
         <ul>
-            <li><strong>Membrane-associated EET (MA-EET):</strong> Involves transporting electrons across cellular membranes and the periplasmic space, effectively connecting intracellular metabolic activities with the extracellular environment.</li>
-            <li><strong>Heterogeneous EET (H-EET):</strong> Facilitates the transfer of electrons directly to or from electrode surfaces.</li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="teaching.html">Teaching</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="contact.html">About Me</a></li>
         </ul>
-        <p>Some EAMs can form thick biofilms on electrodes, enabling long-distance EET (LD-EET) that connects H-EET with MA-EET over multiple cell distances. In concert, electron transfer between the EAMs and the insoluble electron acceptor/donor can be visualized as a relay system, where electrons move between MA-EET, LD-EET (optional), and H-EET via a sequence of interconnected steps.</p>
-        <p>The steps of EETs in EAMs encompass a series of redox cofactors (e.g., c-type cytochromes) and active sites in conductive cell appendages (e.g., conductive e-pili, cytochrome filaments, and outer membrane extension known as nanowires) that are localized in the inner membranes, periplasmic spaces, and outer membranes. Depending on the location and electrochemical structure, they might be utilized by different EETs in this relay system.</p>
+    </nav>
 
-        <h3>The Role of Cytochromes</h3>
-        <p>The genomes of <em>G. sulfurreducens</em> and <em>S. oneidensis</em> encode 111 and 39 c-type cytochromes, respectively, distributed across the inner membrane, periplasm, and outer membrane. These cytochromes often function redundantly to create a robust and adaptable EET network, enabling these microorganisms to effectively manage electron transfer to extracellular electron acceptors with varying surface electrical potentials.</p>
-        <p><em>G. sulfurreducens</em> utilizes cytochromes such as the Cbc and ImcH complexes to transfer electrons between the intracellular metabolisms (e.g., quinone/quinol pool) with cytochromes in the periplasm and beyond. <em>S. oneidensis</em> employs the cytochromes CymA and TorC on the inner membrane for a similar purpose. The electron transfer chain between intracellular metabolisms and periplasmic cytochromes generates a proton gradient across the inner membrane, impacting ATP synthesis and energy conservation.</p>
+    <div class="page-content">
 
-        <h3>Porin-Cytochrome Complexes and Cell Appendages</h3>
-        <p>To exchange electrons with extracellular solid materials, EAMs must establish a connection across the outer membrane. Porin-cytochrome (Pcc) complexes often facilitate this connection. In <em>G. sulfurreducens</em>, the most studied Pcc complex includes the porin protein OmbB, which connects the periplasmic cytochrome OmaB with the outer membrane cytochrome OmcB. Similarly, in <em>S. oneidensis</em>, the MtrABC complex, comprising the porin protein MtrB, the periplasmic cytochrome MtrA, and the outer membrane cytochromes MtrC and OmcA, is another well-characterized Pcc.</p>
-        <p>The electrically conductive pili (e-pili) produced by <em>G. sulfurreducens</em> could be another possible support for connecting across the outer membrane. The most prominent role of e-pili is conducting the LD-EET of <em>G. sulfurreducens</em>. Despite contentions about the conductive nature of these proteinaceous fibers, they appear to be irreplaceable for the biofilms of <em>G. sulfurreducens</em> to transfer electrons with solid extracellular materials. By producing cell appendages known as nanowires, <em>S. oneidensis</em> conducts cytochrome-dependent LD-EET to reduce objects that are more than 50 µm away. These nanowires are extensions of the outer membrane decorated by the MtrABC complex.</p>
+        <section class="page-section">
+            <h2 class="section-title">Introduction</h2>
+            <div class="intro-card">
+                <p>Microbial Fuel Cells (MFCs) represent a fascinating intersection of biology and electrochemistry, combining biological catalytic activity with basic anodic electrochemical reactions. In an MFC, electroactive bacteria act as natural catalysts to convert chemical energy from organic matter directly into electrical energy through their metabolic processes. This technology has evolved from a scientific curiosity in the early 20th century to a promising platform for sustainable energy generation and environmental remediation.</p>
+                <p>The concept of "animal electricity" was conceived and attributed to Potter in 1911, though experiments with frog legs date back to Galvani's work in the 1780s. Since then, MFCs have progressed significantly, with applications ranging from wastewater treatment and biosensing to powering remote sensors and small electronic devices.</p>
+            </div>
+            <figure class="content-figure">
+                <img src="images/mfc_schematic.jpg" alt="Schematic diagram of a microbial fuel cell">
+                <figcaption>Schematic representation of a typical two-chamber microbial fuel cell showing the anode chamber with electroactive bacteria, cathode chamber with oxygen reduction, and proton exchange membrane separating the two compartments.</figcaption>
+            </figure>
+        </section>
 
-        <h3>Direct and Indirect Electron Transfer</h3>
-        <p>LD-EET and H-EET can also occur through diffusible redox shuttles that facilitate electron transport between EAMs and external electron acceptors or donors. This process, known as indirect EET (IEET), is frequently utilized by planktonic EAMs like <em>Pseudomonas aeruginosa</em>, which tend to produce soluble redox mediators for interacting with extracellular substrates. In contrast, it becomes challenging to differentiate between direct and indirect EET mechanisms within biofilms of EAMs, such as those formed by <em>Geobacter</em> species. The biofilms may integrate and immobilize redox mediators, allowing them to function as localized redox centers within the biofilm matrix.</p>
+        <section class="page-section">
+            <h2 class="section-title">From Galvani to Modern MFCs</h2>
+            <p>The history of bioelectrochemical systems is rich with scientific breakthroughs. Luigi Galvani, at the University of Bologna, is considered the first electrochemist and bioelectricity pioneer. In 1780, he discovered that frog muscles could be moved when struck by an electrical spark, leading to the term "animal electricity." Alessandro Volta, Galvani's contemporary, checked these experiments and believed the contractions were due to contact with cable materials to complete the circuit.</p>
+            <p>In 1838, William Grove described his "gas battery" and is recognized as the father of fuel cells. The term "fuel cell" was coined in 1889 by Charles Langer and Ludwig Mond. Nearly a century after Grove's experiments, Francis Bacon developed the first successful hydrogen-oxygen fuel cell with alkaline electrolyte, and in 1959 NASA achieved a system of fuel cells.</p>
+            <p>The first report of an actual MFC dates back to the beginning of the 20th century when the English botanist Michael Potter demonstrated that microorganisms could generate a voltage and deliver power. Interest in bioelectrochemical systems was reinvigorated in the 1960s when NASA showed interest in turning organic waste into electricity on space missions.</p>
+        </section>
 
-        <figure>
-            <img src="images/ET_mechan.jpg" alt="Extracellular electron transfer mechanisms in electroactive microorganisms" style="width:100%; max-width:700px;">
-            <figcaption>Conceptual diagrams of direct extracellular electron transfer (DEET) in <em>Shewanella oneidensis</em> (upper) and <em>Geobacter sulfurreducens</em> (lower), showing the relay system of membrane-associated EET, long-distance EET, and heterogeneous EET. Adapted from Li (2026).</figcaption>
-        </figure>
+        <section class="page-section">
+            <h2 class="section-title">Key Components and Architecture</h2>
+            <p>A microbial fuel cell consists of three essential components that work in concert to convert biochemical energy into electrical energy:</p>
 
-        <h3>Engineering and Future Developments</h3>
-        <p>At present, the development of bioelectrochemical systems faces challenges due to the low current densities generated by the biofilms of EAMs, resulting in sluggish substrate consumption and slow product generation. However, recent advances in sequencing technologies have rapidly uncovered the genetic components responsible for electron transfer pathways. This progress enables researchers to engineer model EET pathways into other microbial platforms, such as <em>Escherichia coli</em>, to create new EAMs capable of producing valuable bioproducts and detecting trace pollutants. Gaining a deeper understanding of EET mechanisms in established and newly identified EAMs is essential for advancing the development of bioelectrochemical systems and related technologies.</p>
-    </section>
+            <h3>The Anode: Where Microbial Magic Happens</h3>
+            <p>The anode is the heart of the MFC where electroactive (EA) biofilms colonize the electrode surface. These specialized bacterial communities oxidize organic substrates under anaerobic conditions, releasing electrons that are transferred to the anode electrode. The anode material must possess high electrical conductivity, resistance to corrosion, high mechanical strength, large specific surface area, high porosity, biocompatibility, and low cost.</p>
+            <p>Common anode materials include various forms of carbon-based electrodes such as carbon cloth, carbon brush, carbon rod, carbon mesh, carbon felt, granular activated carbon (GAC), and graphite plates. Recent research has shown that surface morphology plays a key role, with 3-D structured materials generally outperforming 2-D flat surfaces by providing more attachment sites for bacteria.</p>
 
-    <section id="working-principle" class="osu-section">
-        <h2>How Microbial Fuel Cells Work</h2>
-        <p>The operation of a microbial fuel cell involves a beautifully orchestrated sequence of biological and electrochemical reactions:</p>
+            <h3>The Cathode: Completing the Circuit</h3>
+            <p>The cathode serves as the electron acceptor where the reduction reaction occurs. Oxygen has primarily been used as the oxidant due to its high reduction potential. The oxygen reduction reaction (ORR) represents a significant bottleneck in MFC performance due to high over-potentials and slow kinetics. Various catalysts have been developed, from expensive platinum-based materials to more sustainable platinum-group-metal-free (PGM-free) alternatives based on iron, cobalt, and nitrogen-coordinated carbon structures (M-N-C catalysts).</p>
 
-        <h3>At the Anode</h3>
-        <p>Electroactive bacteria colonizing the anode surface oxidize organic substrates under strictly anaerobic conditions. During this oxidation process, the microorganisms extract energy for their metabolism while releasing electrons and protons. For example, the complete oxidation of glucose can be represented as:</p>
-        <p style="text-align: center; font-style: italic;">C₆H₁₂O₆ + 6H₂O → 6CO₂ + 24H⁺ + 24e⁻</p>
-        <p>The electrons are transferred to the anode electrode through one of the mechanisms described above (direct contact, mediators, or nanowires), while protons are released into the solution.</p>
+            <h3>Proton Exchange Membrane and Separators</h3>
+            <p>The proton exchange membrane (PEM) physically separates the anode and cathode chambers while allowing selective ion transfer. Nafion has been the most commonly used membrane material, though its high cost has driven research into alternatives including ceramic membranes, earthenware, and various biodegradable materials. Membrane-less MFCs have also been developed, though these require careful design to prevent oxygen diffusion to the anode.</p>
+        </section>
 
-        <h3>Through the External Circuit</h3>
-        <p>Electrons captured by the anode flow through an external circuit toward the cathode, driven by the potential difference between the two electrodes. This electron flow constitutes the electrical current that can be harvested to power devices or stored in batteries. Simultaneously, protons migrate through the electrolyte (and membrane if present) from the anode to the cathode chamber to maintain charge balance.</p>
+        <section class="page-section">
+            <h2 class="section-title">Electroactive Microorganisms and Extracellular Electron Transfer</h2>
+            <p>The ability to gain energy by transferring electrons extracellularly is conserved in a vast collection of phylogenetically diverse microorganisms from all three domains of life. Electroactive microbes (EAMs) can be ubiquitously found in diverse environments, especially thriving in anoxic to anaerobic environments such as sediment and sludge where soluble electron acceptors/donors are limited by diffusion.</p>
 
-        <h3>At the Cathode</h3>
-        <p>At the cathode, the most common reaction is the oxygen reduction reaction (ORR), where electrons returning from the external circuit combine with protons and oxygen to form water. In neutral media, this can occur through different pathways:</p>
-        <ul>
-            <li><strong>Direct 4e⁻ transfer:</strong> O₂ + 4H⁺ + 4e⁻ → 2H₂O</li>
-            <li><strong>2e⁻ pathway:</strong> O₂ + 2H⁺ + 2e⁻ → H₂O₂, followed by H₂O₂ + 2H⁺ + 2e⁻ → 2H₂O</li>
-        </ul>
-        <p>The direct 4e⁻ transfer is preferred as it reduces O₂ directly to water with higher efficiency and produces more energy.</p>
-    </section>
+            <h3>Model Electroactive Microorganisms</h3>
+            <p>The genera <em>Geobacter</em> and <em>Shewanella</em>, respectively in the phyla Thermodesulfobacteriota and Pseudomonadota, contain the most well-studied EAMs for their exceptional ability to perform extracellular electron transfer (EET). Building thick biofilms and cell appendages allows these microbes to exchange electrons with insoluble materials up to a hundred micrometers away from themselves.</p>
+            <p>Recently, newly discovered filamentous cable bacteria (also in the phylum Thermodesulfobacteriota) have revolutionized the understanding of EET by extending the conduction distance to the centimeter scale. Cable bacteria construct multicellular long filaments connecting aquatic sediments' sulfidic and oxic zones that are often separated centimeters away.</p>
 
-    <section id="applications" class="osu-section">
-        <h2>Applications of Microbial Fuel Cells</h2>
-        <p>MFCs have evolved from laboratory curiosities to practical devices with multiple real-world applications. Their unique ability to simultaneously treat waste and generate electricity makes them particularly attractive for sustainable environmental engineering.</p>
+            <h3>Mechanisms of Extracellular Electron Transfer</h3>
+            <p>EAMs utilize two primary mechanisms for extracellular electron transfer:</p>
+            <ul>
+                <li><strong>Membrane-associated EET (MA-EET):</strong> Involves transporting electrons across cellular membranes and the periplasmic space, effectively connecting intracellular metabolic activities with the extracellular environment.</li>
+                <li><strong>Heterogeneous EET (H-EET):</strong> Facilitates the transfer of electrons directly to or from electrode surfaces.</li>
+            </ul>
+            <p>Some EAMs can form thick biofilms on electrodes, enabling long-distance EET (LD-EET) that connects H-EET with MA-EET over multiple cell distances, via redox cofactors (e.g., c-type cytochromes) and conductive cell appendages (e.g., conductive e-pili, cytochrome filaments, nanowires).</p>
 
-        <h3>Wastewater Treatment and Energy Recovery</h3>
-        <p>One of the most promising applications of MFCs is in wastewater treatment. Traditional treatment plants are major energy consumers, but MFCs can flip this paradigm by treating wastewater while producing energy. Several pilot-scale demonstrations have shown the feasibility of this approach. For example, the Advanced Water Management Center at the University of Queensland, Australia, led a large-scale project showing that electricity generated from wastewater treatment with MFC technology was economically feasible.</p>
-        <p>MFCs can treat various types of wastewater including domestic sewage, brewery wastewater, food processing effluents, and organic-rich industrial waste. The bioelectrochemical conversion efficiency depends on substrate composition, bacterial population characteristics, and operating conditions, but several studies have demonstrated significant chemical oxygen demand (COD) removal while generating measurable power.</p>
+            <figure class="content-figure">
+                <img src="images/ET_mechan.jpg" alt="Extracellular electron transfer mechanisms in electroactive microorganisms">
+                <figcaption>Conceptual diagrams of direct extracellular electron transfer (DEET) in <em>Shewanella oneidensis</em> (upper) and <em>Geobacter sulfurreducens</em> (lower), showing the relay system of membrane-associated EET, long-distance EET, and heterogeneous EET. Adapted from Li (2026).</figcaption>
+            </figure>
+        </section>
 
-        <h3>Benthic Microbial Fuel Cells: Powering Ocean Sensors</h3>
-        <p>Benthic microbial fuel cells (BMFCs) represent a particularly innovative application where the MFC is deployed in marine or freshwater sediments. The anode is embedded in the anaerobic sediment layer where organic matter decomposition occurs naturally, while the cathode is suspended in the overlying oxygenated water. This configuration exploits the natural redox gradient present in aquatic sediments.</p>
-        <p>Recent field deployments have demonstrated that BMFCs can operate continuously for extended periods (over 1,000 days in some cases) with minimal maintenance, making them ideal for powering remote ocean sensors, acoustic communication devices, and environmental monitoring equipment. Power outputs typically range from 20-40 mW for systems deployed at ocean depths, which is sufficient for low-power sensors and data transmission devices. The ability to harvest energy directly from the seafloor environment eliminates the need for battery replacement in difficult-to-access underwater locations.</p>
+        <section class="page-section">
+            <h2 class="section-title">How Microbial Fuel Cells Work</h2>
 
-        <h3>Biosensing and Environmental Monitoring</h3>
-        <p>MFCs can function as self-powered biosensors that respond to changes in environmental conditions. The electrical output of an MFC varies with water quality parameters, making them useful for continuous monitoring of biochemical oxygen demand (BOD), toxic compounds, and other pollutants. This application leverages the microbial response and metabolism to produce an electrical signal that serves as an indicator of environmental conditions.</p>
-        <p>The advantages of MFC-based biosensors include their self-powered nature (no external power required), ability to operate continuously for extended periods without recalibration, and suitability for remote or difficult-to-access locations. They can serve as early-warning systems for water quality monitoring and assessment of aquatic ecosystem health.</p>
+            <h3>At the Anode</h3>
+            <p>Electroactive bacteria colonizing the anode surface oxidize organic substrates under strictly anaerobic conditions, releasing electrons and protons. For example, the complete oxidation of glucose:</p>
+            <p style="text-align: center; font-style: italic; margin: 1rem 0;">C₆H₁₂O₆ + 6H₂O → 6CO₂ + 24H⁺ + 24e⁻</p>
+            <p>Electrons are transferred to the anode electrode through direct contact, mediators, or nanowires, while protons are released into the solution.</p>
 
-        <h3>Small-Scale Power Generation and Electronics</h3>
-        <p>While MFCs currently produce modest power levels compared to conventional batteries, they have found niche applications in powering small electronic devices. Examples include the "Gastrobot" (a chew-chew train powered by 8 MFCs), the "EcoBot" series of robots that demonstrated autonomous operation using MFCs fed with organic matter, and various consumer electronics like mobile phones and basic instrumentation. A notable example involved charging a basic mobile phone using a stack of 12 ceramic MFCs, and powering a Texas Instruments digital wristwatch with a smartphone.</p>
-        <p>For specialized applications requiring long-term, low-power operation in remote locations, MFCs offer unique advantages over conventional batteries by providing continuous power as long as organic matter is available in their environment.</p>
+            <h3>Through the External Circuit</h3>
+            <p>Electrons captured by the anode flow through an external circuit toward the cathode, driven by the potential difference between the two electrodes. This electron flow constitutes the electrical current that can be harvested. Simultaneously, protons migrate through the electrolyte from the anode to the cathode chamber to maintain charge balance.</p>
 
-        <h3>Hydrogen Production and Other Value-Added Products</h3>
-        <p>When coupled with additional electrical input, MFCs can be configured as Microbial Electrolysis Cells (MECs) to produce hydrogen gas at the cathode. This represents a pathway for sustainable hydrogen production from organic waste. Other bioelectrochemical systems have been developed for producing valuable chemicals, removing specific contaminants, or recovering resources like phosphorus and nitrogen from waste streams.</p>
+            <h3>At the Cathode</h3>
+            <p>At the cathode, the most common reaction is the oxygen reduction reaction (ORR), where electrons combine with protons and oxygen to form water. The direct 4e⁻ transfer (O₂ + 4H⁺ + 4e⁻ → 2H₂O) is preferred for higher efficiency.</p>
+        </section>
 
-    </section>
+        <section class="page-section">
+            <h2 class="section-title">Applications of Microbial Fuel Cells</h2>
 
-    <section id="performance" class="osu-section">
-        <h2>Performance Factors and Optimization</h2>
-        <p>The performance of MFCs is influenced by numerous interconnected factors spanning biological, electrochemical, and engineering domains:</p>
+            <h3>Wastewater Treatment and Energy Recovery</h3>
+            <p>One of the most promising applications of MFCs is in wastewater treatment. Traditional treatment plants are major energy consumers, but MFCs can treat wastewater while producing energy. MFCs can treat various types of wastewater including domestic sewage, brewery wastewater, food processing effluents, and organic-rich industrial waste.</p>
 
-        <h3>Biological Factors</h3>
-        <ul>
-            <li><strong>Microbial community composition:</strong> The diversity and abundance of electroactive species significantly impact electron transfer efficiency</li>
-            <li><strong>Biofilm architecture:</strong> Three-dimensional biofilm structure affects mass transport and electron transfer pathways</li>
-            <li><strong>Substrate type and concentration:</strong> Different organic compounds provide varying energy yields and influence bacterial metabolism</li>
-            <li><strong>Acclimation and enrichment:</strong> Proper cultivation strategies enhance electroactive species within the biofilm</li>
-        </ul>
+            <h3>Benthic Microbial Fuel Cells: Powering Ocean Sensors</h3>
+            <p>Benthic microbial fuel cells (BMFCs) are deployed in marine or freshwater sediments. The anode is embedded in the anaerobic sediment layer while the cathode is suspended in the overlying oxygenated water, exploiting the natural redox gradient. Field deployments have demonstrated that BMFCs can operate continuously for extended periods (over 1,000 days in some cases), generating 20–40 mW — sufficient for low-power sensors and data transmission devices in difficult-to-access underwater locations.</p>
 
-        <h3>Electrochemical Factors</h3>
-        <ul>
-            <li><strong>Electrode materials:</strong> Surface chemistry, morphology, and conductivity affect bacterial attachment and electron transfer</li>
-            <li><strong>Electrode surface area:</strong> Larger surface areas generally support higher bacterial colonization and current production</li>
-            <li><strong>Cathode catalysts:</strong> Catalyst efficiency for oxygen reduction directly impacts overall cell voltage and power output</li>
-            <li><strong>Internal resistance:</strong> Minimizing ohmic, activation, and concentration resistances improves performance</li>
-        </ul>
+            <h3>Biosensing and Environmental Monitoring</h3>
+            <p>MFCs can function as self-powered biosensors that respond to changes in environmental conditions. The electrical output of an MFC varies with water quality parameters, making them useful for continuous monitoring of biochemical oxygen demand (BOD), toxic compounds, and other pollutants — with no external power required.</p>
 
-        <h3>Operating Conditions</h3>
-        <ul>
-            <li><strong>Temperature:</strong> MFCs typically operate best at ambient temperatures (15-45°C), providing advantages over high-temperature fuel cells</li>
-            <li><strong>pH:</strong> Affects both microbial metabolism and electrochemical reaction kinetics</li>
-            <li><strong>Ionic strength:</strong> Solution conductivity influences internal resistance</li>
-            <li><strong>Flow rate and mass transport:</strong> Affects substrate delivery and product removal</li>
-        </ul>
-    </section>
+            <h3>Hydrogen Production</h3>
+            <p>When coupled with additional electrical input, MFCs can be configured as Microbial Electrolysis Cells (MECs) to produce hydrogen gas at the cathode. This represents a pathway for sustainable hydrogen production from organic waste.</p>
+        </section>
 
-    <section id="challenges" class="osu-section">
-        <h2>Current Challenges and Future Directions</h2>
-        <p>Despite significant progress, several challenges must be addressed before MFCs can achieve widespread practical implementation:</p>
+        <section class="page-section">
+            <h2 class="section-title">Performance Factors and Optimization</h2>
 
-        <h3>Technical Challenges</h3>
-        <ul>
-            <li><strong>Low power density:</strong> Current MFCs generate relatively modest power outputs (typically mW to W range) compared to chemical fuel cells, limiting applications to low-power devices or requiring large electrode areas</li>
-            <li><strong>Slow startup time:</strong> Establishing mature electroactive biofilms can take weeks to months, though this is offset by the long operational lifetime once established</li>
-            <li><strong>Cathode performance limitations:</strong> The oxygen reduction reaction remains a bottleneck, with significant overpotentials even with catalysts</li>
-            <li><strong>Internal resistance:</strong> Ohmic losses, activation overpotentials, and mass transport limitations reduce overall efficiency</li>
-            <li><strong>Biofouling and membrane issues:</strong> Long-term operation can lead to membrane fouling or degradation</li>
-        </ul>
+            <h3>Biological Factors</h3>
+            <ul>
+                <li><strong>Microbial community composition:</strong> The diversity and abundance of electroactive species significantly impact electron transfer efficiency</li>
+                <li><strong>Biofilm architecture:</strong> Three-dimensional biofilm structure affects mass transport and electron transfer pathways</li>
+                <li><strong>Substrate type and concentration:</strong> Different organic compounds provide varying energy yields and influence bacterial metabolism</li>
+            </ul>
 
-        <h3>Economic Considerations</h3>
-        <ul>
-            <li><strong>Material costs:</strong> Expensive components like platinum catalysts and Nafion membranes significantly increase capital costs, though research into low-cost alternatives is progressing</li>
-            <li><strong>Scaling challenges:</strong> Maintaining performance when scaling from laboratory reactors to field-scale systems remains difficult</li>
-            <li><strong>Cost-effectiveness:</strong> For wastewater treatment applications, MFCs must compete with established technologies that benefit from decades of optimization</li>
-        </ul>
+            <h3>Electrochemical Factors</h3>
+            <ul>
+                <li><strong>Electrode materials:</strong> Surface chemistry, morphology, and conductivity affect bacterial attachment and electron transfer</li>
+                <li><strong>Cathode catalysts:</strong> Catalyst efficiency for oxygen reduction directly impacts overall cell voltage and power output</li>
+                <li><strong>Internal resistance:</strong> Minimizing ohmic, activation, and concentration resistances improves performance</li>
+            </ul>
 
-        <h3>Promising Research Directions</h3>
-        <ul>
-            <li><strong>Advanced electrode materials:</strong> Development of nanostructured, high-surface-area electrodes with enhanced biocompatibility and conductivity</li>
-            <li><strong>PGM-free catalysts:</strong> Iron-, cobalt-, and nitrogen-coordinated carbon catalysts show promise as sustainable alternatives to platinum</li>
-            <li><strong>Synthetic biology approaches:</strong> Genetic engineering of electroactive bacteria to enhance electron transfer efficiency and expand substrate utilization</li>
-            <li><strong>Hybrid systems:</strong> Integration of MFCs with other technologies (e.g., photosynthetic organisms, capacitors) for enhanced performance</li>
-            <li><strong>Membrane alternatives:</strong> Development of low-cost, high-performance separators including ceramic, earthenware, and bio-based materials</li>
-            <li><strong>System-level optimization:</strong> Better understanding of interactions between biological, electrochemical, and engineering factors</li>
-        </ul>
-    </section>
+            <h3>Operating Conditions</h3>
+            <ul>
+                <li><strong>Temperature:</strong> MFCs typically operate best at ambient temperatures (15–45°C)</li>
+                <li><strong>pH:</strong> Affects both microbial metabolism and electrochemical reaction kinetics</li>
+                <li><strong>Ionic strength:</strong> Solution conductivity influences internal resistance</li>
+            </ul>
+        </section>
 
-    <section id="perspective" class="osu-section">
-        <h2>Perspective and Future Outlook</h2>
-        <p>Microbial Fuel Cells have evolved from a scientific curiosity to a technology with multiple practical applications. While they started as "just another curiosity" in the renewable energy sector, research has shown that MFCs can serve unique niches where their specific advantages—simultaneous waste treatment and energy generation, operation at ambient conditions, long-term stability, and ability to use diverse organic substrates—make them particularly attractive.</p>
-        <p>The technology is most suitable for applications where:</p>
-        <ul>
-            <li>Low-power, long-term operation is needed (e.g., remote sensors)</li>
-            <li>Organic waste is already present and needs treatment</li>
-            <li>Conventional power sources are impractical or too expensive</li>
-            <li>Sustainability and carbon neutrality are priorities</li>
-            <li>Self-powered biosensing capabilities are valuable</li>
-        </ul>
-        <p>Rather than competing with high-power applications where chemical fuel cells or batteries excel, MFCs are finding success in specialized niches. Examples include powering ocean monitoring networks, treating wastewater in remote locations, serving as environmental biosensors, and potentially providing auxiliary power for specific industrial processes.</p>
-        <p>The drive for self-sustainability and demonstrating real work output has pushed the technology development beyond lab-scale demonstrations. Multiple groups worldwide have successfully implemented MFCs in field settings, showing that the technology can have multiple applications at multiple scales. As materials improve, costs decrease, and our understanding of bioelectrochemical processes deepens, MFCs will likely play an increasingly important role in sustainable environmental technology.</p>
-    </section>
+        <section class="page-section">
+            <h2 class="section-title">Current Challenges and Future Directions</h2>
 
-    <section id="research-lab" class="osu-section">
-        <h2>Research at Electrobiotechlab</h2>
-        <p>Our laboratory investigates the fundamental mechanisms of electron transfer in electroactive biofilms and develops practical MFC applications for environmental sustainability. Our research focuses on:</p>
-        <ul>
-            <li><strong>Marine Microbial Fuel Cells:</strong> Developing benthic MFCs for long-term ocean monitoring and understanding the unique microbial communities in marine sediment systems</li>
-            <li><strong>Electroactive Biofilm Communities:</strong> Investigating the role of electrical conductivity in mixed-species biofilms and how inter-species electron transfer affects system performance</li>
-            <li><strong>Novel Electrode Materials:</strong> Exploring carbon-based and composite materials to enhance bacterial colonization and electron transfer efficiency</li>
-            <li><strong>System Optimization:</strong> Studying the complex interactions between biological, electrochemical, and engineering factors to improve MFC performance</li>
-            <li><strong>Practical Applications:</strong> Scaling up MFC technology for wastewater treatment and remote sensing applications</li>
-        </ul>
-        <p>We employ a combination of electrochemical techniques, molecular biology methods, and advanced microscopy to understand how bacteria interact with electrodes and transfer electrons across cellular membranes. If you're interested in learning more about our MFC research or potential collaborations, please visit our <a href="research.html">Research</a> page or <a href="contact.html">contact us</a>.</p>
+            <h3>Technical Challenges</h3>
+            <ul>
+                <li><strong>Low power density:</strong> Current MFCs generate relatively modest power outputs (typically mW to W range) compared to chemical fuel cells</li>
+                <li><strong>Slow startup time:</strong> Establishing mature electroactive biofilms can take weeks to months</li>
+                <li><strong>Cathode performance limitations:</strong> The oxygen reduction reaction remains a bottleneck, with significant overpotentials even with catalysts</li>
+                <li><strong>Internal resistance:</strong> Ohmic losses, activation overpotentials, and mass transport limitations reduce overall efficiency</li>
+            </ul>
 
-    </section>
+            <h3>Promising Research Directions</h3>
+            <ul>
+                <li><strong>Advanced electrode materials:</strong> Nanostructured, high-surface-area electrodes with enhanced biocompatibility and conductivity</li>
+                <li><strong>PGM-free catalysts:</strong> Iron-, cobalt-, and nitrogen-coordinated carbon catalysts as sustainable alternatives to platinum</li>
+                <li><strong>Synthetic biology approaches:</strong> Genetic engineering of electroactive bacteria to enhance electron transfer efficiency</li>
+                <li><strong>Hybrid systems:</strong> Integration of MFCs with other technologies for enhanced performance</li>
+            </ul>
+        </section>
 
-    <section id="references" class="osu-section">
-        <h2>Key References</h2>
-        <p>This page draws extensively from the following scientific publications:</p>
-        <ul>
-            <li><strong>Santoro, C., Arbizzani, C., Erable, B., & Ieropoulos, I. (2017).</strong> Microbial fuel cells: From fundamentals to applications. A review. <em>Journal of Power Sources, 356</em>, 225-244. <a href="https://doi.org/10.1016/j.jpowsour.2017.03.109" target="_blank">https://doi.org/10.1016/j.jpowsour.2017.03.109</a></li>
-            <li><strong>Reimers, C.E., Wolf, M., Alleau, Y., & Li, C. (2022).</strong> Benthic microbial fuel cell systems for marine applications. <em>Journal of Power Sources, 522</em>, 231033. <a href="https://doi.org/10.1016/j.jpowsour.2022.231033" target="_blank">https://doi.org/10.1016/j.jpowsour.2022.231033</a></li>
-            <li><strong>Li, C. (2026).</strong> Anaerobic Digestion for Bioenergy: 8 - Advances in combining anaerobic digestion with other treatment technologies. In A. Hassanein & Y. Gagnon (Eds.), <em>Anaerobic Digestion for Bioenergy</em> (pp. 221–261). Woodhead Publishing. <a href="https://doi.org/10.1016/b978-0-443-34005-5.00006-3" target="_blank">https://doi.org/10.1016/b978-0-443-34005-5.00006-3</a></li>
-        </ul>
+        <section class="page-section">
+            <h2 class="section-title">Research at Electrobiotechlab</h2>
+            <div class="intro-card">
+                <p>Our laboratory investigates the fundamental mechanisms of electron transfer in electroactive biofilms and develops practical MFC applications for environmental sustainability. Our research focuses on:</p>
+                <ul>
+                    <li><strong>Marine Microbial Fuel Cells:</strong> Developing benthic MFCs for long-term ocean monitoring</li>
+                    <li><strong>Electroactive Biofilm Communities:</strong> Investigating the role of electrical conductivity in mixed-species biofilms</li>
+                    <li><strong>Novel Electrode Materials:</strong> Exploring carbon-based and composite materials to enhance bacterial colonization</li>
+                    <li><strong>System Optimization:</strong> Studying the complex interactions between biological, electrochemical, and engineering factors</li>
+                </ul>
+                <p style="margin-top: 1rem;">If you're interested in learning more or potential collaborations, please visit our <a href="research.html">Research</a> page or <a href="contact.html">contact us</a>.</p>
+            </div>
+        </section>
 
-        <p>For additional comprehensive information about microbial fuel cells, these recent reviews are also recommended:</p>
-        <ul>
-            <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12275351/" target="_blank">New horizons in microbial fuel cell technology: applications, challenges, and prospects</a> - PMC, 2024</li>
-            <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12065106/" target="_blank">Recent Applications, Challenges, and Future Prospects of Microbial Fuel Cells</a> - PMC, 2024</li>
-        </ul>
-    </section>
+        <section class="page-section">
+            <h2 class="section-title">Key References</h2>
+            <ul class="pub-list">
+                <li>Santoro, C., Arbizzani, C., Erable, B., &amp; Ieropoulos, I. (2017). Microbial fuel cells: From fundamentals to applications. <em>Journal of Power Sources, 356</em>, 225–244. <a href="https://doi.org/10.1016/j.jpowsour.2017.03.109" target="_blank">doi:10.1016/j.jpowsour.2017.03.109</a></li>
+                <li>Reimers, C.E., Wolf, M., Alleau, Y., &amp; Li, C. (2022). Benthic microbial fuel cell systems for marine applications. <em>Journal of Power Sources, 522</em>, 231033. <a href="https://doi.org/10.1016/j.jpowsour.2022.231033" target="_blank">doi:10.1016/j.jpowsour.2022.231033</a></li>
+                <li>Li, C. (2026). Anaerobic Digestion for Bioenergy: 8 — Advances in combining anaerobic digestion with other treatment technologies. In A. Hassanein &amp; Y. Gagnon (Eds.), <em>Anaerobic Digestion for Bioenergy</em> (pp. 221–261). Woodhead Publishing. <a href="https://doi.org/10.1016/b978-0-443-34005-5.00006-3" target="_blank">doi:10.1016/b978-0-443-34005-5.00006-3</a></li>
+                <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12275351/" target="_blank">New horizons in microbial fuel cell technology: applications, challenges, and prospects</a> — PMC, 2024</li>
+                <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12065106/" target="_blank">Recent Applications, Challenges, and Future Prospects of Microbial Fuel Cells</a> — PMC, 2024</li>
+            </ul>
+        </section>
+
+    </div>
 
     <footer>
-        <p>&copy; 2024-2026 Electrobiotechlab. All rights reserved.</p>
+        <p>Electrobiotech Lab &middot; Oregon State University &middot; Department of Biological &amp; Ecological Engineering</p>
+        <p>Gilmore Hall, 124 SW 26th Street, Corvallis, OR 97331 &middot; <a href="mailto:Cheng.Li@Oregonstate.edu">Cheng.Li@Oregonstate.edu</a></p>
+        <p><a href="https://x.com/OSUelectroB" target="_blank">@OSUelectroB</a> &middot; &copy; 2025 Electrobiotech Lab</p>
     </footer>
 
 </body>
