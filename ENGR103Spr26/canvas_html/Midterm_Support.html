@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENGR 103 — Midterm Study Guide</title>
+<style>
+  :root {
+    --osu: #D73F09;
+    --osu-light: #fff8f6;
+    --blue: #1565c0;
+    --blue-light: #e3f2fd;
+    --green: #2e7d32;
+    --green-light: #e8f5e9;
+    --gray: #546e7a;
+    --border: #e0e0e0;
+    --code-bg: #f3f4f6;
+    --code-fg: #1a1a2e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #212121;
+    background: #fafafa;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 28px 24px 64px;
+  }
+  .header {
+    background: var(--osu);
+    color: white;
+    padding: 28px 32px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  .header h1 { font-size: 1.7em; margin-bottom: 6px; }
+  .header p { opacity: 0.9; font-size: 1em; }
+  .toc {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 22px;
+    margin-bottom: 28px;
+  }
+  .toc h3 { font-size: 0.95em; color: var(--gray); margin-bottom: 10px; }
+  .toc a { color: var(--blue); text-decoration: none; display: inline-block; margin-right: 14px; padding: 2px 0; font-size: 0.93em; }
+  .toc a:hover { text-decoration: underline; }
+  .card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 22px 26px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .card h2 {
+    color: var(--osu);
+    margin-top: 0;
+    font-size: 1.12em;
+    border-bottom: 2px solid var(--osu);
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+  }
+  h3 { color: #333; margin: 16px 0 6px; font-size: 1em; }
+  p { margin-bottom: 10px; }
+  ul, ol { padding-left: 22px; margin-bottom: 10px; }
+  li { margin-bottom: 6px; line-height: 1.65; }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 14px 18px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-family: 'Courier New', monospace;
+    font-size: 0.88em;
+    margin: 10px 0 14px;
+    line-height: 1.65;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  /* Make inline comments visually distinct */
+  pre code { background: none; padding: 0; font-size: inherit; }
+  code {
+    background: #e8eaf0;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.92em;
+    color: #1a1a2e;
+  }
+  .highlight {
+    background: var(--osu-light);
+    border-left: 4px solid var(--osu);
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    margin: 12px 0;
+  }
+  .tip {
+    background: var(--blue-light);
+    border-left: 4px solid var(--blue);
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    margin: 12px 0;
+    font-size: 0.93em;
+  }
+  .tip strong { color: #0d47a1; }
+  .answer {
+    background: var(--green-light);
+    border-left: 4px solid var(--green);
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    margin: 10px 0;
+  }
+  .answer strong { color: #1b5e20; }
+  .week-tag {
+    display: inline-block;
+    background: var(--osu);
+    color: white;
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 8px;
+    vertical-align: middle;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 16px;
+    font-size: 0.92em;
+  }
+  th {
+    background: var(--osu);
+    color: white;
+    padding: 8px 12px;
+    text-align: left;
+  }
+  td {
+    padding: 7px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:nth-child(even) td { background: #fafafa; }
+  .footer {
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.82em;
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Midterm Study Guide — Weeks 1–5</h1>
+  <p>ENGR 103: Engineering Computation &amp; Algorithmic Thinking &nbsp;|&nbsp; Dr. Cheng Li &nbsp;|&nbsp; Oregon State University</p>
+</div>
+
+<div class="toc">
+  <h3>Jump to Section</h3>
+  <a href="#how-to-study">How to Study</a>
+  <a href="#cheat-sheet">Cheat Sheet Tips</a>
+  <a href="#week1">Week 1 — Types &amp; Variables</a>
+  <a href="#week2">Week 2 — Strings, I/O, Branching</a>
+  <a href="#week3">Week 3 — Loops &amp; Flow</a>
+  <a href="#week4">Week 4 — Iteration &amp; Guess-and-Check</a>
+  <a href="#week5">Week 5 — Approximation &amp; Floats</a>
+  <a href="#practice">Practice Problems</a>
+  <a href="#common-errors">Common Exam Errors</a>
+</div>
+
+<!-- ===== HOW TO STUDY ===== -->
+<div class="card" id="how-to-study">
+  <h2>📋 How to Prepare for a Programming Exam</h2>
+  <p>A programming midterm tests whether you can <em>read</em>, <em>trace</em>, and <em>write</em> code by hand — without an IDE to autocomplete or highlight errors for you. Here's how to build those skills before exam day.</p>
+  <ol>
+    <li><strong>Write code on paper.</strong> The exam is handwritten. Practice writing 10–20 lines on blank paper. You will catch missing colons and wrong indentation much faster when there's no Spyder underlining errors in red.</li>
+    <li><strong>Trace loops by hand.</strong> Pick any <code>for</code> or <code>while</code> loop and write a table of variable values at every iteration. If you can't trace it, you don't understand it.</li>
+    <li><strong>Retype past studio and homework problems from scratch.</strong> Don't look at your solution. This forces recall. Checking it afterwards is a bonus.</li>
+    <li><strong>Break things on purpose.</strong> Take a working loop, delete a colon or change <code>+=</code> to <code>+</code>, then explain why it breaks. Debug drills build the same skill tested on "find the error" questions.</li>
+    <li><strong>Explain your code out loud.</strong> If you can describe each line to someone else, you understand it. If you hesitate, that's what to review.</li>
+  </ol>
+  <div class="tip">
+    <strong>Exam format reminder:</strong> Expect a mix of (1) read-and-trace questions, (2) find-the-bug questions, (3) fill-in-the-blank, and (4) write a short block of code from scratch. Tracing and debugging usually account for more points than writing from scratch.
+  </div>
+</div>
+
+<!-- ===== CHEAT SHEET ===== -->
+<div class="card" id="cheat-sheet">
+  <h2>📝 One-Page Cheat Sheet Strategy</h2>
+  <p>You are allowed <strong>one 8.5×11 handwritten notes page (double-sided)</strong>. Use it strategically — don't copy slides verbatim.</p>
+  <ul>
+    <li><strong>Write patterns, not examples.</strong> One generic <code>while</code> loop skeleton is worth more than three specific examples. Write the skeleton; you can fill in any specific problem from it.</li>
+    <li><strong>Focus on "invisible" syntax</strong> — the things your brain drops under pressure:
+      <ul>
+        <li>Colons after <code>if</code>, <code>elif</code>, <code>else</code>, <code>for</code>, <code>while</code></li>
+        <li>Indentation rules (4 spaces per level)</li>
+        <li>F-string formatting: <code>f'{x:.4f}'</code>, <code>f'{x:&gt;8}'</code>, <code>f'{x:.2e}'</code></li>
+        <li><code>//</code> vs <code>/</code> vs <code>%</code></li>
+      </ul>
+    </li>
+    <li><strong>Include a tracing template.</strong> A small table with columns: <em>Iteration | Variable | Condition</em> is useful for any loop trace question.</li>
+    <li><strong>Don't waste space on things you know cold.</strong> If you never confuse <code>print</code> syntax, don't write it down.</li>
+  </ul>
+  <div class="highlight">
+    <strong>Suggested cheat-sheet sections:</strong> (1) Data types &amp; operators, (2) if/elif/else skeleton, (3) for loop skeleton, (4) while loop skeleton, (5) approximation loop skeleton, (6) common string methods, (7) float precision gotcha.
+  </div>
+</div>
+
+<!-- ===== WEEK 1 ===== -->
+<div class="card" id="week1">
+  <h2>Week 1 — Types, Variables, and Bindings <span class="week-tag">Ch 1, 2.1–2.2</span></h2>
+
+  <h3>Core Data Types</h3>
+  <table>
+    <tr><th>Type</th><th>Example</th><th>Notes</th></tr>
+    <tr><td><code>int</code></td><td><code>x = 7</code></td><td>Whole numbers, positive or negative</td></tr>
+    <tr><td><code>float</code></td><td><code>x = 3.14</code></td><td>Decimal numbers; stored in binary (not exact)</td></tr>
+    <tr><td><code>str</code></td><td><code>x = 'hello'</code></td><td>Sequence of characters; immutable</td></tr>
+    <tr><td><code>bool</code></td><td><code>x = True</code></td><td>Only <code>True</code> or <code>False</code> (capital T/F)</td></tr>
+  </table>
+
+  <h3>Key Operations</h3>
+  <table>
+    <tr><th>Operator</th><th>Meaning</th><th>Example → Result</th></tr>
+    <tr><td><code>+</code></td><td>Addition / string concat</td><td><code>3 + 4</code> → <code>7</code> &nbsp;|&nbsp; <code>'a' + 'b'</code> → <code>'ab'</code></td></tr>
+    <tr><td><code>**</code></td><td>Exponentiation</td><td><code>2 ** 8</code> → <code>256</code></td></tr>
+    <tr><td><code>/</code></td><td>Float division (always float)</td><td><code>7 / 2</code> → <code>3.5</code></td></tr>
+    <tr><td><code>//</code></td><td>Integer (floor) division</td><td><code>7 // 2</code> → <code>3</code></td></tr>
+    <tr><td><code>%</code></td><td>Modulo (remainder)</td><td><code>7 % 2</code> → <code>1</code></td></tr>
+  </table>
+
+  <h3>Type Conversion</h3>
+<pre><code>int(3.9)     # → 3    (truncates, does NOT round)
+int('42')    # → 42
+float(5)     # → 5.0
+str(3.14)    # → '3.14'
+type(3.14)   # → &lt;class 'float'&gt;</code></pre>
+  <div class="tip">
+    <strong>Exam trap:</strong> <code>int(3.9)</code> gives <code>3</code>, not <code>4</code>. Python truncates toward zero, it does not round.
+  </div>
+
+  <h3>Variable Binding</h3>
+  <p>A variable is a name bound to an object. Reassigning creates a new binding — it does not change the original object.</p>
+<pre><code>x = 5      # x is bound to the integer 5
+x = x + 1  # x is now bound to 6; the 5 object is unchanged
+y = x      # y and x both point to 6
+x = 0      # x now points to 0; y is still 6</code></pre>
+</div>
+
+<!-- ===== WEEK 2 ===== -->
+<div class="card" id="week2">
+  <h2>Week 2 — Strings, I/O, F-strings, Branching <span class="week-tag">Ch 2.3–2.4</span></h2>
+
+  <h3>String Indexing and Slicing</h3>
+<pre><code>s = 'Python'
+s[0]     # 'P'   (first character, index 0)
+s[-1]    # 'n'   (last character)
+s[1:4]   # 'yth' (index 1 up to but NOT including 4)
+s[:3]    # 'Pyt' (from start up to index 3)
+s[3:]    # 'hon' (from index 3 to end)
+len(s)   # 6</code></pre>
+
+  <h3>Useful String Methods</h3>
+  <table>
+    <tr><th>Method</th><th>Example → Result</th></tr>
+    <tr><td><code>s.upper()</code></td><td><code>'hello'.upper()</code> → <code>'HELLO'</code></td></tr>
+    <tr><td><code>s.lower()</code></td><td><code>'HI'.lower()</code> → <code>'hi'</code></td></tr>
+    <tr><td><code>s.strip()</code></td><td><code>'  hi  '.strip()</code> → <code>'hi'</code></td></tr>
+    <tr><td><code>s.replace(a,b)</code></td><td><code>'cat'.replace('c','b')</code> → <code>'bat'</code></td></tr>
+  </table>
+
+  <h3>Input and Output</h3>
+<pre><code>name = input('Enter your name: ')   # always returns a string
+age  = int(input('Enter your age: '))  # convert if you need a number
+print('Hello,', name)               # comma adds a space
+print(f'You are {age} years old.')  # f-string</code></pre>
+
+  <h3>F-String Formatting</h3>
+<pre><code>x = 3.14159
+print(f'{x:.2f}')    # → 3.14  (2 decimal places)
+print(f'{x:.4f}')    # → 3.1416
+print(f'{x:8.3f}')   # →    3.142  (8 wide, 3 dp, right-aligned)
+print(f'{x:.2e}')    # → 3.14e+00  (scientific notation)
+
+n = 42
+print(f'{n:05d}')    # → 00042  (zero-padded, width 5)</code></pre>
+
+  <h3>Branching — if / elif / else</h3>
+<pre><code>score = 85
+
+if score >= 90:
+    print('A')
+elif score >= 80:
+    print('B')
+elif score >= 70:
+    print('C')
+else:
+    print('Below C')
+
+# Compound conditions
+if score >= 70 and score < 90:
+    print('Passing but not excellent')</code></pre>
+  <div class="tip">
+    <strong>Remember:</strong> <code>elif</code> and <code>else</code> are only reached if all earlier conditions were False. Order matters — Python evaluates top to bottom and stops at the first True.
+  </div>
+</div>
+
+<!-- ===== WEEK 3 ===== -->
+<div class="card" id="week3">
+  <h2>Week 3 — Program Flow: Control Flow and Loops <span class="week-tag">Ch 2.5–2.8</span></h2>
+
+  <h3>for Loop with range()</h3>
+<pre><code>for i in range(5):           # 0, 1, 2, 3, 4
+    print(i)
+
+for i in range(2, 10, 3):   # 2, 5, 8  (start, stop, step)
+    print(i)
+
+for i in range(10, 0, -2):  # 10, 8, 6, 4, 2  (counting down)
+    print(i)</code></pre>
+  <div class="tip">
+    <strong>Key rule:</strong> <code>range(start, stop, step)</code> includes <code>start</code> but <strong>never</strong> includes <code>stop</code>.
+  </div>
+
+  <h3>while Loop</h3>
+<pre><code># Generic pattern
+variable = initial_value
+while condition_using_variable:
+    # do something
+    variable = updated_value   # MUST change variable or loop runs forever
+
+# Example: sum 1 + 2 + 3 + ... until sum exceeds 20
+total = 0
+n = 1
+while total <= 20:
+    total += n
+    n += 1
+print(total, n)</code></pre>
+
+  <h3>break and continue</h3>
+<pre><code># break: exit the loop immediately
+for i in range(10):
+    if i == 5:
+        break      # stops at 5; never prints 5, 6, 7, 8, 9
+    print(i)
+
+# continue: skip the rest of this iteration
+for i in range(8):
+    if i % 2 == 0:
+        continue   # skip even numbers
+    print(i)       # prints 1, 3, 5, 7</code></pre>
+
+  <h3>Tracing a Loop (Exam Skill)</h3>
+  <p>For the loop below, trace every iteration:</p>
+<pre><code>x = 1
+count = 0
+while x < 50:
+    x = x * 3
+    count += 1</code></pre>
+  <div class="answer">
+    <strong>Trace table:</strong><br>
+    After iter 1: x=3, count=1 &nbsp;|&nbsp;
+    After iter 2: x=9, count=2 &nbsp;|&nbsp;
+    After iter 3: x=27, count=3 &nbsp;|&nbsp;
+    After iter 4: x=81, count=4 &nbsp;→&nbsp; loop stops (81 ≥ 50).
+    Final: <code>x = 81</code>, <code>count = 4</code>.
+  </div>
+</div>
+
+<!-- ===== WEEK 4 ===== -->
+<div class="card" id="week4">
+  <h2>Week 4 — Iteration: Guess-and-Check, Binary, Fractions <span class="week-tag">Ch 3.1, 3.3</span></h2>
+
+  <h3>Exhaustive Enumeration (Guess-and-Check)</h3>
+  <p>Try every integer candidate until you find the answer or prove it doesn't exist.</p>
+<pre><code># Find the integer cube root of a perfect cube
+target = 27
+guess = 0
+while guess ** 3 < target:
+    guess += 1
+
+if guess ** 3 == target:
+    print(f'Cube root of {target} is {guess}')
+else:
+    print(f'{target} is not a perfect cube')</code></pre>
+  <div class="tip">
+    <strong>Pattern:</strong> Guess-and-check loops increment an integer candidate until <code>candidate**n >= target</code>, then check for exact match. This only finds <em>perfect</em> integer roots — for non-perfect values, use approximation (Week 5).
+  </div>
+
+  <h3>Binary Representation (Conceptual)</h3>
+  <p>Every integer can be expressed as a sum of powers of 2. Python converts automatically; understanding the concept matters for interpreting float precision limits.</p>
+  <table>
+    <tr><th>Decimal</th><th>Binary</th><th>Powers of 2</th></tr>
+    <tr><td>5</td><td>101</td><td>2² + 2⁰ = 4 + 1</td></tr>
+    <tr><td>13</td><td>1101</td><td>2³ + 2² + 2⁰ = 8 + 4 + 1</td></tr>
+    <tr><td>16</td><td>10000</td><td>2⁴</td></tr>
+  </table>
+
+  <h3>Common Iteration Patterns to Know</h3>
+<pre><code># Accumulate a running sum
+total = 0
+for i in range(1, 11):    # 1 through 10
+    total += i
+print(total)              # 55
+
+# Count how many values satisfy a condition
+count = 0
+for i in range(1, 101):
+    if i % 7 == 0:        # divisible by 7
+        count += 1
+print(count)              # 14</code></pre>
+</div>
+
+<!-- ===== WEEK 5 ===== -->
+<div class="card" id="week5">
+  <h2>Week 5 — Approximation Methods and Floating-Point <span class="week-tag">Ch 3.2–3.3</span></h2>
+
+  <h3>Exhaustive Approximation (Step-and-Check)</h3>
+  <p>Instead of checking every integer, step through small increments until <code>|guess² − target| &lt; epsilon</code>.</p>
+<pre><code># Approximate square root of 2 to within epsilon = 0.001
+target  = 2.0
+epsilon = 0.001
+increment = 0.0001
+guess = 0.0
+
+while abs(guess ** 2 - target) >= epsilon:
+    guess += increment
+
+print(f'Approximate √2 = {guess:.4f}')
+print(f'Error: {abs(guess**2 - target):.6f}')</code></pre>
+  <div class="highlight">
+    <strong>Golden rule:</strong> <code>increment</code> must be much smaller than <code>epsilon</code>. If <code>increment >= epsilon</code>, the loop might step over the answer and never satisfy the condition — causing an infinite loop or a wrong answer.
+  </div>
+
+  <h3>The Float Precision Problem</h3>
+<pre><code>0.1 + 0.2 == 0.3    # → False !
+0.1 + 0.2           # → 0.30000000000000004
+
+# Correct comparison: use a tolerance
+abs((0.1 + 0.2) - 0.3) < 1e-10    # → True</code></pre>
+  <p>Floats are stored in binary with ~15 significant digits of precision. Some decimal fractions (like 0.1) cannot be represented exactly in binary, so tiny rounding errors accumulate. <strong>Never use <code>==</code> to compare two floats</strong> — always check <code>abs(a - b) &lt; epsilon</code>.</p>
+
+  <h3>Approximation Loop Skeleton</h3>
+<pre><code># Template: find x where f(x) ≈ target
+target    = ___          # what you're looking for
+epsilon   = ___          # how close is "close enough"
+increment = ___          # step size (must be << epsilon)
+guess     = start_value  # starting point
+
+while abs(f(guess) - target) >= epsilon and guess <= upper_limit:
+    guess += increment
+
+if abs(f(guess) - target) < epsilon:
+    print(f'Found: {guess:.4f}')
+else:
+    print('No solution found in range')</code></pre>
+
+  <h3>Useful Built-in Functions for Week 5</h3>
+  <table>
+    <tr><th>Function</th><th>Example → Result</th></tr>
+    <tr><td><code>abs(x)</code></td><td><code>abs(-3.7)</code> → <code>3.7</code></td></tr>
+    <tr><td><code>round(x, n)</code></td><td><code>round(3.14159, 2)</code> → <code>3.14</code></td></tr>
+    <tr><td><code>max(a, b)</code></td><td><code>max(3, 7)</code> → <code>7</code></td></tr>
+    <tr><td><code>min(a, b)</code></td><td><code>min(3, 7)</code> → <code>3</code></td></tr>
+    <tr><td><code>x ** 0.5</code></td><td>Square root (same as √x)</td></tr>
+  </table>
+</div>
+
+<!-- ===== PRACTICE PROBLEMS ===== -->
+<div class="card" id="practice">
+  <h2>✏️ Practice Problems (Try on Paper First)</h2>
+
+  <h3>Problem 1 — Type &amp; Expression Trace <span class="week-tag">Week 1</span></h3>
+  <p>What is the value and type of each expression?</p>
+<pre><code>7 / 2        # → ?  (type: ?)
+7 // 2       # → ?  (type: ?)
+7 % 2        # → ?  (type: ?)
+int(7 / 2)   # → ?  (type: ?)
+str(7 // 2)  # → ?  (type: ?)</code></pre>
+  <div class="answer">
+    <strong>Answers:</strong>
+    3.5 (float) &nbsp;|&nbsp; 3 (int) &nbsp;|&nbsp; 1 (int) &nbsp;|&nbsp; 3 (int) &nbsp;|&nbsp; '3' (str)
+  </div>
+
+  <h3>Problem 2 — String Slicing <span class="week-tag">Week 2</span></h3>
+  <p>Given <code>s = 'Engineering'</code>, what does each expression return?</p>
+<pre><code>s[0]      # →
+s[-3]     # →
+s[3:7]    # →
+s[:4]     # →
+len(s)    # →</code></pre>
+  <div class="answer">
+    <strong>Answers:</strong>
+    'E' &nbsp;|&nbsp; 'i' (index 8) &nbsp;|&nbsp; 'inee' &nbsp;|&nbsp; 'Engi' &nbsp;|&nbsp; 11
+  </div>
+
+  <h3>Problem 3 — Loop Trace <span class="week-tag">Week 3–4</span></h3>
+  <p>Trace this code. What does it print?</p>
+<pre><code>result = 0
+for i in range(1, 6):
+    if i % 2 != 0:
+        result += i * i
+print(result)</code></pre>
+  <div class="answer">
+    <strong>Answer:</strong> Adds squares of odd numbers in 1–5: 1² + 3² + 5² = 1 + 9 + 25 = <strong>35</strong>
+  </div>
+
+  <h3>Problem 4 — while Loop with break <span class="week-tag">Week 3</span></h3>
+  <p>What does this code print? Trace each iteration.</p>
+<pre><code>n = 100
+steps = 0
+while n > 1:
+    if n % 2 == 0:
+        n = n // 2
+    else:
+        n = 3 * n + 1
+    steps += 1
+    if steps >= 5:
+        break
+print(f'n={n}, steps={steps}')</code></pre>
+  <div class="answer">
+    <strong>Trace:</strong> n=100 → 50 → 25 → 76 → 38 → 19 &nbsp;(step 5 hits break)<br>
+    <strong>Output:</strong> <code>n=19, steps=5</code>
+  </div>
+
+  <h3>Problem 5 — Write an Approximation Loop <span class="week-tag">Week 5</span></h3>
+  <p>Write a <code>while</code> loop that approximates √7 to within <code>epsilon = 0.0001</code> using steps of <code>0.00001</code>, starting from <code>guess = 0.0</code>. Print the result with 4 decimal places.</p>
+  <div class="answer">
+    <strong>Model answer:</strong>
+<pre><code>target    = 7.0
+epsilon   = 0.0001
+increment = 0.00001
+guess     = 0.0
+
+while abs(guess ** 2 - target) >= epsilon:
+    guess += increment
+
+print(f'Approximate √7 = {guess:.4f}')
+# Expected output: Approximate √7 = 2.6458</code></pre>
+  </div>
+
+  <h3>Problem 6 — Find the Bug <span class="week-tag">All Weeks</span></h3>
+  <p>Each snippet has exactly one bug. Identify and fix it.</p>
+<pre><code># Bug A
+total = 0
+for i in range(1, 11)
+    total = total + i
+print(total)
+
+# Bug B
+x = 5.0
+if x > 3 and x < 10
+    print('in range')
+
+# Bug C
+count = 10
+while count > 0:
+    print(count)
+    count - 1        # intended to count down</code></pre>
+  <div class="answer">
+    <strong>Bug A:</strong> Missing colon → <code>for i in range(1, 11):</code><br>
+    <strong>Bug B:</strong> Missing colon → <code>if x > 3 and x &lt; 10:</code><br>
+    <strong>Bug C:</strong> <code>count - 1</code> doesn't update the variable → change to <code>count -= 1</code>
+  </div>
+</div>
+
+<!-- ===== COMMON ERRORS ===== -->
+<div class="card" id="common-errors">
+  <h2>⚠️ Common Exam Errors — Don't Lose Points on These</h2>
+  <table>
+    <tr><th>Mistake</th><th>Wrong</th><th>Correct</th></tr>
+    <tr><td>Missing colon</td><td><code>if x &gt; 0</code></td><td><code>if x &gt; 0:</code></td></tr>
+    <tr><td>Not updating variable</td><td><code>count + 1</code></td><td><code>count += 1</code></td></tr>
+    <tr><td>Off-by-one in range</td><td><code>range(1, 5)</code> for 1–5</td><td><code>range(1, 6)</code></td></tr>
+    <tr><td>Comparing floats with ==</td><td><code>x**2 == 2.0</code></td><td><code>abs(x**2 - 2.0) &lt; eps</code></td></tr>
+    <tr><td>int() rounds instead of truncates</td><td>Expecting <code>int(3.9) = 4</code></td><td><code>int(3.9) = 3</code></td></tr>
+    <tr><td>String + number without conversion</td><td><code>'Score: ' + 95</code></td><td><code>'Score: ' + str(95)</code> or f-string</td></tr>
+    <tr><td>input() returns str, not int</td><td><code>n = input('...')</code> then <code>n + 1</code></td><td><code>n = int(input('...'))</code></td></tr>
+    <tr><td>Increment too large in approximation</td><td><code>epsilon=0.001, increment=0.01</code></td><td><code>increment</code> must be ≪ <code>epsilon</code></td></tr>
+    <tr><td>Wrong indentation level</td><td>Code inside loop that should be outside</td><td>Check every block carefully</td></tr>
+    <tr><td>Using = instead of ==</td><td><code>if x = 5:</code></td><td><code>if x == 5:</code></td></tr>
+  </table>
+</div>
+
+<div class="footer">
+  ENGR 103 &nbsp;·&nbsp; Oregon State University &nbsp;·&nbsp; Dr. Cheng Li &nbsp;·&nbsp; Spring 2026 &nbsp;·&nbsp; Midterm Study Guide (Weeks 1–5)
+</div>
+
+<script>
+  // Color Python comments (# ...) in all pre>code blocks
+  document.querySelectorAll('pre > code').forEach(function(block) {
+    var lines = block.innerHTML.split('\n');
+    var result = lines.map(function(line) {
+      // Find first # that isn't inside a string (simple heuristic)
+      var inStr = false;
+      var strChar = '';
+      for (var i = 0; i < line.length; i++) {
+        var ch = line[i];
+        if (!inStr && (ch === "'" || ch === '"')) { inStr = true; strChar = ch; }
+        else if (inStr && ch === strChar) { inStr = false; }
+        else if (!inStr && ch === '#') {
+          var code = line.slice(0, i);
+          var comment = line.slice(i);
+          return code + '<span style="color:#6b7280;font-style:italic;">' + comment + '</span>';
+        }
+      }
+      return line;
+    });
+    block.innerHTML = result.join('\n');
+  });
+</script>
+</body>
+</html>

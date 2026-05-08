@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio 4 Extra — Python Syntax & Fundamentals Review</title>
+  
+<style>
+  :root {
+    --green: #2e7d32;
+    --green-light: #e8f5e9;
+    --accent: #1565c0;
+    --accent-light: #e3f2fd;
+    --code-bg: #1e1e2e;
+    --code-fg: #cdd6f4;
+    --gray: #546e7a;
+    --border: #cfd8dc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #212121;
+    background: #fafafa;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+  header {
+    background: var(--green);
+    color: white;
+    padding: 28px 32px;
+    border-radius: 10px;
+    margin-bottom: 32px;
+  }
+  header h1 { font-size: 1.6em; margin-bottom: 8px; }
+  header .meta { font-size: 0.9em; opacity: 0.85; }
+  h1.section {
+    font-size: 1.15em;
+    color: var(--green);
+    border-left: 4px solid var(--green);
+    padding: 8px 14px;
+    margin: 28px 0 12px;
+    background: var(--green-light);
+    border-radius: 0 6px 6px 0;
+  }
+  h2.subsection {
+    font-size: 1em;
+    color: var(--accent);
+    margin: 20px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--accent-light);
+  }
+  p { margin-bottom: 10px; }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 16px 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    margin: 12px 0 16px;
+    line-height: 1.5;
+  }
+  .task-box {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+  }
+  .task-box strong { color: #e65100; }
+  .writelines {
+    margin: 8px 0 16px;
+    padding: 0;
+    list-style: none;
+  }
+  .writelines li {
+    border-bottom: 1px solid var(--border);
+    height: 32px;
+    margin-bottom: 4px;
+  }
+  ul.bullets { margin: 8px 0 12px 20px; }
+  ul.bullets li { margin-bottom: 4px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+  th, td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+  th { background: #eeeeee; }
+  .toc {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+  }
+  .toc h3 { font-size: 0.95em; color: var(--gray); margin-bottom: 10px; }
+  .toc a { color: var(--accent); text-decoration: none; display: block; padding: 3px 0; }
+  .toc a:hover { text-decoration: underline; }
+  footer { margin-top: 48px; font-size: 0.82em; color: var(--gray); text-align: center; }
+</style>
+
+</head>
+<body>
+  <header>
+    <h1>Studio 4 Extra — Python Syntax & Fundamentals Review</h1>
+    <div class="meta">ENGR 103 — Week 4 | Duration: 1 hour 50 minutes | Format: Partner/small group</div>
+  </header>
+  <div class="toc">
+    <h3>📋 Contents</h3>
+    <a href="#section-1">0:00-0:15 - Section 1: Indentation and Colons</a>
+    <a href="#section-2">0:15-0:30 - Section 2: Type Casting Traps</a>
+    <a href="#section-3">0:30-0:45 - Section 3: f-Strings</a>
+    <a href="#section-4">0:45-1:05 - Section 4: Branching & Booleans</a>
+    <a href="#section-5">1:05-1:25 - Section 5: While Loops & Accumulators</a>
+    <a href="#section-6">1:25-1:50 - Section 6: Capstone Challenge</a>
+  </div>
+  
+  <h1 class="section" id="section-1">Section 1: Indentation and Colons (15 min)</h1>
+  <p>Python uses <strong>indentation</strong> (spaces/tabs) to define code blocks. Every <code>if</code>, <code>for</code>, <code>while</code>, <code>def</code>, etc., must end with a <strong>colon</strong> and the body must be indented.</p>
+  
+  <h2 class="subsection">Exercise 1A — Fix the Broken Code</h2>
+  <p>Each snippet below has one or more syntax errors. Type them into your IDE and fix them so they run correctly.</p>
+
+  <p><strong>Problem 1:</strong> (Expected output: <code>B</code>)</p>
+<pre><code>score = 85
+if score >= 90
+    print("A")
+elif score >= 80:
+    print("B")
+else:
+print("C or below")</code></pre>
+
+  <p><strong>Problem 2:</strong> (Expected output: <code>0</code>, <code>2</code>, <code>4</code>, <code>6</code>, <code>8</code>)</p>
+<pre><code>for i in range(5):
+print(i * 2)</code></pre>
+
+  <p><strong>Problem 3:</strong> (Expected output: <code>Hello, Alex</code>)</p>
+<pre><code>greet = input('would you like to greet? (Y/N)')
+if greet == 'Y':
+print ('Hello, Alex')</code></pre>
+
+  <h1 class="section" id="section-2">Section 2: Type Casting Traps (15 min)</h1>
+  <table>
+    <tr><th>Cast</th><th>What it does</th><th>Common trap</th></tr>
+    <tr><td><code>int(x)</code></td><td>Converts to integer (truncates)</td><td><code>int("3.5")</code> → ValueError</td></tr>
+    <tr><td><code>float(x)</code></td><td>Converts to float</td><td><code>float("hello")</code> → ValueError</td></tr>
+    <tr><td><code>str(x)</code></td><td>Converts to string</td><td><code>"3" + 3</code> → TypeError</td></tr>
+  </table>
+
+  <h2 class="subsection">Exercise 2A — Cast Carefully</h2>
+  <div class="task-box"><strong>✏️ Your Task:</strong> Problem 1: The code below crashes. Fix it so that if the user enters 20, the output is <code>Total: 21.8</code>.</div>
+<pre><code>price = input("Enter price: ")
+tax = price * 0.09
+total = price + tax
+print("Total:", total)</code></pre>
+  
+  <div class="task-box"><strong>✏️ Your Task:</strong> Problem 2: Predict what each line prints, then verify in Python.</div>
+<pre><code>print(int(9.9))
+print(float("42"))
+print(str(100) + " dollars")
+print(int(float("7.5")))</code></pre>
+  <ul class="writelines"><li></li><li></li><li></li><li></li></ul>
+
+  <h1 class="section" id="section-3">Section 3: f-Strings (15 min)</h1>
+  <p>Rules: Prefix the string with <code>f</code>. Variables go inside <code>{}</code>. Format specs: <code>{value:.2f}</code> for 2 decimals.</p>
+
+  <h2 class="subsection">Exercise 3A — Format It</h2>
+  <div class="task-box"><strong>✏️ Your Task:</strong> Problem 1: Rewrite this print statement using an f-string.</div>
+<pre><code>length = 7.5
+width = 3.2
+area = length * width
+# Old style:
+print("Length: " + str(length) + ", Width: " + str(width) + ", Area: " + str(area))</code></pre>
+
+  <div class="task-box"><strong>✏️ Your Task:</strong> Problem 2: Use an f-string to display a receipt exactly like: <code>3x Coffee = $14.25</code></div>
+<pre><code>item = "Coffee"
+price = 4.75
+qty = 3
+# TODO: print the receipt</code></pre>
+
+  <h1 class="section" id="section-4">Section 4: Branching & Booleans (20 min)</h1>
+  <p>Compound logic requires the <code>and</code>, <code>or</code>, and <code>not</code> operators. To check if a number is even, use the modulo operator: <code>number % 2 == 0</code>.</p>
+
+  <h2 class="subsection">Exercise 4A — Number Classifier</h2>
+  <div class="task-box"><strong>✏️ Your Task:</strong> Write a script that asks the user for an integer. Use <code>if/elif/else</code> to print exactly one of the following classifications:
+    <ul class="bullets">
+      <li>"Zero"</li>
+      <li>"Positive & Even"</li>
+      <li>"Positive & Odd"</li>
+      <li>"Negative"</li>
+    </ul>
+  </div>
+  <ul class="writelines"><li></li><li></li><li></li><li></li></ul>
+
+  <h1 class="section" id="section-5">Section 5: While Loops & Accumulators (20 min)</h1>
+  <p>Key questions for any loop: What is the starting condition? When does it stop? What updates the loop variable?</p>
+
+  <h2 class="subsection">Trace Exercise</h2>
+  <div class="task-box"><strong>✏️ Your Task:</strong> Predict the output before running:</div>
+<pre><code>x = 10
+while x > 0:
+    print(x)
+    x -= 3</code></pre>
+  <ul class="writelines"><li></li><li></li><li></li><li></li></ul>
+
+  <h2 class="subsection">Exercise 5A — The Accumulator Pattern</h2>
+  <div class="task-box"><strong>✏️ Your Task:</strong> Write a <code>while</code> loop that runs exactly 3 times. Each time it loops, ask the user to input a float. Add that input to a <code>total</code> variable. After the loop finishes, print the average of the 3 numbers using an f-string rounded to 2 decimal places.</div>
+<pre><code>total = 0.0
+count = 0
+
+# TODO: Write your while loop here
+
+</code></pre>
+
+  <h1 class="section" id="section-6">Section 6: Capstone Challenge (25 min)</h1>
+  <p>Let's combine everything: casting, branching, formatting, and looping.</p>
+
+  <h2 class="subsection">Exercise 6A — The Number Guesser</h2>
+  <div class="task-box"><strong>✏️ Your Task:</strong> Build a number guessing game with the following rules:
+    <ul class="bullets">
+      <li>Set a <code>secret_number</code> variable to 42.</li>
+      <li>Use a <code>while</code> loop to keep asking the user for a guess until they get it right.</li>
+      <li>If their guess is too high, print "Too high!".</li>
+      <li>If their guess is too low, print "Too low!".</li>
+      <li>Keep track of how many attempts they have made.</li>
+      <li>When they guess correctly, print: <code>"Correct! You got it in X attempts!"</code> (using an f-string).</li>
+    </ul>
+  </div>
+
+  <footer>ENGR 103 &nbsp;·&nbsp; Oregon State University &nbsp;·&nbsp; Studio 4 Extra — Student Instructions</footer>
+</body>
+</html>

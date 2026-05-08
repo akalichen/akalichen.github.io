@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio 5 — Approximation Methods & Floating-Point</title>
+  
+<style>
+  :root {
+    --green: #2e7d32;
+    --green-light: #e8f5e9;
+    --accent: #1565c0;
+    --accent-light: #e3f2fd;
+    --code-bg: #1e1e2e;
+    --code-fg: #cdd6f4;
+    --gray: #546e7a;
+    --border: #cfd8dc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #212121;
+    background: #fafafa;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+  header {
+    background: var(--green);
+    color: white;
+    padding: 28px 32px;
+    border-radius: 10px;
+    margin-bottom: 32px;
+  }
+  header h1 { font-size: 1.6em; margin-bottom: 8px; }
+  header .meta { font-size: 0.9em; opacity: 0.85; }
+  h1.section {
+    font-size: 1.15em;
+    color: var(--green);
+    border-left: 4px solid var(--green);
+    padding: 8px 14px;
+    margin: 28px 0 12px;
+    background: var(--green-light);
+    border-radius: 0 6px 6px 0;
+  }
+  h2.subsection {
+    font-size: 1em;
+    color: var(--accent);
+    margin: 20px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--accent-light);
+  }
+  p { margin-bottom: 10px; }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 16px 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    margin: 12px 0 16px;
+    line-height: 1.5;
+  }
+  .task-box {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+  }
+  .task-box strong { color: #e65100; }
+  .writelines {
+    margin: 8px 0 16px;
+    padding: 0;
+    list-style: none;
+  }
+  .writelines li {
+    border-bottom: 1px solid var(--border);
+    height: 32px;
+    margin-bottom: 4px;
+  }
+  ul.bullets { margin: 8px 0 12px 20px; }
+  ul.bullets li { margin-bottom: 4px; }
+  .toc {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+  }
+  .toc h3 { font-size: 0.95em; color: var(--gray); margin-bottom: 10px; }
+  .toc a { color: var(--accent); text-decoration: none; display: block; padding: 3px 0; }
+  .toc a:hover { text-decoration: underline; }
+  footer { margin-top: 48px; font-size: 0.82em; color: var(--gray); text-align: center; }
+</style>
+
+</head>
+<body>
+  <header>
+    <h1>Studio 5 — Approximation Methods & Floating-Point</h1>
+    <div class="meta">ENGR 103 — Week 5</div>
+  </header>
+  <div class="toc"><h3>📋 Contents</h3><a href="#studio-overview">Studio Overview</a><a href="#0-00-0-10-warm-up">0:00–0:10  —  Warm-Up</a><a href="#0-10-0-35-part-1-codedex-warmup-guided">0:10–0:35  —  Part 1 — Codedex Warmup (Guided)</a><a href="#0-35-1-10-part-2-practical-lab-parabola-root-search">0:35–1:10  —  Part 2 — Practical Lab: Parabola Root Search</a><a href="#1-10-1-25-part-3-extension-cube-root-search">1:10–1:25  —  Part 3 — Extension: Cube Root Search</a><a href="#1-25-1-30-wrap-up-ta-check-off">1:25–1:30  —  Wrap-Up & TA Check-Off</a></div>
+  <p>Student Instructions  |  Week 5  |  Topics: Exhaustive approximation, epsilon, float precision</p><p>Oregon State University  |  ENGR 103  |  Dr. Cheng Li</p><h1 class="section" id="studio-overview">Studio Overview</h1><ul class="bullets"><li>Theme: Numerical Methods for Mathematical Equations</li><li>Related Reading: Ch 3.2–3.3</li><li>Duration: 90 minutes  |  All 4 sections run the same activity</li><li>Materials: Laptop with Spyder or Jupyter, this handout</li></ul><h1 class="section" id="0-00-0-10-warm-up">0:00–0:10  —  Warm-Up</h1><p>Predict and then verify:</p><h2 class="subsection">Float Surprise</h2><p>Type and run this code:</p><pre><code>x = 0.1 + 0.1 + 0.1
+print(x)
+print(x == 0.3)
+print(abs(x - 0.3) < 1e-10)</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Why does x == 0.3 return False? How does the third line fix it?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="0-10-0-35-part-1-codedex-warmup-guided">0:10–0:35  —  Part 1 — Codedex Warmup (Guided)</h1><p>Type and run each snippet.</p><h2 class="subsection">Exercise 5A — Exhaustive Approximation of √x</h2><p>Type and run this code:</p><pre><code>x   = 2.0
+eps = 0.01       # acceptable error
+step = eps ** 2  # step must be &lt;&lt; eps
+ans  = 0.0
+count = 0
+
+while abs(ans**2 - x) >= eps and ans &lt;= x:
+    ans  += step
+    count += 1
+
+if abs(ans**2 - x) &lt; eps:
+    print(f'√{x} ≈ {ans:.6f}  (true: {x**0.5:.6f})')
+    print(f'Steps taken: {count:,}')
+    print(f'Error: {abs(ans - x**0.5):.6f}')
+else:
+    print('Failed to find answer')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Try x=9.0, eps=0.001. How many steps? How does step count change?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h2 class="subsection">Exercise 5B — Quadratic Root Search</h2><p>We want to find x where x² − 5x = target using exhaustive search, then compare to the analytical formula. Type and run this code:</p><pre><code># Find x where x^2 - 5x = target by exhaustive search
+target    = 6.0
+eps       = 0.005
+
+x         = 0.0
+best_x    = x
+best_diff = abs(x**2 - 5*x - target)
+
+while x &lt;= 20.0:
+    diff = abs(x**2 - 5*x - target)
+    if diff &lt; best_diff:
+        best_diff = diff
+        best_x    = x
+    x += 0.001
+
+# Analytical positive root: x = (5 + sqrt(25 + 4*target)) / 2
+x_exact = (5 + (25 + 4*target)**0.5) / 2
+print(f'Numerical  x = {best_x:.4f}')
+print(f'Analytical x = {x_exact:.4f}')
+print(f'Error: {abs(best_x - x_exact):.5f}')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Try target = 14. Does the numerical answer still match the analytical one?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h2 class="subsection">Exercise 5C — Float Precision Demo</h2><p>Type and run this code:</p><pre><code>print('=== Float Precision ===')
+for base in [0.1, 0.2, 0.3]:
+    print(f'{base} × 10 = {base * 10:.20f}')
+
+# Approximations of π and tolerance check
+approx_pi = [3.142, 3.139, 3.141, 3.145, 3.137]
+true_pi   = 3.14159
+eps_pi    = 0.003
+
+print('\n=== Pi Approximation Check ===')
+for val in approx_pi:
+    ok = abs(val - true_pi) &lt;= eps_pi
+    print(f'π≈{val:.3f}  diff={abs(val - true_pi):.5f}  {"PASS" if ok else "FAIL"}')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Change eps_pi to 0.001. Which approximations fail now?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="0-35-1-10-part-2-practical-lab-parabola-root-search">0:35–1:10  —  Part 2 — Practical Lab: Parabola Root Search</h1><p>Work in pairs. The parabola y = x² − 6x + 5 has roots at x = 1 and x = 5, and a minimum of y = −4 at x = 3. Use exhaustive approximation to find x where y equals a given target value. No functions needed — compute y directly inside your loops.</p><h2 class="subsection">Setup</h2><p>Type and run this code to verify the parabola at key points:</p><pre><code># Parabola: y = x^2 - 6x + 5
+# Verify known points: roots at x=1 and x=5, minimum at x=3
+for x_check in [1, 3, 5]:
+    y_check = x_check**2 - 6*x_check + 5
+    print(f'x = {x_check}  →  y = {y_check:.3f}')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Run the verification. Do x=1 and x=5 give y=0? Does x=3 give y=−4?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h2 class="subsection">Tasks</h2><div class="task-box"><strong>✏️ Your Task:</strong> </div><pre><code>Use the starter code below. For each target_y in the list, a while loop searches
+x in [0, 10] with step 0.01 and tracks the x where |y - target_y| is smallest.
+
+   
+<pre><code>targets = [-4.0, -3.0, 0.0, 3.0]
+eps = 0.05
+
+print(f'{"Target y":>10} | {"x found":>10} | {"y at x":>10} | {"Error":>8}')
+print('-' * 46)
+
+for target_y in targets:
+    best_x    = 0.0
+    best_diff = float('inf')
+
+    i = 0
+    while i &lt;= 1000:          # 0.0 to 10.0 in steps of 0.01
+        x    = i * 0.01       # compute x fresh — avoids accumulated FP drift
+        y    = x**2 - 6*x + 5
+        diff = abs(y - target_y)
+        if diff &lt; best_diff:
+            best_diff = diff
+            best_x    = x
+        i += 1
+
+    y_found = best_x**2 - 6*best_x + 5
+    print(f'{target_y:>10.1f} | {best_x:>10.4f} | {y_found:>10.4f} | {best_diff:>8.5f}')</code></pre>
+
+# Extension: What happens if target_y = -5.0?
+# (Hint: the minimum of this parabola is y = -4)</code></pre><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="1-10-1-25-part-3-extension-cube-root-search">1:10–1:25  —  Part 3 — Extension: Cube Root Search</h1><p>Use exhaustive approximation to find x where x³ = target — the cube root of target. No math module needed: just use ** inside a while loop.</p><h2 class="subsection">Extension</h2><p>Type and run this code:</p><pre><code>target = 50.0
+eps    = 0.001
+step   = 0.001
+ans    = 0.0
+count  = 0
+
+while ans &lt;= target:
+    if abs(ans**3 - target) &lt; eps:
+        break
+    ans   += step
+    count += 1
+
+if abs(ans**3 - target) &lt; eps:
+    print(f'Cube root of {target} ≈ {ans:.4f}')
+    print(f'Python says:  {target**(1/3):.4f}')
+    print(f'Error: {abs(ans - target**(1/3)):.6f}')
+    print(f'Steps: {count:,}')
+else:
+    print('Failed to find cube root')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Try target = 8 and target = 125. Then change step to 0.01 — how does accuracy change? Why?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="1-25-1-30-wrap-up-ta-check-off">1:25–1:30  —  Wrap-Up & TA Check-Off</h1><p>Show TA your Part 2 table (4 target y values → x values found). Discuss: how would you make this faster? (Preview: bisection search next week!)</p>
+  <footer>ENGR 103 &nbsp;·&nbsp; Oregon State University &nbsp;·&nbsp; Studio Week 5 — Student Instructions</footer>
+</body>
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENGR 103 — Spring 2026 | Electrobiotechlab</title>
+    <meta name="description" content="ENGR 103: Engineering Computation & Algorithmic Thinking, Spring 2026. Course materials, weekly pages, and studio exercises taught by Dr. Cheng Li at Oregon State University.">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .course-hero {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary);
+            padding: 1.75rem 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .course-hero h3 {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .course-hero p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 0.3rem;
+        }
+        .course-hero p:last-child { margin-bottom: 0; }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .resource-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 1.1rem 1.25rem;
+            text-decoration: none;
+            color: var(--text);
+            transition: box-shadow var(--transition), transform var(--transition);
+            border-top: 3px solid var(--accent);
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        .resource-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+            color: var(--text);
+        }
+        .resource-card .card-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+        .resource-card .card-title {
+            font-family: 'Source Serif 4', Georgia, serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--primary);
+            line-height: 1.4;
+        }
+
+        .week-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .week-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 1.1rem 1.25rem;
+            text-decoration: none;
+            color: var(--text);
+            transition: box-shadow var(--transition), transform var(--transition);
+            border-left: 4px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .week-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+            color: var(--text);
+        }
+        .week-num {
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .week-card .week-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .studio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .studio-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 1.1rem 1.25rem;
+            text-decoration: none;
+            color: var(--text);
+            transition: box-shadow var(--transition), transform var(--transition);
+            border-left: 4px solid #2d7a2d;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .studio-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+            color: var(--text);
+        }
+        .studio-num {
+            background: #2d7a2d;
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .studio-card .studio-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.4;
+        }
+
+        .notice-box {
+            background: #fff8e1;
+            border-left: 4px solid #f59e0b;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: #78350f;
+        }
+        .notice-box strong { color: #92400e; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="site-header-content">
+            <img src="../images/lablogov1.png" alt="Electrobiotech Lab Logo" class="site-logo">
+            <h1>ENGR 103 — Spring 2026</h1>
+            <p class="tagline">Engineering Computation &amp; Algorithmic Thinking</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../research.html">Research</a></li>
+            <li><a href="../teaching.html">Teaching</a></li>
+            <li><a href="../team.html">Team</a></li>
+            <li><a href="../publications.html">Publications</a></li>
+            <li><a href="../contact.html">About Me</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-content">
+
+        <div class="notice-box">
+            <strong>Canvas Backup Site:</strong> This page serves as a backup location for course materials while Canvas is unavailable. All weekly pages, studio exercises, and resources are accessible here.
+        </div>
+
+        <section class="page-section">
+            <h2 class="section-title">Course Information</h2>
+            <div class="course-hero">
+                <h3>Introduction to Python for Living Systems</h3>
+                <p><strong>Instructor:</strong> Dr. Cheng Li &nbsp;|&nbsp; Oregon State University</p>
+                <p><strong>Schedule:</strong> Monday &amp; Friday, 9:00–9:50 AM</p>
+                <p><strong>Contact:</strong> <a href="mailto:Cheng.Li@Oregonstate.edu">Cheng.Li@Oregonstate.edu</a></p>
+            </div>
+
+            <div class="resource-grid">
+                <a class="resource-card" href="canvas_html/Intro_Course_Welcome.html">
+                    <span class="card-label">Getting Started</span>
+                    <span class="card-title">Welcome to the Course</span>
+                </a>
+                <a class="resource-card" href="canvas_html/Intro_Python_Resources.html">
+                    <span class="card-label">Resources</span>
+                    <span class="card-title">Python Learning Resources</span>
+                </a>
+                <a class="resource-card" href="canvas_html/Academic_Support.html">
+                    <span class="card-label">Support</span>
+                    <span class="card-title">Academic Support Resources</span>
+                </a>
+                <a class="resource-card" href="canvas_html/Midterm_Support.html">
+                    <span class="card-label">Exam Prep</span>
+                    <span class="card-title">Midterm Study Guide</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="page-section">
+            <h2 class="section-title">Weekly Pages</h2>
+            <div class="week-grid">
+                <a class="week-card" href="canvas_html/Week_01.html">
+                    <span class="week-num">1</span>
+                    <span class="week-title">Introduction to Python</span>
+                </a>
+                <a class="week-card" href="canvas_html/Week_02.html">
+                    <span class="week-num">2</span>
+                    <span class="week-title">Core Elements of Programs</span>
+                </a>
+                <a class="week-card" href="canvas_html/Week_03.html">
+                    <span class="week-num">3</span>
+                    <span class="week-title">Program Flow: Loops</span>
+                </a>
+                <a class="week-card" href="canvas_html/Week_04.html">
+                    <span class="week-num">4</span>
+                    <span class="week-title">Iteration and Simple Programs</span>
+                </a>
+                <a class="week-card" href="canvas_html/Week_05.html">
+                    <span class="week-num">5</span>
+                    <span class="week-title">Simple Algorithms: Approximation</span>
+                </a>
+                <a class="week-card" href="canvas_html/Week_06.html">
+                    <span class="week-num">6</span>
+                    <span class="week-title">Bisection Search and Newton-Raphson</span>
+                </a>
+                <a class="week-card" href="canvas_html/Week_07.html">
+                    <span class="week-num">7</span>
+                    <span class="week-title">Functions: Decomposition and Abstraction</span>
+                </a>
+                <a class="week-card" href="canvas_html/Week_08.html">
+                    <span class="week-num">8</span>
+                    <span class="week-title">Functions: Scope and Higher-Order Functions</span>
+                </a>
+                <a class="week-card" href="canvas_html/Week_09.html">
+                    <span class="week-num">9</span>
+                    <span class="week-title">Tuples and Lists</span>
+                </a>
+                <a class="week-card" href="canvas_html/Week_10.html">
+                    <span class="week-num">10</span>
+                    <span class="week-title">List Operations and Mutability</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="page-section">
+            <h2 class="section-title">Studio Exercises</h2>
+            <div class="studio-grid">
+                <a class="studio-card" href="Studios/Studio_Week01.html">
+                    <span class="studio-num">1</span>
+                    <span class="studio-title">Python Basics: Types, Variables &amp; Your First Script</span>
+                </a>
+                <a class="studio-card" href="Studios/Studio_Week02.html">
+                    <span class="studio-num">2</span>
+                    <span class="studio-title">Strings, Input/Output &amp; Branching</span>
+                </a>
+                <a class="studio-card" href="Studios/Studio_Week03.html">
+                    <span class="studio-num">3</span>
+                    <span class="studio-title">Loops &amp; Iteration</span>
+                </a>
+                <a class="studio-card" href="Studios/Studio_Week04 math.html">
+                    <span class="studio-num">4</span>
+                    <span class="studio-title">Guess-and-Check &amp; Binary Representation</span>
+                </a>
+                <a class="studio-card" href="Studios/Studio_Week04 math syntax review.html">
+                    <span class="studio-num">4+</span>
+                    <span class="studio-title">Python Syntax &amp; Fundamentals Review</span>
+                </a>
+                <a class="studio-card" href="Studios/Studio_Week05 Math.html">
+                    <span class="studio-num">5</span>
+                    <span class="studio-title">Approximation Methods &amp; Floating-Point</span>
+                </a>
+                <a class="studio-card" href="Studios/Studio_Week06 Math.html">
+                    <span class="studio-num">6</span>
+                    <span class="studio-title">Bisection Search &amp; Newton-Raphson</span>
+                </a>
+                <a class="studio-card" href="Studios/Studio_Week07 Math.html">
+                    <span class="studio-num">7</span>
+                    <span class="studio-title">Functions: Decomposition &amp; Abstraction</span>
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Electrobiotech Lab &middot; Oregon State University &middot; Department of Biological &amp; Ecological Engineering</p>
+        <p>Gilmore Hall, 124 SW 26th Street, Corvallis, OR 97331 &middot; <a href="mailto:Cheng.Li@Oregonstate.edu">Cheng.Li@Oregonstate.edu</a></p>
+        <p><a href="https://x.com/OSUelectroB" target="_blank">@OSUelectroB</a> &middot; &copy; 2025 Electrobiotech Lab</p>
+    </footer>
+
+</body>
+</html>

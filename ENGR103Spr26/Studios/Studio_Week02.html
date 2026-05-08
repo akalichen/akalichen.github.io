@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio 2 — Strings, Input/Output & Branching</title>
+  
+<style>
+  :root {
+    --green: #2e7d32;
+    --green-light: #e8f5e9;
+    --accent: #1565c0;
+    --accent-light: #e3f2fd;
+    --code-bg: #1e1e2e;
+    --code-fg: #cdd6f4;
+    --gray: #546e7a;
+    --border: #cfd8dc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #212121;
+    background: #fafafa;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+  header {
+    background: var(--green);
+    color: white;
+    padding: 28px 32px;
+    border-radius: 10px;
+    margin-bottom: 32px;
+  }
+  header h1 { font-size: 1.6em; margin-bottom: 8px; }
+  header .meta { font-size: 0.9em; opacity: 0.85; }
+  h1.section {
+    font-size: 1.15em;
+    color: var(--green);
+    border-left: 4px solid var(--green);
+    padding: 8px 14px;
+    margin: 28px 0 12px;
+    background: var(--green-light);
+    border-radius: 0 6px 6px 0;
+  }
+  h2.subsection {
+    font-size: 1em;
+    color: var(--accent);
+    margin: 20px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--accent-light);
+  }
+  p { margin-bottom: 10px; }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 16px 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    margin: 12px 0 16px;
+    line-height: 1.5;
+  }
+  .task-box {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+  }
+  .task-box strong { color: #e65100; }
+  .writelines {
+    margin: 8px 0 16px;
+    padding: 0;
+    list-style: none;
+  }
+  .writelines li {
+    border-bottom: 1px solid var(--border);
+    height: 32px;
+    margin-bottom: 4px;
+  }
+  ul.bullets { margin: 8px 0 12px 20px; }
+  ul.bullets li { margin-bottom: 4px; }
+  .toc {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+  }
+  .toc h3 { font-size: 0.95em; color: var(--gray); margin-bottom: 10px; }
+  .toc a { color: var(--accent); text-decoration: none; display: block; padding: 3px 0; }
+  .toc a:hover { text-decoration: underline; }
+  footer { margin-top: 48px; font-size: 0.82em; color: var(--gray); text-align: center; }
+</style>
+
+</head>
+<body>
+  <header>
+    <h1>Studio 2 — Strings, Input/Output & Branching</h1>
+    <div class="meta">ENGR 103 — Week 2</div>
+  </header>
+  <div class="toc"><h3>📋 Contents</h3><a href="#studio-overview">Studio Overview</a><a href="#0-00-0-10-warm-up-review">0:00–0:10  —  Warm-Up Review</a><a href="#0-10-0-35-part-1-codedex-warmup-guided">0:10–0:35  —  Part 1 — Codedex Warmup (Guided)</a><a href="#0-35-1-10-part-2-practical-lab-automated-water-quality-report">0:35–1:10  —  Part 2 — Practical Lab: Automated Water Quality Report</a><a href="#1-10-1-25-part-3-extension-multi-parameter-alert-system">1:10–1:25  —  Part 3 — Extension: Multi-Parameter Alert System</a><a href="#1-25-1-30-wrap-up-ta-check-off">1:25–1:30  —  Wrap-Up & TA Check-Off</a></div>
+  <p>Student Instructions  |  Week 2  |  Topics: Strings, f-strings, input(), if/elif/else</p><p>Oregon State University  |  ENGR 103  |  Dr. Cheng Li</p><h1 class="section" id="studio-overview">Studio Overview</h1><ul class="bullets"><li>Theme: Water Quality Reporting System</li><li>Related Reading: Ch 2.3–2.4</li><li>Duration: 90 minutes  |  All 4 sections run the same activity</li><li>Materials: Laptop with Spyder or Jupyter, this handout</li></ul><h1 class="section" id="0-00-0-10-warm-up-review">0:00–0:10  —  Warm-Up Review</h1><p>Quick recall: open Spyder, type and run the following without looking at notes:</p><h2 class="subsection">Recall Exercise</h2><p>Type and run this code:</p><pre><code>x = 3.7
+y = '8.2'
+print(type(x), type(y))
+print(x + float(y))</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>What will print? Run it and check.</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="0-10-0-35-part-1-codedex-warmup-guided">0:10–0:35  —  Part 1 — Codedex Warmup (Guided)</h1><p>Type and run each snippet. Understand what every line does.</p><h2 class="subsection">Exercise 2A — String Operations</h2><p>Type and run this code:</p><pre><code>species = 'Geobacter sulfurreducens'
+print(len(species))           # length
+print(species[0])             # first char
+print(species[-1])            # last char
+print(species[:9])            # first 9 chars
+print(species.upper())
+print('Geobacter' in species) # membership
+
+# Parsing a sensor data string
+reading = 'pH,7.42,DO,8.15,Temp,22.3'
+fields = reading.split(',')
+print(fields)
+print('pH value:', fields[1])</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>What is fields[3]? What does fields[1::2] give you?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h2 class="subsection">Exercise 2B — f-strings & Formatting</h2><p>Type and run this code:</p><pre><code>station = 'WQ-04'
+pH      = 7.326
+do      = 8.054
+temp_C  = 23.7
+temp_F  = temp_C * 9/5 + 32
+
+print(f'Station:     {station}')
+print(f'pH:          {pH:.2f}')
+print(f'DO:          {do:.3f} mg/L')
+print(f'Temperature: {temp_C:.1f}°C / {temp_F:.1f}°F')
+print(f'Scientific:  {do:.3e} mg/L')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Add a line that prints BOD = 245.8 mg/L with exactly 1 decimal place.</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h2 class="subsection">Exercise 2C — if/elif/else for Water Quality</h2><p>Type and run this code:</p><pre><code>DO = float(input('Enter dissolved oxygen (mg/L): '))
+
+if DO >= 8.0:
+    status = 'Excellent'
+elif DO >= 6.0:
+    status = 'Good'
+elif DO >= 4.0:
+    status = 'Moderate'
+elif DO >= 2.0:
+    status = 'Poor'
+else:
+    status = 'Hypoxic — Critical'
+
+print(f'DO = {DO:.2f} mg/L → Water Quality: {status}')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Test with values: 9.0, 6.5, 3.8, 1.5, 0.0</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="0-35-1-10-part-2-practical-lab-automated-water-quality-report">0:35–1:10  —  Part 2 — Practical Lab: Automated Water Quality Report</h1><p>Work in pairs. Build an interactive water quality checker. The program asks the user for readings and prints a formatted instrument-style report.</p><h2 class="subsection">Requirements</h2><div class="task-box"><strong>✏️ Your Task:</strong> </div><pre><code>Your script must:
+1. Prompt user for: sample ID (str), pH (float), DO (float), temperature °C (float), BOD (float)
+2. Classify overall water quality using ALL parameters:
+   - pH: 6.5–8.5 = OK, else FAIL
+   - DO: ≥ 6.0 = OK, else FAIL
+   - Temp: ≤ 25°C = OK, else FAIL
+   - BOD: ≤ 250 mg/L = OK, else FAIL
+3. Print a formatted report (see sample output below)
+4. Print overall status: PASS (all OK) or FAIL (any parameter fails)</code></pre><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h2 class="subsection">Sample Output</h2><p>Type and run this code:</p><p>====================================
+ WATER QUALITY REPORT — Sample WQ-07
+====================================
+ pH:          7.32   [OK]
+ DO:          5.80   [FAIL — below 6.0 mg/L]
+ Temperature: 26.1°C [FAIL — above 25°C]
+ BOD:         180.0  [OK]
+------------------------------------
+ OVERALL STATUS: FAIL
+====================================</p><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Match this format as closely as possible.</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="1-10-1-25-part-3-extension-multi-parameter-alert-system">1:10–1:25  —  Part 3 — Extension: Multi-Parameter Alert System</h1><p>Modify your report to also print a list of which parameters failed and suggest corrective actions.</p><h2 class="subsection">Extension Logic</h2><p>Type and run this code:</p><pre><code># After computing ok flags, collect failures:
+failures = []
+if not pH_ok:
+    failures.append(f'pH={pH:.2f} — add buffer')
+if not do_ok:
+    failures.append(f'DO={DO:.2f} — increase aeration')
+if not temp_ok:
+    failures.append(f'Temp={temp_C:.1f}°C — cooling needed')
+if not bod_ok:
+    failures.append(f'BOD={BOD:.0f} — treatment required')
+
+if failures:
+    print('\nRequired Actions:')
+    for f in failures:
+        print(f'  → {f}')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Add this logic to your existing script.</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="1-25-1-30-wrap-up-ta-check-off">1:25–1:30  —  Wrap-Up & TA Check-Off</h1><p>Demo your Part 2 script to your TA using these test values: ID='WQ-99', pH=5.9, DO=7.2, Temp=24.0, BOD=310. Expected: FAIL (pH + BOD fail).</p>
+  <footer>ENGR 103 &nbsp;·&nbsp; Oregon State University &nbsp;·&nbsp; Studio Week 2 — Student Instructions</footer>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio 1 — Python Basics: Types, Variables & Your First Script</title>
+  
+<style>
+  :root {
+    --green: #2e7d32;
+    --green-light: #e8f5e9;
+    --accent: #1565c0;
+    --accent-light: #e3f2fd;
+    --code-bg: #1e1e2e;
+    --code-fg: #cdd6f4;
+    --gray: #546e7a;
+    --border: #cfd8dc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #212121;
+    background: #fafafa;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+  header {
+    background: var(--green);
+    color: white;
+    padding: 28px 32px;
+    border-radius: 10px;
+    margin-bottom: 32px;
+  }
+  header h1 { font-size: 1.6em; margin-bottom: 8px; }
+  header .meta { font-size: 0.9em; opacity: 0.85; }
+  h1.section {
+    font-size: 1.15em;
+    color: var(--green);
+    border-left: 4px solid var(--green);
+    padding: 8px 14px;
+    margin: 28px 0 12px;
+    background: var(--green-light);
+    border-radius: 0 6px 6px 0;
+  }
+  h2.subsection {
+    font-size: 1em;
+    color: var(--accent);
+    margin: 20px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--accent-light);
+  }
+  p { margin-bottom: 10px; }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 16px 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    margin: 12px 0 16px;
+    line-height: 1.5;
+  }
+  .task-box {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+  }
+  .task-box strong { color: #e65100; }
+  .writelines {
+    margin: 8px 0 16px;
+    padding: 0;
+    list-style: none;
+  }
+  .writelines li {
+    border-bottom: 1px solid var(--border);
+    height: 32px;
+    margin-bottom: 4px;
+  }
+  ul.bullets { margin: 8px 0 12px 20px; }
+  ul.bullets li { margin-bottom: 4px; }
+  .toc {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+  }
+  .toc h3 { font-size: 0.95em; color: var(--gray); margin-bottom: 10px; }
+  .toc a { color: var(--accent); text-decoration: none; display: block; padding: 3px 0; }
+  .toc a:hover { text-decoration: underline; }
+  footer { margin-top: 48px; font-size: 0.82em; color: var(--gray); text-align: center; }
+</style>
+
+</head>
+<body>
+  <header>
+    <h1>Studio 1 — Python Basics: Types, Variables & Your First Script</h1>
+    <div class="meta">ENGR 103 — Week 1</div>
+  </header>
+  <div class="toc"><h3>📋 Contents</h3><a href="#studio-overview">Studio Overview</a><a href="#0-00-0-10-welcome-setup-check">0:00–0:10  —  Welcome & Setup Check</a><a href="#0-10-0-35-part-1-codedex-warmup-guided">0:10–0:35  —  Part 1 — Codedex Warmup (Guided)</a><a href="#0-35-1-10-part-2-practical-lab-mfc-power-audit">0:35–1:10  —  Part 2 — Practical Lab: MFC Power Audit</a><a href="#1-10-1-25-part-3-extension-challenge-individual">1:10–1:25  —  Part 3 — Extension Challenge (Individual)</a><a href="#1-25-1-30-wrap-up-ta-check-off">1:25–1:30  —  Wrap-Up & TA Check-Off</a></div>
+  <p>Student Instructions  |  Week 1  |  Topics: Objects, Types, Variables, Bindings, Arithmetic</p><p>Oregon State University  |  ENGR 103  |  Dr. Cheng Li</p><h1 class="section" id="studio-overview">Studio Overview</h1><ul class="bullets"><li>Theme: Environmental Sensor Startup</li><li>Related Reading: Ch 1, Ch 2.1–2.2</li><li>Duration: 90 minutes  |  All 4 sections run the same activity</li><li>Materials: Laptop with Spyder or Jupyter, this handout</li></ul><h1 class="section" id="0-00-0-10-welcome-setup-check">0:00–0:10  —  Welcome & Setup Check</h1><p>Log into Spyder/Jupyter. Confirm Python 3.x is running. Introduce yourself to your neighbor — you'll pair up for Part 3.</p><h1 class="section" id="0-10-0-35-part-1-codedex-warmup-guided">0:10–0:35  —  Part 1 — Codedex Warmup (Guided)</h1><p>Follow along and type each snippet yourself. Do NOT copy-paste.</p><h2 class="subsection">Exercise 1A — Hello, Living Systems</h2><p>Type and run this code:</p><pre><code># Your first Python program
+print('Hello, Living Systems!')
+print('ENGR 103 — Python for Bio/Env Engineering')
+print('My name is: YOUR_NAME_HERE')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Run the script. Change the last line to print your actual name.</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h2 class="subsection">Exercise 1B — Variables & Types</h2><p>Type and run this code:</p><pre><code># Sensor data from a water quality probe
+pH_value       = 7.42        # float
+do_mg_per_L    = 8.15        # float — dissolved oxygen
+temp_celsius   = 22.3        # float
+cell_count     = 1500000     # int   — cells per mL
+station_id     = 'WQ-01'    # str
+is_calibrated  = True        # bool
+
+print(type(pH_value))
+print(type(cell_count))
+print(type(station_id))
+print(type(is_calibrated))</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>What type is each variable? Run it and confirm. Then add two more variables of your own.</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h2 class="subsection">Exercise 1C — Arithmetic with Sensor Data</h2><p>Type and run this code:</p><pre><code># Microbial Fuel Cell power calculation
+voltage_V  = 0.45    # Volts
+current_A  = 0.020   # Amperes
+
+power_W    = voltage_V * current_A
+power_mW   = power_W * 1000
+efficiency = 0.35
+useful_mW  = power_mW * efficiency
+
+print('Voltage:', voltage_V, 'V')
+print('Power:', power_mW, 'mW')
+print('Useful power:', useful_mW, 'mW')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Change voltage to 0.52 V and current to 0.018 A. What is the new power?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="0-35-1-10-part-2-practical-lab-mfc-power-audit">0:35–1:10  —  Part 2 — Practical Lab: MFC Power Audit</h1><p>Work in pairs. You are analyzing a small array of 5 microbial fuel cells (MFCs). Each MFC has a measured voltage and current. Your task: write a Python script that computes power for each unit and totals up the array output.</p><h2 class="subsection">Starter Data</h2><p>Type and run this code:</p><pre><code># MFC array — measured values
+mfc_1_V, mfc_1_I = 0.45, 0.020   # Volts, Amps
+mfc_2_V, mfc_2_I = 0.38, 0.015
+mfc_3_V, mfc_3_I = 0.52, 0.025
+mfc_4_V, mfc_4_I = 0.41, 0.018
+mfc_5_V, mfc_5_I = 0.49, 0.022</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Copy this starter data into your script.</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h2 class="subsection">Tasks to complete</h2><div class="task-box"><strong>✏️ Your Task:</strong> </div><pre><code>1. Calculate power (in mW) for each MFC.
+2. Calculate total array power.
+3. Calculate average power per unit.
+4. Calculate daily energy if array runs 12 hours (in Wh).
+5. Print a formatted report using f-strings:
+   MFC-1: V=0.45 V, I=20.0 mA, P=9.00 mW
+   ...
+   Total Power: XX.XX mW
+   Average Power: XX.XX mW
+   Daily Energy: X.XXXX Wh</code></pre><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="1-10-1-25-part-3-extension-challenge-individual">1:10–1:25  —  Part 3 — Extension Challenge (Individual)</h1><p>If you finish early, try this extension on your own.</p><h2 class="subsection">Bacterial Growth Calculator</h2><p>Type and run this code:</p><pre><code># E. coli doubling time = 20 minutes
+# How many cells after 2 hours starting from 1 cell?
+
+doubling_time_min = 20
+start_cells       = 1
+time_min          = 120   # 2 hours
+
+# YOUR CODE HERE
+# Hint: doublings = time / doubling_time
+# cells = start * (2 ** doublings)</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Fill in the calculation and print: 'After 2 hours: X cells'</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="1-25-1-30-wrap-up-ta-check-off">1:25–1:30  —  Wrap-Up & TA Check-Off</h1><p>Show your TA your completed script for Part 2. TA will verify output and mark attendance. Discuss: what surprised you? What questions do you have for Monday?</p>
+  <footer>ENGR 103 &nbsp;·&nbsp; Oregon State University &nbsp;·&nbsp; Studio Week 1 — Student Instructions</footer>
+</body>
+</html>

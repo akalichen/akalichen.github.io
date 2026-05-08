@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio 4 — Guess-and-Check & Binary Representation</title>
+
+<style>
+  :root {
+    --green: #2e7d32;
+    --green-light: #e8f5e9;
+    --accent: #1565c0;
+    --accent-light: #e3f2fd;
+    --code-bg: #1e1e2e;
+    --code-fg: #cdd6f4;
+    --gray: #546e7a;
+    --border: #cfd8dc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #212121;
+    background: #fafafa;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+  header {
+    background: var(--green);
+    color: white;
+    padding: 28px 32px;
+    border-radius: 10px;
+    margin-bottom: 32px;
+  }
+  header h1 { font-size: 1.6em; margin-bottom: 8px; }
+  header .meta { font-size: 0.9em; opacity: 0.85; }
+  h1.section {
+    font-size: 1.15em;
+    color: var(--green);
+    border-left: 4px solid var(--green);
+    padding: 8px 14px;
+    margin: 28px 0 12px;
+    background: var(--green-light);
+    border-radius: 0 6px 6px 0;
+  }
+  h2.subsection {
+    font-size: 1em;
+    color: var(--accent);
+    margin: 20px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--accent-light);
+  }
+  p { margin-bottom: 10px; }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 16px 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    margin: 12px 0 16px;
+    line-height: 1.5;
+  }
+  .task-box {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+  }
+  .task-box strong { color: #e65100; }
+  .writelines {
+    margin: 8px 0 16px;
+    padding: 0;
+    list-style: none;
+  }
+  .writelines li {
+    border-bottom: 1px solid var(--border);
+    height: 32px;
+    margin-bottom: 4px;
+  }
+  ul.bullets { margin: 8px 0 12px 20px; }
+  ul.bullets li { margin-bottom: 4px; }
+  .toc {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+  }
+  .toc h3 { font-size: 0.95em; color: var(--gray); margin-bottom: 10px; }
+  .toc a { color: var(--accent); text-decoration: none; display: block; padding: 3px 0; }
+  .toc a:hover { text-decoration: underline; }
+  footer { margin-top: 48px; font-size: 0.82em; color: var(--gray); text-align: center; }
+</style>
+
+</head>
+<body>
+  <header>
+    <h1>Studio 4 — Guess-and-Check & Binary Representation</h1>
+    <div class="meta">ENGR 103 — Week 4</div>
+  </header>
+  <div class="toc">
+    <h3>📋 Contents</h3>
+    <a href="#studio-overview">Studio Overview</a>
+    <a href="#0-00-0-10-warm-up">0:00–0:10  —  Warm-Up</a>
+    <a href="#0-10-0-35-part-1-codedex-warmup-guided">0:10–0:35  —  Part 1 — Codedex Warmup (Guided)</a>
+    <a href="#0-35-1-10-part-2-practical-lab">0:35–1:10  —  Part 2 — Practical Lab: Digital-to-Analog Voltage Mapping</a>
+    <a href="#1-10-1-25-part-3-extension">1:10–1:25  —  Part 3 — Extension: Exponential Doubling Search</a>
+    <a href="#1-25-1-30-wrap-up-ta-check-off">1:25–1:30  —  Wrap-Up & TA Check-Off</a>
+  </div>
+
+  <p>Student Instructions  |  Week 4  |  Topics: Exhaustive enumeration, binary numbers, fractions</p>
+  <p>Oregon State University  |  ENGR 103  |  Dr. Cheng Li</p>
+
+  <h1 class="section" id="studio-overview">Studio Overview</h1>
+  <ul class="bullets">
+    <li>Theme: Optimization by Exhaustive Search</li>
+    <li>Related Reading: Ch 3.1, 3.3</li>
+    <li>Duration: 90 minutes  |  All 4 sections run the same activity</li>
+    <li>Materials: Laptop with Spyder or Jupyter, this handout</li>
+  </ul>
+
+  <h1 class="section" id="0-00-0-10-warm-up">0:00–0:10  —  Warm-Up</h1>
+  <p>Without running code, predict the output:</p>
+  <h2 class="subsection">Recall</h2>
+  <p>Type and run this code:</p>
+<pre><code>for i in range(5):
+    if i**2 == 9:
+        print('Found:', i)
+        break
+print('Done')</code></pre>
+  <div class="task-box"><strong>✏️ Your Task:</strong> </div>
+  <p>What prints?</p>
+  <ul class="writelines"><li></li><li></li><li></li><li></li></ul>
+
+  <h1 class="section" id="0-10-0-35-part-1-codedex-warmup-guided">0:10–0:35  —  Part 1 — Codedex Warmup (Guided)</h1>
+  <p>Type and run each snippet.</p>
+
+  <h2 class="subsection">Exercise 4A — Binary Conversion</h2>
+  <p>Type and run this code:</p>
+<pre><code># Test integer values — convert each one to binary step by step
+for test_val in [0, 1, 5, 10, 255, 1023, 4095]:
+    n = test_val
+    if n == 0:
+        bits = '0'
+    else:
+        bits = ''
+        while n > 0:
+            bits = str(n % 2) + bits
+            n //= 2
+    print(f'{test_val:5d}  →  {bits:>14s}  (Python check: {bin(test_val)[2:]})')</code></pre>
+  <div class="task-box"><strong>✏️ Your Task:</strong> </div>
+  <p>What is the binary of 2024? How many bits does it need?</p>
+  <ul class="writelines"><li></li><li></li><li></li><li></li></ul>
+
+  <h2 class="subsection">Exercise 4B — Guess-and-Check for Perfect Cube</h2>
+  <p>Type and run this code:</p>
+<pre><code># Find the cube root of a perfect cube
+target_number = 3375
+cube_root = None
+
+for guess in range(0, target_number + 1):
+    if guess ** 3 == target_number:
+        cube_root = guess
+        break
+    elif guess ** 3 > target_number:
+        break
+
+if cube_root is not None:
+    print(f'Cube root of {target_number} = {cube_root}')
+else:
+    print(f'{target_number} is not a perfect cube')</code></pre>
+  <div class="task-box"><strong>✏️ Your Task:</strong> </div>
+  <p>Try with 4096, then 1000, then 500. Which are perfect cubes?</p>
+  <ul class="writelines"><li></li><li></li><li></li><li></li></ul>
+
+  <h2 class="subsection">Exercise 4C — Quadratic Optimization Search</h2>
+  <p>Type and run this code:</p>
+<pre><code># Equation: y = -(x - 5.5)^2 + 100  (a downward-opening parabola)
+# Find the value of x (between 4.0 and 9.0) that maximizes y
+
+best_x = None
+max_y = -1
+
+for x_int in range(40, 91):   # Test x from 4.0 to 9.0 in 0.1 steps
+    x = x_int / 10.0
+    y = -(x - 5.5)**2 + 100
+    if y > max_y:
+        max_y = y
+        best_x = x
+
+print(f'Optimal x value: {best_x:.1f}')
+print(f'Maximum y value: {max_y:.2f}')</code></pre>
+  <div class="task-box"><strong>✏️ Your Task:</strong> </div>
+  <p>Why do we multiply the range by 10? What is the optimal x value?</p>
+  <ul class="writelines"><li></li><li></li><li></li><li></li></ul>
+
+  <h1 class="section" id="0-35-1-10-part-2-practical-lab">0:35–1:10  —  Part 2 — Practical Lab: Digital-to-Analog Voltage Mapping</h1>
+  <p>Work in pairs. You are mapping a digital 12-bit ADC value to an analog electrical Voltage. Your task: use exhaustive search to find the digital ADC value that most closely corresponds to a specific target analog voltage.</p>
+
+  <h2 class="subsection">Background & Setup</h2>
+  <p>Type and run this code:</p>
+<pre><code># 12-bit ADC mapping to Voltage: digital input 0–4095
+# Formula: voltage = adc_value * (14.0 / 4095)
+# (14.0 V = max voltage, ADC 4095 = full scale)
+
+target_voltage = 8.5   # Volts — we want to find the closest integer ADC value
+
+# Example: check what voltage ADC value 2485 maps to
+adc = 2485
+voltage = adc * 14.0 / 4095
+print(f'ADC {adc} maps to {voltage:.4f} V')</code></pre>
+  <div class="task-box"><strong>✏️ Your Task:</strong> </div>
+  <p>Copy this setup. Change the adc value and observe how voltage changes.</p>
+  <ul class="writelines"><li></li><li></li><li></li><li></li></ul>
+
+  <h2 class="subsection">Tasks</h2>
+  <div class="task-box"><strong>✏️ Your Task:</strong> </div>
+<pre><code>1. Use exhaustive search (for loop, adc = 0 to 4095) to find the ADC value
+   where  abs(adc * 14.0 / 4095 - target_voltage)  is minimized.
+2. Print: best_adc, best_voltage (what the ADC actually outputs), and the error.
+3. Convert your best_adc to binary and print it.
+4. Repeat for target voltages: 2.0, 6.0, 8.5, 12.0
+5. Make a small table: Target Voltage | Best ADC | Actual Voltage | Error | Binary</code></pre>
+  <ul class="writelines"><li></li><li></li><li></li><li></li></ul>
+
+  <h1 class="section" id="1-10-1-25-part-3-extension">1:10–1:25  —  Part 3 — Extension: Exponential Doubling Search</h1>
+  <p>Find the minimum number of doublings needed such that a starting value of 500 exceeds 1,000,000.</p>
+
+  <h2 class="subsection">Extension</h2>
+  <p>Type and run this code:</p>
+<pre><code>start_val = 500
+target = 100000000
+n_doublings = 0
+
+while start_val * (2 ** n_doublings) <= target:
+    n_doublings += 1
+
+print(f'Minimum doublings: {n_doublings}')
+print(f'Final value: {start_val * 2**n_doublings:,}')
+print(f'Binary of n: {bin(n_doublings)}')
+
+import math
+print(f'Analytical check: ceil(log2({target}/{start_val})) = {math.ceil(math.log2(target/start_val))}')</code></pre>
+  <div class="task-box"><strong>✏️ Your Task:</strong> </div>
+  <p>Run it. Does the while-loop answer match the analytical log₂ answer?</p>
+  <ul class="writelines"><li></li><li></li><li></li><li></li></ul>
+
+  <h1 class="section" id="1-25-1-30-wrap-up-ta-check-off">1:25–1:30  —  Wrap-Up & TA Check-Off</h1>
+  <p>Show TA the Part 2 table (4 target voltages with binary conversion). Discuss: why is exhaustive search slow for large ranges?</p>
+
+  <footer>ENGR 103 &nbsp;·&nbsp; Oregon State University &nbsp;·&nbsp; Studio Week 4 — Student Instructions</footer>
+</body>
+</html>

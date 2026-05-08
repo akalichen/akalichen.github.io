@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENGR 103 — Python Learning Resources</title>
+<style>
+body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 860px; margin: 0 auto; padding: 20px; color: #333; }
+.header { background: #D73F09; color: white; padding: 28px 32px; border-radius: 8px; margin-bottom: 24px; }
+.header h1 { margin: 0 0 8px 0; font-size: 1.8em; }
+.header p { margin: 0; opacity: 0.9; font-size: 1.05em; }
+.badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-size: 0.85em; margin-top: 10px; }
+.card { background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 22px 26px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.card h2 { color: #D73F09; margin-top: 0; font-size: 1.15em; border-bottom: 2px solid #D73F09; padding-bottom: 8px; }
+p { line-height: 1.7; }
+.resource-list { list-style: none; padding: 0; margin: 0; }
+.resource-list li { padding: 14px 0; border-bottom: 1px solid #f0f0f0; display: flex; gap: 14px; align-items: flex-start; }
+.resource-list li:last-child { border-bottom: none; }
+.resource-icon { font-size: 1.6em; flex-shrink: 0; width: 36px; text-align: center; margin-top: 2px; }
+.resource-body h3 { margin: 0 0 4px 0; font-size: 1em; }
+.resource-body h3 a { color: #D73F09; text-decoration: none; }
+.resource-body h3 a:hover { text-decoration: underline; }
+.resource-body p { margin: 0; font-size: 0.93em; color: #555; line-height: 1.5; }
+.tag { display: inline-block; font-size: 0.75em; padding: 2px 8px; border-radius: 10px; margin-left: 6px; vertical-align: middle; font-weight: 600; }
+.tag-free { background: #e6f4ea; color: #2d7a2d; }
+.tag-interactive { background: #e8f0fe; color: #1a56db; }
+.tag-video { background: #fff0e6; color: #b85c00; }
+.tag-reference { background: #f5f0ff; color: #6b3cc7; }
+.tag-engineering { background: #fff8e6; color: #8c6300; }
+.highlight-box { background: #fff8f6; border-left: 4px solid #D73F09; padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 12px 0; }
+.tip-box { background: #f0f9f0; border-left: 4px solid #2d7a2d; padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 12px 0; }
+code { background: #f5f5f5; padding: 2px 6px; border-radius: 3px; font-family: monospace; }
+.footer { text-align: center; color: #999; font-size: 0.8em; margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Python Learning Resources 📚</h1>
+  <p>Extra materials to reinforce and extend what you learn in class</p>
+  <p style="margin-top:6px;">Dr. Cheng Li &nbsp;|&nbsp; Oregon State University &nbsp;|&nbsp; ENGR 103</p>
+  <span class="badge">Intro Module</span>
+</div>
+
+<!-- Intro note -->
+<div class="card">
+  <h2>📌 How to Use These Resources</h2>
+  <p>
+    The required textbook (<em>Guttag, Introduction to Computation and Programming Using Python</em>) is your primary reference. These supplemental resources are here for when you want a different explanation, more practice problems, or a visual/video alternative.
+  </p>
+  <div class="highlight-box">
+    <strong>You don't need to go through all of these.</strong> Browse the descriptions, pick what matches how you learn, and bookmark one or two. Going deep on one good resource beats skimming ten.
+  </div>
+</div>
+
+<!-- Interactive / beginner -->
+<div class="card">
+  <h2>🖥️ Interactive Learning — Start Here if You're New</h2>
+  <ul class="resource-list">
+
+    <li>
+      <div class="resource-icon">🐍</div>
+      <div class="resource-body">
+        <h3><a href="https://docs.python.org/3/tutorial/" target="_blank">The Official Python Tutorial</a> <span class="tag tag-free">Free</span> <span class="tag tag-reference">Reference</span></h3>
+        <p>Written by the creators of Python. Surprisingly readable for beginners — covers variables, control flow, functions, and data structures in a logical order. Great to read alongside the textbook.</p>
+      </div>
+    </li>
+
+    <li>
+      <div class="resource-icon">🎓</div>
+      <div class="resource-body">
+        <h3><a href="https://www.learnpython.org/" target="_blank">LearnPython.org</a> <span class="tag tag-free">Free</span> <span class="tag tag-interactive">Interactive</span></h3>
+        <p>Run Python directly in your browser — no setup needed. Short, focused exercises on each topic. Good for a quick warmup or checking your understanding of a specific concept.</p>
+      </div>
+    </li>
+
+    <li>
+      <div class="resource-icon">🏋️</div>
+      <div class="resource-body">
+        <h3><a href="https://www.practicepython.org/" target="_blank">Practice Python</a> <span class="tag tag-free">Free</span> <span class="tag tag-interactive">Interactive</span></h3>
+        <p>36 beginner exercises, each with a solution discussion. Excellent for building problem-solving muscle. Work through one or two per week as supplemental practice — they're well-matched to the pace of this course.</p>
+      </div>
+    </li>
+
+    <li>
+      <div class="resource-icon">🧩</div>
+      <div class="resource-body">
+        <h3><a href="https://codingbat.com/python" target="_blank">CodingBat — Python</a> <span class="tag tag-free">Free</span> <span class="tag tag-interactive">Interactive</span></h3>
+        <p>Small, auto-graded problems you can solve in the browser. Especially useful for practicing functions and list manipulation (Weeks 3–5 material). Instant feedback, no setup.</p>
+      </div>
+    </li>
+
+  </ul>
+</div>
+
+<!-- Video courses -->
+<div class="card">
+  <h2>🎬 Video Courses</h2>
+  <ul class="resource-list">
+
+    <li>
+      <div class="resource-icon">🎥</div>
+      <div class="resource-body">
+        <h3><a href="https://www.youtube.com/playlist?list=PLUl4u3cNGP63WbdFxL8giv4yhgdMGaZNA" target="_blank">MIT 6.0001 — Introduction to Computer Science (OCW)</a> <span class="tag tag-free">Free</span> <span class="tag tag-video">Video</span></h3>
+        <p>The MIT course that our textbook was written for. Lectures by John Guttag himself. If you want to see the material presented by its author, this is it. Dense but rewarding — watch at 1.25× speed.</p>
+      </div>
+    </li>
+
+    <li>
+      <div class="resource-icon">▶️</div>
+      <div class="resource-body">
+        <h3><a href="https://www.youtube.com/watch?v=_uQrJ0TkZlc" target="_blank">Python for Beginners — freeCodeCamp (4.5 hr)</a> <span class="tag tag-free">Free</span> <span class="tag tag-video">Video</span></h3>
+        <p>A single long-form video that walks through Python from scratch. No fluff — just code. Good if you prefer watching someone type and explain. Covers everything from variables to OOP.</p>
+      </div>
+    </li>
+
+    <li>
+      <div class="resource-icon">📺</div>
+      <div class="resource-body">
+        <h3><a href="https://www.youtube.com/@coreyms" target="_blank">Corey Schafer — Python Tutorials (YouTube)</a> <span class="tag tag-free">Free</span> <span class="tag tag-video">Video</span></h3>
+        <p>One of the most popular Python tutorial channels. Individual videos per topic (lists, dictionaries, functions, classes) — easy to look up exactly what you're working on. High production quality, very clear explanations.</p>
+      </div>
+    </li>
+
+  </ul>
+</div>
+
+<!-- Reference / docs -->
+<div class="card">
+  <h2>📖 Reference & Documentation</h2>
+  <ul class="resource-list">
+
+    <li>
+      <div class="resource-icon">🔍</div>
+      <div class="resource-body">
+        <h3><a href="https://docs.python.org/3/" target="_blank">Python 3 Official Documentation</a> <span class="tag tag-free">Free</span> <span class="tag tag-reference">Reference</span></h3>
+        <p>The authoritative source. Bookmark it. When you're not sure what a function does or what arguments it takes, this is where to look — not Stack Overflow first, docs first.</p>
+      </div>
+    </li>
+
+    <li>
+      <div class="resource-icon">📋</div>
+      <div class="resource-body">
+        <h3><a href="https://www.pythoncheatsheet.org/" target="_blank">Python Cheat Sheet — pythoncheatsheet.org</a> <span class="tag tag-free">Free</span> <span class="tag tag-reference">Reference</span></h3>
+        <p>A well-organized, searchable cheat sheet covering syntax, built-ins, data structures, and common patterns. Useful to have open in a second tab while coding. Much friendlier than the official docs for quick lookups.</p>
+      </div>
+    </li>
+
+    <li>
+      <div class="resource-icon">💬</div>
+      <div class="resource-body">
+        <h3><a href="https://stackoverflow.com/questions/tagged/python" target="_blank">Stack Overflow — Python Tag</a> <span class="tag tag-free">Free</span></h3>
+        <p>When you hit an error you don't understand, copy the error message and search Stack Overflow. There is an overwhelming probability someone has had your exact problem before. Read the accepted answer, then read the next one too — context matters.</p>
+      </div>
+    </li>
+
+  </ul>
+</div>
+
+<!-- Engineering-flavored -->
+<div class="card">
+  <h2>⚙️ Python for Engineers — Going Further</h2>
+  <ul class="resource-list">
+
+    <li>
+      <div class="resource-icon">📊</div>
+      <div class="resource-body">
+        <h3><a href="https://scipy-lectures.org/" target="_blank">Scientific Python Lectures — scipy-lectures.org</a> <span class="tag tag-free">Free</span> <span class="tag tag-engineering">Engineering</span></h3>
+        <p>A free online textbook covering NumPy, SciPy, and Matplotlib — the scientific computing stack you'll encounter in Weeks 8–9. Written by researchers, for researchers. Keep it bookmarked for when the course reaches data analysis.</p>
+      </div>
+    </li>
+
+    <li>
+      <div class="resource-icon">🔢</div>
+      <div class="resource-body">
+        <h3><a href="https://numpy.org/learn/" target="_blank">NumPy — Official Learning Resources</a> <span class="tag tag-free">Free</span> <span class="tag tag-engineering">Engineering</span></h3>
+        <p>NumPy is Python's core array library — essential for any engineering computation. The official site has beginner tutorials, quickstart guides, and detailed docs. Start with the quickstart when we hit Week 8.</p>
+      </div>
+    </li>
+
+    <li>
+      <div class="resource-icon">📈</div>
+      <div class="resource-body">
+        <h3><a href="https://matplotlib.org/stable/tutorials/index.html" target="_blank">Matplotlib Tutorials</a> <span class="tag tag-free">Free</span> <span class="tag tag-engineering">Engineering</span></h3>
+        <p>The standard Python plotting library. These official tutorials walk you through making line plots, scatter plots, histograms, and more. Bookmark the "Pyplot tutorial" for Week 9.</p>
+      </div>
+    </li>
+
+    <li>
+      <div class="resource-icon">🤖</div>
+      <div class="resource-body">
+        <h3><a href="https://www.fast.ai/" target="_blank">fast.ai — Practical Deep Learning for Coders</a> <span class="tag tag-free">Free</span> <span class="tag tag-engineering">Engineering</span></h3>
+        <p>Not for ENGR 103 directly — but if you finish this course and want to see where Python can take you, fast.ai is one of the best free resources for applied machine learning. No math prerequisites. Start here after you're comfortable with the basics.</p>
+      </div>
+    </li>
+
+  </ul>
+</div>
+
+<!-- Tips -->
+<div class="card">
+  <h2>💡 Tips for Actually Learning to Code</h2>
+  <div class="tip-box">
+    <strong>Type it yourself.</strong> Copy-pasting code doesn't build understanding. Even if you're following a tutorial, type every line by hand — your fingers remember what your eyes scan over.
+  </div>
+  <div class="tip-box" style="margin-top:10px;">
+    <strong>Break things on purpose.</strong> After a code example works, change something and see what breaks. Read the error message carefully — Python's error messages are actually pretty helpful once you know how to read them.
+  </div>
+  <div class="tip-box" style="margin-top:10px;">
+    <strong>Use the REPL.</strong> Open a terminal and type <code>python3</code> to get an interactive prompt. Test small ideas here before putting them in a script. It's the fastest feedback loop you have.
+  </div>
+  <div class="tip-box" style="margin-top:10px;">
+    <strong>Google error messages verbatim.</strong> Copy the last line of an error and paste it into Google (with quotes). This is a legitimate professional skill — every programmer does it, including experienced ones.
+  </div>
+</div>
+
+<div class="footer">
+  ENGR 103 — Oregon State University &nbsp;|&nbsp; Dr. Cheng Li &nbsp;|&nbsp; Spring 2026
+</div>
+
+</body>
+</html>

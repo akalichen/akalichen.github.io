@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ENGR 103 — Welcome to the Course</title>
+<style>
+body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 860px; margin: 0 auto; padding: 20px; color: #333; }
+.header { background: #D73F09; color: white; padding: 28px 32px; border-radius: 8px; margin-bottom: 24px; }
+.header h1 { margin: 0 0 8px 0; font-size: 1.8em; }
+.header p { margin: 0; opacity: 0.9; font-size: 1.05em; }
+.badge { display: inline-block; background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-size: 0.85em; margin-top: 10px; }
+.card { background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 22px 26px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.card h2 { color: #D73F09; margin-top: 0; font-size: 1.15em; border-bottom: 2px solid #D73F09; padding-bottom: 8px; }
+ul { padding-left: 20px; }
+li { margin-bottom: 8px; line-height: 1.6; }
+p { line-height: 1.7; }
+.highlight-box { background: #fff8f6; border-left: 4px solid #D73F09; padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 12px 0; }
+.concept-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px; }
+.concept-item { background: #f9f9f9; border: 1px solid #e8e8e8; border-radius: 6px; padding: 14px 16px; }
+.concept-item h3 { margin: 0 0 6px 0; font-size: 1em; color: #D73F09; }
+.concept-item p { margin: 0; font-size: 0.92em; line-height: 1.5; }
+.emoji-lead { font-size: 1.5em; margin-bottom: 6px; }
+.quote-box { background: #f0f4ff; border-left: 4px solid #3a5cc7; padding: 14px 18px; border-radius: 0 6px 6px 0; font-style: italic; margin: 16px 0; }
+.footer { text-align: center; color: #999; font-size: 0.8em; margin-top: 32px; padding-top: 16px; border-top: 1px solid #eee; }
+code { background: #f5f5f5; padding: 2px 6px; border-radius: 3px; font-family: monospace; }
+a { color: #D73F09; }
+@media (max-width: 600px) { .concept-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Welcome to ENGR 103 🐍</h1>
+  <p>Introduction to Python for Engineers</p>
+  <p style="margin-top:6px;">Dr. Cheng Li &nbsp;|&nbsp; Oregon State University &nbsp;|&nbsp; Mon &amp; Fri 9:00–9:50 AM</p>
+  <span class="badge">Intro Module</span>
+</div>
+
+<!-- What this course is -->
+<div class="card">
+  <h2>📌 What Is This Course?</h2>
+  <p>
+    ENGR 103 is a hands-on introduction to programming with Python, designed specifically for engineers. You don't need any prior coding experience — just curiosity and a willingness to make mistakes (that's literally how you learn to code).
+  </p>
+  <p>
+    Over 10 weeks, you'll go from writing your very first line of Python to building real programs that solve engineering problems: analyzing data, automating calculations, building simulations, and more. By the end, you'll have a skill that engineers use every single day.
+  </p>
+  <div class="highlight-box">
+    <strong>The big idea:</strong> Programming is a <em>tool for thinking</em>. Once you can code, you can ask bigger questions, move faster, and build things that would be impossible by hand.
+  </div>
+</div>
+
+<!-- Why Python -->
+<div class="card">
+  <h2>🐍 Why Python?</h2>
+  <p>
+    Python has become the dominant language in engineering, science, and data analysis — and for good reason. It's readable, powerful, and has an enormous ecosystem of libraries that let you do everything from visualizing sensor data to training machine learning models. The same language you learn in Week 1 is what researchers at NASA, Google, and CERN use every day.
+  </p>
+  <p>
+    More practically: Python is free, runs on any computer, and has a welcoming community. If you get stuck, someone on Stack Overflow has already been stuck in the same place.
+  </p>
+</div>
+
+<!-- Why I care about this -->
+<div class="card">
+  <h2>🔬 Why I Teach This — A Note from Dr. Li</h2>
+  <p>
+    My research is in <strong>electromicrobiology</strong> — the study of microorganisms that can generate, conduct, or respond to electrical current. I work with <em>microbial electrochemical systems</em>: devices where bacteria literally breathe by pushing electrons onto electrodes, and we can harvest that electricity or use it to drive chemical reactions.
+  </p>
+  <p>
+    It sounds like science fiction. It's not. It's happening in lab reactors right now.
+  </p>
+  <p>
+    Here's the thing: none of that work is possible without computation. Every experiment generates data — voltages, currents, time series — and making sense of it requires code. I use Python to process electrochemical measurements, train machine learning models that predict microbial behavior, and deploy those models on tiny low-power hardware out in the field.
+  </p>
+  <p>
+    I'm not teaching you Python because it's a required course. I'm teaching it because <strong>it changed what I'm able to do as a scientist</strong>, and I want the same for you — regardless of whether you end up in bioengineering, civil, mechanical, or electrical.
+  </p>
+</div>
+
+<!-- Cool concepts showcase -->
+<div class="card">
+  <h2>✨ Cool Things Programming Makes Possible</h2>
+  <p>
+    Before we dive into syntax and variables, here are some examples of what programmers have built — to give you a sense of the space you're entering.
+  </p>
+
+  <div class="concept-grid">
+
+    <div class="concept-item">
+      <div class="emoji-lead">👻</div>
+      <h3>Ghost in the Shell (1995 — the anime)</h3>
+      <p>
+        A landmark animated film that imagined a future where human consciousness can be uploaded, copied, and hacked. Its visual effects — including iconic "digital rain" and cyborg body schematics — were some of the first to use computer-generated imagery blended with traditional cel animation. The film raised questions about identity and embodiment in a digital world that programmers and ethicists still wrestle with today.
+      </p>
+    </div>
+
+    <div class="concept-item">
+      <div class="emoji-lead">🧠</div>
+      <h3>Neural Networks & Deep Learning</h3>
+      <p>
+        Programs loosely modeled on biological neurons that learn patterns from data. The same architecture powering image recognition in your phone camera and large language models like the one that may have helped write these very notes. A few hundred lines of Python is all it takes to train your first one.
+      </p>
+    </div>
+
+    <div class="concept-item">
+      <div class="emoji-lead">🌊</div>
+      <h3>Computational Fluid Dynamics</h3>
+      <p>
+        Engineers simulate how air flows over a wing, how water moves through a pipe, or how heat spreads through a circuit — all before cutting a single piece of metal. Python libraries like <code>FEniCS</code> make partial differential equations solvable on a laptop.
+      </p>
+    </div>
+
+    <div class="concept-item">
+      <div class="emoji-lead">⚡</div>
+      <h3>Microbial Fuel Cells + Machine Learning</h3>
+      <p>
+        In my own lab: bacteria oxidize organic matter and release electrons onto an electrode. We measure the resulting current over time — and Python scripts process those signals, detect anomalies, and predict system performance. The same pipeline, deployed on a Raspberry Pi the size of a credit card.
+      </p>
+    </div>
+
+    <div class="concept-item">
+      <div class="emoji-lead">🚀</div>
+      <h3>SpaceX Rocket Landing</h3>
+      <p>
+        The algorithms that guide a Falcon 9 booster back to a landing pad — in real time, under atmospheric turbulence — are written in code. Guidance, navigation, and control: all implemented in software running on embedded computers. That code had to be fast, correct, and reliable. That's engineering-grade programming.
+      </p>
+    </div>
+
+    <div class="concept-item">
+      <div class="emoji-lead">🎮</div>
+      <h3>Procedural World Generation</h3>
+      <p>
+        Games like Minecraft generate infinite terrain using algorithms — the same mathematical functions you'll learn in this course. A handful of well-chosen operations turn random numbers into mountains, rivers, and caves. The entire world is just math running in a loop.
+      </p>
+    </div>
+
+  </div>
+
+  <div class="quote-box">
+    "The computer is incredibly fast, accurate, and stupid. Man is unbelievably slow, inaccurate, and brilliant. The marriage of the two is a force beyond calculation."
+    <br><br>— Leo Cherne (often misattributed, but still true)
+  </div>
+</div>
+
+<!-- What to expect -->
+<div class="card">
+  <h2>🗺️ What to Expect</h2>
+  <ul>
+    <li><strong>Weeks 1–3:</strong> Core Python — variables, types, loops, functions</li>
+    <li><strong>Weeks 4–5:</strong> Data structures — lists, dictionaries, files</li>
+    <li><strong>Weeks 6–7:</strong> Algorithms and problem-solving patterns</li>
+    <li><strong>Weeks 8–9:</strong> Data analysis with NumPy and Pandas; plotting with Matplotlib</li>
+    <li><strong>Week 10:</strong> Putting it all together — a mini project</li>
+  </ul>
+  <p>
+    Each week has two lectures (Monday + Friday), a studio session, and a short assignment. Labs are collaborative; assignments are individual. Come ready to type.
+  </p>
+</div>
+
+<div class="footer">
+  ENGR 103 — Oregon State University &nbsp;|&nbsp; Dr. Cheng Li &nbsp;|&nbsp; Spring 2026
+</div>
+
+</body>
+</html>

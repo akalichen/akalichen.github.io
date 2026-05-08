@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio 3 — Loops & Iteration</title>
+  
+<style>
+  :root {
+    --green: #2e7d32;
+    --green-light: #e8f5e9;
+    --accent: #1565c0;
+    --accent-light: #e3f2fd;
+    --code-bg: #1e1e2e;
+    --code-fg: #cdd6f4;
+    --gray: #546e7a;
+    --border: #cfd8dc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #212121;
+    background: #fafafa;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+  header {
+    background: var(--green);
+    color: white;
+    padding: 28px 32px;
+    border-radius: 10px;
+    margin-bottom: 32px;
+  }
+  header h1 { font-size: 1.6em; margin-bottom: 8px; }
+  header .meta { font-size: 0.9em; opacity: 0.85; }
+  h1.section {
+    font-size: 1.15em;
+    color: var(--green);
+    border-left: 4px solid var(--green);
+    padding: 8px 14px;
+    margin: 28px 0 12px;
+    background: var(--green-light);
+    border-radius: 0 6px 6px 0;
+  }
+  h2.subsection {
+    font-size: 1em;
+    color: var(--accent);
+    margin: 20px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--accent-light);
+  }
+  p { margin-bottom: 10px; }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 16px 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    margin: 12px 0 16px;
+    line-height: 1.5;
+  }
+  .task-box {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+  }
+  .task-box strong { color: #e65100; }
+  .writelines {
+    margin: 8px 0 16px;
+    padding: 0;
+    list-style: none;
+  }
+  .writelines li {
+    border-bottom: 1px solid var(--border);
+    height: 32px;
+    margin-bottom: 4px;
+  }
+  ul.bullets { margin: 8px 0 12px 20px; }
+  ul.bullets li { margin-bottom: 4px; }
+  .toc {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+  }
+  .toc h3 { font-size: 0.95em; color: var(--gray); margin-bottom: 10px; }
+  .toc a { color: var(--accent); text-decoration: none; display: block; padding: 3px 0; }
+  .toc a:hover { text-decoration: underline; }
+  footer { margin-top: 48px; font-size: 0.82em; color: var(--gray); text-align: center; }
+</style>
+
+</head>
+<body>
+  <header>
+    <h1>Studio 3 — Loops & Iteration</h1>
+    <div class="meta">ENGR 103 — Week 3</div>
+  </header>
+  <div class="toc"><h3>📋 Contents</h3><a href="#studio-overview">Studio Overview</a><a href="#0-00-0-10-warm-up">0:00–0:10  —  Warm-Up</a><a href="#0-10-0-35-part-1-codedex-warmup-guided">0:10–0:35  —  Part 1 — Codedex Warmup (Guided)</a><a href="#0-35-1-10-part-2-practical-lab-continuous-bioreactor-monitor">0:35–1:10  —  Part 2 — Practical Lab: Continuous Bioreactor Monitor</a><a href="#1-10-1-25-part-3-extension-nested-loops-for-sensor-grid">1:10–1:25  —  Part 3 — Extension: Nested Loops for Sensor Grid</a><a href="#1-25-1-30-wrap-up-ta-check-off">1:25–1:30  —  Wrap-Up & TA Check-Off</a></div>
+  <p>Student Instructions  |  Week 3  |  Topics: while loops, for loops, range(), accumulators, break</p><p>Oregon State University  |  ENGR 103  |  Dr. Cheng Li</p><h1 class="section" id="studio-overview">Studio Overview</h1><ul class="bullets"><li>Theme: Continuous Reactor Monitoring</li><li>Related Reading: Ch 2.5–2.8</li><li>Duration: 90 minutes  |  All 4 sections run the same activity</li><li>Materials: Laptop with Spyder or Jupyter, this handout</li></ul><h1 class="section" id="0-00-0-10-warm-up">0:00–0:10  —  Warm-Up</h1><p>Predict the output of each snippet BEFORE running it:</p><h2 class="subsection">Recall</h2><p>Type and run this code:</p><pre><code># Snippet A
+for i in range(3):
+    print(i * 2)
+
+# Snippet B
+total = 0
+for n in range(1, 6):
+    total += n
+print(total)</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Write your predictions on paper first, then verify.</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="0-10-0-35-part-1-codedex-warmup-guided">0:10–0:35  —  Part 1 — Codedex Warmup (Guided)</h1><p>Type and run each snippet. Understand every line.</p><h2 class="subsection">Exercise 3A — while loop: Reactor Temperature Ramp</h2><p>Type and run this code:</p><pre><code>temp = 20.0   # starting temp °C
+step = 0
+
+while temp <= 40.0:
+    if temp >= 37.0:
+        status = '⚠ WARNING'
+    else:
+        status = 'Normal'
+    print(f'Step {step:3d}: {temp:.1f}°C  [{status}]')
+    temp += 1.5
+    step += 1
+
+print(f'Loop ended at {temp:.1f}°C after {step} steps')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Change the step size to 2.0 and the warning threshold to 38.0. How many steps now?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h2 class="subsection">Exercise 3B — for loop with range: Growth Table</h2><p>Type and run this code:</p><pre><code>import math
+
+N0  = 1000     # initial cells
+mu  = 0.693    # growth rate (h⁻¹), ~1 doubling/hr
+
+print(f'{'Time(h)':>8}  {'N(cells)':>12}  {'Doublings':>10}')
+print('-' * 38)
+for t in range(0, 13, 2):   # 0 to 12 h, every 2 h
+    N = N0 * math.exp(mu * t)
+    doublings = t * mu / math.log(2)
+    print(f'{t:>8d}  {N:>12.0f}  {doublings:>10.2f}')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Change mu to 0.35 (slower growth). How does the table change?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h2 class="subsection">Exercise 3C — break and accumulator</h2><p>Type and run this code:</p><pre><code>DO_readings = [8.2, 7.9, 7.5, 6.8, 5.9, 4.2, 3.1, 2.8, 5.5]
+alarm_threshold = 4.0
+total = 0
+count = 0
+alarm_triggered = False
+
+for i, do in enumerate(DO_readings):
+    total += do
+    count += 1
+    print(f'Reading {i+1}: DO = {do:.1f} mg/L')
+    if do < alarm_threshold:
+        print(f'  *** ALARM: DO below {alarm_threshold} mg/L ***')
+        alarm_triggered = True
+        break
+
+print(f'\nAverage DO before alarm: {total/count:.2f} mg/L')
+print(f'Alarm triggered: {alarm_triggered}')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>What happens if no reading is below the threshold? Remove the break and rerun — what changes?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="0-35-1-10-part-2-practical-lab-continuous-bioreactor-monitor">0:35–1:10  —  Part 2 — Practical Lab: Continuous Bioreactor Monitor</h1><p>Work in pairs. Simulate a bioreactor over 24 hours. Write a program that models hourly pH drop and triggers alerts.</p><h2 class="subsection">Setup</h2><p>Type and run this code:</p><pre><code># Bioreactor pH model
+# pH drops 0.08 units/hour due to CO2 production
+# Every 3 hours, operator adds buffer: pH increases by 0.20
+# Start pH = 7.4, safe range: 6.8 to 7.8
+
+pH = 7.4
+ph_drop_per_hour = 0.08
+buffer_add = 0.20
+buffer_interval = 3   # hours
+low_alarm  = 6.8
+high_alarm = 7.8</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Copy this setup block.</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h2 class="subsection">Tasks</h2><div class="task-box"><strong>✏️ Your Task:</strong> </div><pre><code>1. Use a for loop over hours 1–24.
+2. Each hour: subtract the pH drop.
+3. Every 3 hours (use %): add buffer and print a buffer event message.
+4. Each hour: print the hour number, current pH, and status (OK / LOW ALARM / HIGH ALARM).
+5. Track: total hours in alarm, minimum pH reached.
+6. After the loop: print a summary (min pH, total alarm hours).</code></pre><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="1-10-1-25-part-3-extension-nested-loops-for-sensor-grid">1:10–1:25  —  Part 3 — Extension: Nested Loops for Sensor Grid</h1><p>Simulate a 3×3 grid of water quality sensors. Each cell stores a DO value. Print a grid report flagging any cell below 5.0 mg/L.</p><h2 class="subsection">Extension</h2><p>Type and run this code:</p><pre><code>do_grid = [
+    [8.2, 7.9, 8.1],
+    [6.5, 3.8, 6.2],  # middle cell is LOW
+    [7.8, 8.0, 7.6]
+]
+rows = ['North', 'Center', 'South']
+cols = ['West', 'Center', 'East']
+
+for i, row_name in enumerate(rows):
+    for j, col_name in enumerate(cols):
+        do = do_grid[i][j]
+        flag = ' *** LOW ***' if do < 5.0 else ''
+        print(f'{row_name:7s}-{col_name:7s}: DO={do:.1f}{flag}')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Run it and identify which cell is low. Then change the threshold to 7.0 and rerun.</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="1-25-1-30-wrap-up-ta-check-off">1:25–1:30  —  Wrap-Up & TA Check-Off</h1><p>Show your TA the Part 2 bioreactor output. TA verifies: buffer events print correctly, alarms trigger at right pH values, summary is correct.</p>
+  <footer>ENGR 103 &nbsp;·&nbsp; Oregon State University &nbsp;·&nbsp; Studio Week 3 — Student Instructions</footer>
+</body>
+</html>

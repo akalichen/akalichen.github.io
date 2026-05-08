@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio 6 — Bisection Search & Newton-Raphson</title>
+  
+<style>
+  :root {
+    --green: #2e7d32;
+    --green-light: #e8f5e9;
+    --accent: #1565c0;
+    --accent-light: #e3f2fd;
+    --code-bg: #1e1e2e;
+    --code-fg: #cdd6f4;
+    --gray: #546e7a;
+    --border: #cfd8dc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #212121;
+    background: #fafafa;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+  header {
+    background: var(--green);
+    color: white;
+    padding: 28px 32px;
+    border-radius: 10px;
+    margin-bottom: 32px;
+  }
+  header h1 { font-size: 1.6em; margin-bottom: 8px; }
+  header .meta { font-size: 0.9em; opacity: 0.85; }
+  h1.section {
+    font-size: 1.15em;
+    color: var(--green);
+    border-left: 4px solid var(--green);
+    padding: 8px 14px;
+    margin: 28px 0 12px;
+    background: var(--green-light);
+    border-radius: 0 6px 6px 0;
+  }
+  h2.subsection {
+    font-size: 1em;
+    color: var(--accent);
+    margin: 20px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--accent-light);
+  }
+  p { margin-bottom: 10px; }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 16px 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    margin: 12px 0 16px;
+    line-height: 1.5;
+  }
+  .task-box {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+  }
+  .task-box strong { color: #e65100; }
+  .writelines {
+    margin: 8px 0 16px;
+    padding: 0;
+    list-style: none;
+  }
+  .writelines li {
+    border-bottom: 1px solid var(--border);
+    height: 32px;
+    margin-bottom: 4px;
+  }
+  ul.bullets { margin: 8px 0 12px 20px; }
+  ul.bullets li { margin-bottom: 4px; }
+  .toc {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+  }
+  .toc h3 { font-size: 0.95em; color: var(--gray); margin-bottom: 10px; }
+  .toc a { color: var(--accent); text-decoration: none; display: block; padding: 3px 0; }
+  .toc a:hover { text-decoration: underline; }
+  footer { margin-top: 48px; font-size: 0.82em; color: var(--gray); text-align: center; }
+</style>
+
+</head>
+<body>
+  <header>
+    <h1>Studio 6 — Bisection Search & Newton-Raphson</h1>
+    <div class="meta">ENGR 103 — Week 6</div>
+  </header>
+  <div class="toc"><h3>📋 Contents</h3><a href="#studio-overview">Studio Overview</a><a href="#0-00-0-10-warm-up">0:00–0:10  —  Warm-Up</a><a href="#0-10-0-35-part-1-codedex-warmup-guided">0:10–0:35  —  Part 1 — Codedex Warmup (Guided)</a><a href="#0-35-1-10-part-2-practical-lab-cubic-root-search">0:35–1:10  —  Part 2 — Practical Lab: Cubic Root Search</a><a href="#1-10-1-25-part-3-extension-method-comparison-table">1:10–1:25  —  Part 3 — Extension: Method Comparison Table</a><a href="#1-25-1-30-wrap-up-ta-check-off">1:25–1:30  —  Wrap-Up &amp; TA Check-Off</a></div>
+  <p>Student Instructions  |  Week 6  |  Topics: Bisection, Newton-Raphson, convergence</p><p>Oregon State University  |  ENGR 103  |  Dr. Cheng Li</p><h1 class="section" id="studio-overview">Studio Overview</h1><ul class="bullets"><li>Theme: Fast Root-Finding for Mathematical Equations</li><li>Related Reading: Ch 3.4–3.5</li><li>Duration: 90 minutes  |  All 4 sections run the same activity</li><li>Materials: Laptop with Spyder or Jupyter, this handout</li></ul><h1 class="section" id="0-00-0-10-warm-up">0:00–0:10  —  Warm-Up</h1><p>Last week you used exhaustive search to approximate square roots. It took thousands of steps. Today we'll find the same answer in under 50 steps using <strong>bisection</strong>.</p><h2 class="subsection">Quick Check</h2><p>Type and run this code:</p><pre><code>eps = 0.01
+x   = 2.0
+low, high, n = 0, 2, 0
+while abs(high - low) &gt; 2 * eps:
+    mid = (low + high) / 2
+    if mid**2 &lt; x:
+        low = mid
+    else:
+        high = mid
+    n += 1
+print(f'√2 ≈ {(low + high) / 2:.8f}  in {n} steps')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Run it. How many steps did it take? How does this compare to last week's exhaustive approach (~14,000 steps for the same problem)?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="0-10-0-35-part-1-codedex-warmup-guided">0:10–0:35  —  Part 1 — Codedex Warmup (Guided)</h1><p>Type and run each snippet.</p><h2 class="subsection">Exercise 6A — Bisection from Scratch</h2><p>Bisection works by repeatedly halving the search interval. At each step, compute the midpoint and keep whichever half still contains a sign change. Type and run this code:</p><pre><code># Find sqrt(7) using bisection: solve x^2 - 7 = 0 on [0, 7]
+# f(0) = -7 (negative),  f(7) = 42 (positive)  → sign change confirmed
+lo    = 0.0
+hi    = 7.0
+eps   = 1e-8
+steps = 0
+
+while abs(hi - lo) &gt; 2 * eps and steps &lt; 200:
+    mid   = (lo + hi) / 2
+    f_mid = mid**2 - 7
+    f_lo  = lo**2  - 7
+    if f_mid * f_lo &lt; 0:
+        hi = mid
+    else:
+        lo = mid
+    steps += 1
+
+root = (lo + hi) / 2
+print(f'√7 = {root:.10f}  (true: {7**0.5:.10f})  in {steps} steps')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Modify the code above to find the cube root of 50 (i.e., solve x³ − 50 = 0). Use the interval [0, 50]. What is f_mid and f_lo for the cube root version? How many steps does it take?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h2 class="subsection">Exercise 6B — Quadratic Root via Bisection</h2><p>Use bisection to find the positive root of x² − 9 = 0, then compare to the exact answer. Type and run this code:</p><pre><code># Find root of x^2 - 9 = 0 on [1, 5] using bisection
+# f(1) = 1 - 9 = -8 (negative),  f(5) = 25 - 9 = 16 (positive)
+lo    = 1.0
+hi    = 5.0
+eps   = 1e-8
+steps = 0
+
+while abs(hi - lo) &gt; 2 * eps and steps &lt; 200:
+    mid   = (lo + hi) / 2
+    f_mid = mid**2 - 9
+    f_lo  = lo**2  - 9
+    if f_mid * f_lo &lt; 0:
+        hi = mid
+    else:
+        lo = mid
+    steps += 1
+
+x_bisect = (lo + hi) / 2
+x_exact  = 3.0
+print(f'Bisection: x = {x_bisect:.10f}  ({steps} steps)')
+print(f'Exact:     x = {x_exact:.10f}')
+print(f'Error:     {abs(x_bisect - x_exact):.2e}')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Change the code to find the root of x² − 25 = 0 on [1, 6]. What is the exact answer? How many steps does bisection take?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h2 class="subsection">Exercise 6C — Newton-Raphson</h2><p>Newton-Raphson improves a guess using the tangent line: x_new = x − f(x)/f'(x). Type and run this code:</p><pre><code># Newton-Raphson for sqrt(2): solve f(x) = x^2 - 2 = 0
+# f'(x) = 2x
+x         = 1.5     # initial guess
+eps       = 1e-12
+steps     = 0
+converged = False
+
+for i in range(50):
+    fx  = x**2 - 2
+    dfx = 2 * x
+    if abs(dfx) &lt; 1e-15:
+        print('Derivative too small — stopping')
+        break
+    xn = x - fx / dfx
+    steps += 1
+    if abs(xn - x) &lt; eps:
+        x = xn
+        converged = True
+        break
+    x = xn
+
+if converged:
+    print(f'√2 (Newton) = {x:.15f}  in {steps} steps')
+    print(f'√2 (true)   = {2**0.5:.15f}')
+else:
+    print('Did not converge')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>How many steps does Newton-Raphson take? Compare to bisection (Exercise 6A warm-up: ~10 steps) and last week's exhaustive search (~14,000 steps). What do you notice about Newton-Raphson's speed?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="0-35-1-10-part-2-practical-lab-cubic-root-search">0:35–1:10  —  Part 2 — Practical Lab: Cubic Root Search</h1><p>Work in pairs. The polynomial f(x) = x³ − 4x² + x + 6 has three real roots: x = −1, x = 2, and x = 3. Use bisection to find all three roots, then apply Newton-Raphson to one of them and compare step counts.</p><h2 class="subsection">Setup</h2><p>Type and run this code to verify the three roots:</p><pre><code># Polynomial: f(x) = x^3 - 4x^2 + x + 6
+# Verify: f(-1), f(2), f(3) should all equal 0
+for x_check in [-1, 2, 3]:
+    f_val = x_check**3 - 4*x_check**2 + x_check + 6
+    print(f'f({x_check:&gt;2}) = {f_val:.3f}')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Run the verification. Do all three values equal 0.000?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h2 class="subsection">Tasks</h2><div class="task-box"><strong>✏️ Your Task:</strong> </div><pre><code>Use the starter code below. A for loop supplies three bracketing intervals; a while
+loop inside performs bisection for each one.
+
+intervals = [(-2.0, 0.0), (1.5, 2.5), (2.5, 4.0)]
+eps = 1e-8
+
+print(f'{"Interval":&gt;15} | {"Root found":&gt;12} | {"f(root)":&gt;10} | {"Steps":&gt;6}')
+print('-' * 52)
+
+for lo_start, hi_start in intervals:
+    lo    = lo_start
+    hi    = hi_start
+    steps = 0
+
+    while abs(hi - lo) &gt; 2 * eps and steps &lt; 200:
+        mid   = (lo + hi) / 2
+        f_mid = mid**3 - 4*mid**2 + mid + 6
+        f_lo  = lo**3  - 4*lo**2  + lo  + 6
+        if f_mid * f_lo &lt; 0:
+            hi = mid
+        else:
+            lo = mid
+        steps += 1
+
+    root   = (lo + hi) / 2
+    f_root = root**3 - 4*root**2 + root + 6
+    print(f'[{lo_start}, {hi_start}]  |  {root:&gt;12.8f}  |  {f_root:&gt;10.2e}  |  {steps:&gt;6d}')
+
+# Extension: Newton-Raphson for the root near x = 3
+# f(x)  = x^3 - 4x^2 + x + 6
+# f'(x) = 3x^2 - 8x + 1
+x_nr      = 3.5     # initial guess
+eps_nr    = 1e-12
+steps_nr  = 0
+converged = False
+
+for i in range(50):
+    fx  = x_nr**3 - 4*x_nr**2 + x_nr + 6
+    dfx = 3*x_nr**2 - 8*x_nr + 1
+    if abs(dfx) &lt; 1e-15:
+        break
+    xn = x_nr - fx / dfx
+    steps_nr += 1
+    if abs(xn - x_nr) &lt; eps_nr:
+        x_nr = xn
+        converged = True
+        break
+    x_nr = xn
+
+if converged:
+    print(f'\nNewton-Raphson root near 3: x = {x_nr:.10f}  in {steps_nr} steps')
+else:
+    print('Newton-Raphson did not converge')</code></pre><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="1-10-1-25-part-3-extension-method-comparison-table">1:10–1:25  —  Part 3 — Extension: Method Comparison Table</h1><p>For √N where N = 2, 10, 100, 1000: compare step counts for exhaustive (step=0.001), bisection, and Newton-Raphson. All three methods use only while and for loops — no functions needed.</p><h2 class="subsection">Extension</h2><p>Type and run this code:</p><pre><code>results = []
+
+for x in [2, 10, 100, 1000]:
+    # --- Bisection for sqrt(x): solve t^2 - x = 0 on [0, x] ---
+    lo, hi, nb = 0.0, float(x), 0
+    while abs(hi - lo) &gt; 2e-8 and nb &lt; 300:
+        mid = (lo + hi) / 2
+        if mid**2 &lt; x:
+            lo = mid
+        else:
+            hi = mid
+        nb += 1
+
+    # --- Newton-Raphson for sqrt(x): t_new = (t + x/t) / 2 ---
+    v, nn = float(x) / 2, 0
+    for _ in range(100):
+        vn = (v + x / v) / 2
+        nn += 1
+        if abs(vn - v) &lt; 1e-12:
+            break
+        v = vn
+
+    # --- Exhaustive estimate (step = 0.001) ---
+    ne_est = int(x**0.5 / 0.001)
+
+    results.append((x, nb, nn, ne_est))
+
+print(f"{'x':&gt;6}  {'Bisect':&gt;8}  {'Newton':&gt;8}  {'Exhaust~':&gt;10}")
+for x, nb, nn, ne in results:
+    print(f'{x:&gt;6}  {nb:&gt;8d}  {nn:&gt;8d}  {ne:&gt;10,}')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Run it. What pattern do you see in the Newton-Raphson column? Why does bisection's step count increase while Newton-Raphson's stays nearly constant?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="1-25-1-30-wrap-up-ta-check-off">1:25–1:30  —  Wrap-Up &amp; TA Check-Off</h1><p>Show TA your Part 2 table (three roots found via bisection, plus the Newton-Raphson step count). Discuss: when would you prefer bisection over Newton-Raphson?</p>
+  <footer>ENGR 103 &nbsp;·&nbsp; Oregon State University &nbsp;·&nbsp; Studio Week 6 — Student Instructions</footer>
+</body>
+</html>

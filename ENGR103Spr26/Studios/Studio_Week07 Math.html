@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio 7 — Functions: Decomposition & Abstraction</title>
+  
+<style>
+  :root {
+    --green: #2e7d32;
+    --green-light: #e8f5e9;
+    --accent: #1565c0;
+    --accent-light: #e3f2fd;
+    --code-bg: #1e1e2e;
+    --code-fg: #cdd6f4;
+    --gray: #546e7a;
+    --border: #cfd8dc;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #212121;
+    background: #fafafa;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+  header {
+    background: var(--green);
+    color: white;
+    padding: 28px 32px;
+    border-radius: 10px;
+    margin-bottom: 32px;
+  }
+  header h1 { font-size: 1.6em; margin-bottom: 8px; }
+  header .meta { font-size: 0.9em; opacity: 0.85; }
+  h1.section {
+    font-size: 1.15em;
+    color: var(--green);
+    border-left: 4px solid var(--green);
+    padding: 8px 14px;
+    margin: 28px 0 12px;
+    background: var(--green-light);
+    border-radius: 0 6px 6px 0;
+  }
+  h2.subsection {
+    font-size: 1em;
+    color: var(--accent);
+    margin: 20px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid var(--accent-light);
+  }
+  p { margin-bottom: 10px; }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 16px 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    margin: 12px 0 16px;
+    line-height: 1.5;
+  }
+  .task-box {
+    background: #fff8e1;
+    border-left: 4px solid #f9a825;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 12px 0;
+  }
+  .task-box strong { color: #e65100; }
+  .writelines {
+    margin: 8px 0 16px;
+    padding: 0;
+    list-style: none;
+  }
+  .writelines li {
+    border-bottom: 1px solid var(--border);
+    height: 32px;
+    margin-bottom: 4px;
+  }
+  ul.bullets { margin: 8px 0 12px 20px; }
+  ul.bullets li { margin-bottom: 4px; }
+  .toc {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+  }
+  .toc h3 { font-size: 0.95em; color: var(--gray); margin-bottom: 10px; }
+  .toc a { color: var(--accent); text-decoration: none; display: block; padding: 3px 0; }
+  .toc a:hover { text-decoration: underline; }
+  footer { margin-top: 48px; font-size: 0.82em; color: var(--gray); text-align: center; }
+</style>
+
+</head>
+<body>
+  <header>
+    <h1>Studio 7 — Functions: Decomposition & Abstraction</h1>
+    <div class="meta">ENGR 103 — Week 7</div>
+  </header>
+  <div class="toc"><h3>📋 Contents</h3><a href="#studio-overview">Studio Overview</a><a href="#0-00-0-10-warm-up">0:00–0:10  —  Warm-Up</a><a href="#0-10-0-35-part-1-codedex-warmup-guided">0:10–0:35  —  Part 1 — Codedex Warmup (Guided)</a><a href="#0-35-1-10-part-2-practical-lab-polynomial-function-library">0:35–1:10  —  Part 2 — Practical Lab: Polynomial Function Library</a><a href="#1-10-1-25-part-3-extension-bisection-inside-a-function">1:10–1:25  —  Part 3 — Extension: Bisection Inside a Function</a><a href="#1-25-1-30-wrap-up-ta-check-off">1:25–1:30  —  Wrap-Up &amp; TA Check-Off</a></div>
+  <p>Student Instructions  |  Week 7  |  Topics: def, return, docstrings, default args, assertions</p><p>Oregon State University  |  ENGR 103  |  Dr. Cheng Li</p><h1 class="section" id="studio-overview">Studio Overview</h1><ul class="bullets"><li>Theme: Building a Mathematical Function Library</li><li>Related Reading: Ch 4.1–4.2</li><li>Duration: 90 minutes  |  All 4 sections run the same activity</li><li>Materials: Laptop with Spyder or Jupyter, this handout</li></ul><h1 class="section" id="0-00-0-10-warm-up">0:00–0:10  —  Warm-Up</h1><p>What is wrong with this code? Fix it.</p><h2 class="subsection">Debug</h2><p>Type and run this code:</p><pre><code>def calculate_power(V, I)
+    power = V * I * 1000
+    Print(power)
+
+calculate_power(0.45 0.020)</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Find and fix all errors (there are 4). List each error and your fix on the lines below.</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="0-10-0-35-part-1-codedex-warmup-guided">0:10–0:35  —  Part 1 — Codedex Warmup (Guided)</h1><p>Type and run each snippet.</p><h2 class="subsection">Exercise 7A — Function with Docstring and Return</h2><p>This function adds up the powers of a number: 1 + base + base² + … + base^n. It uses a <code>for</code> loop inside a <code>def</code>. Type and run this code:</p><pre><code>def power_sum(base, n):
+    """
+    Compute 1 + base + base^2 + ... + base^n.
+
+    Args:
+        base : The base number
+        n    : Highest exponent (must be >= 0)
+    Returns:
+        float: Sum of the (n+1) terms
+    """
+    assert n &gt;= 0, f'n must be >= 0, got {n}'
+    total = 0.0
+    for i in range(n + 1):
+        total += base ** i
+    return total
+
+# Test: base=2 gives 1 + 2 + 4 + 8 + ...
+for n in range(0, 6):
+    s = power_sum(2, n)
+    print(f'n={n}: power_sum(2, {n}) = {s:.0f}')
+
+# Read the docstring
+help(power_sum)</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>What happens when you call <code>power_sum(2, -1)</code>? What does the AssertionError message say? Why is that check useful?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h2 class="subsection">Exercise 7B — Default Arguments &amp; Multiple Returns</h2><p>The vertex of a parabola y = ax² + bx + c is at x = −b/(2a). The <code>decimals</code> parameter shows how to give an argument a default value. Type and run this code:</p><pre><code>def parabola_vertex(a, b, c, decimals=4):
+    """
+    Compute the vertex of y = ax^2 + bx + c.
+
+    Args:
+        a        : Coefficient of x^2 (must be non-zero)
+        b        : Coefficient of x
+        c        : Constant term
+        decimals : Decimal places for rounding (default 4)
+    Returns:
+        tuple: (x_vertex, y_vertex)
+    """
+    assert a != 0,      f'a must be non-zero, got {a}'
+    assert decimals &gt;= 0, f'decimals must be >= 0, got {decimals}'
+    x_v = -b / (2 * a)
+    y_v = a * x_v**2 + b * x_v + c
+    return round(x_v, decimals), round(y_v, decimals)
+
+# Using the default (4 decimal places)
+x_v, y_v = parabola_vertex(1, -6, 5)
+print(f'y = x^2 - 6x + 5:  vertex at ({x_v}, {y_v})')
+
+# Overriding the default to 2 decimal places
+x_v, y_v = parabola_vertex(2, 4, 1, 2)
+print(f'y = 2x^2 + 4x + 1: vertex at ({x_v}, {y_v})')
+
+x_v, y_v = parabola_vertex(-1, 4, 0, 2)
+print(f'y = -x^2 + 4x:     vertex at ({x_v}, {y_v})')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Call <code>parabola_vertex(1, -6, 5)</code> and <code>parabola_vertex(1, -6, 5, 2)</code>. How does the output differ? Then explain: what is a "default argument" and when is it useful?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h2 class="subsection">Exercise 7C — Function Composition</h2><p>One function can call another. Here, <code>quadratic_report</code> calls <code>quadratic_eval</code> and <code>classify_roots</code>. Type and run this code:</p><pre><code>def quadratic_eval(a, b, c, x):
+    """Evaluate y = ax^2 + bx + c at x."""
+    return a * x**2 + b * x + c
+
+def classify_roots(a, b, c):
+    """Return a string describing the roots of ax^2 + bx + c = 0."""
+    assert a != 0, f'a must be non-zero, got {a}'
+    d = b**2 - 4 * a * c
+    if d &gt; 0:
+        return 'Two distinct real roots'
+    elif d == 0:
+        return 'One repeated real root'
+    else:
+        return 'No real roots'
+
+def quadratic_report(label, a, b, c):
+    """Print a short analysis of y = ax^2 + bx + c."""
+    x_v = -b / (2 * a)
+    y_v = quadratic_eval(a, b, c, x_v)   # calls quadratic_eval
+    print(f'=== {label} ===')
+    print(f'  a={a},  b={b},  c={c}')
+    print(f'  Vertex: ({x_v:.2f}, {y_v:.2f})')
+    print(f'  Roots:  {classify_roots(a, b, c)}')   # calls classify_roots
+
+quadratic_report('Example A', 1, -6, 5)</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Call <code>quadratic_report</code> for two more quadratics: one with no real roots (try a=1, b=0, c=4) and one with a repeated root (try a=1, b=2, c=1). What changes in the output each time?</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="0-35-1-10-part-2-practical-lab-polynomial-function-library">0:35–1:10  —  Part 2 — Practical Lab: Polynomial Function Library</h1><p>Work in pairs. Build a set of functions for analyzing quadratic polynomials. Every function must have a docstring. Use <code>assert</code> where inputs could be invalid.</p><h2 class="subsection">Required Functions</h2><div class="task-box"><strong>✏️ Your Task:</strong> </div><pre><code>Build ALL of these functions with docstrings:
+
+1. poly_eval(a, b, c, x) → float
+   Returns: the value of ax^2 + bx + c at x
+   (No assertion needed — any numbers are valid inputs)
+
+2. find_vertex(a, b, c) → tuple
+   Returns: (x_vertex, y_vertex)
+   Hint: call poly_eval to compute y_vertex
+   Assert: a != 0
+
+3. describe_roots(a, b, c) → str
+   Returns: 'Two real roots'  if b^2 - 4ac > 0
+            'One real root'   if b^2 - 4ac == 0
+            'No real roots'   if b^2 - 4ac < 0
+   Use if/elif/else. Assert: a != 0
+
+4. opens_toward(a) → str
+   Returns: 'upward'   if a > 0
+            'downward' if a < 0
+   Assert: a != 0
+
+5. print_poly_report(label, a, b, c)
+   Prints a report by calling the four functions above.
+   Format (print each line separately):
+     === label ===
+       Coefficients: a=..., b=..., c=...
+       Vertex:  (x_v, y_v)
+       Opens:   upward / downward
+       Roots:   Two real roots / One real root / No real roots</code></pre><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="1-10-1-25-part-3-extension-bisection-inside-a-function">1:10–1:25  —  Part 3 — Extension: Bisection Inside a Function</h1><p>Wrap the bisection algorithm from Week 6 inside a <code>def</code>. The formula for the quadratic is computed inline using variables — no nested functions needed.</p><h2 class="subsection">Extension</h2><p>Type and run this code:</p><pre><code>def bisect_quad(a, b, c, target, lo, hi, eps=1e-6):
+    """
+    Find x in [lo, hi] where ax^2 + bx + c = target, using bisection.
+
+    Args:
+        a, b, c : Quadratic coefficients
+        target  : Target value
+        lo, hi  : Search interval endpoints
+        eps     : Convergence tolerance (default 1e-6)
+    Returns:
+        float: x where ax^2 + bx + c is approximately equal to target
+    """
+    assert lo &lt; hi, f'lo must be less than hi, got lo={lo}, hi={hi}'
+    assert eps &gt; 0, f'eps must be positive, got {eps}'
+
+    f_lo = a*lo**2 + b*lo + c - target
+    f_hi = a*hi**2 + b*hi + c - target
+    assert f_lo * f_hi &lt; 0, f'No sign change in [{lo}, {hi}] — bisection cannot find a root'
+
+    steps = 0
+    while abs(hi - lo) &gt; 2 * eps and steps &lt; 200:
+        mid   = (lo + hi) / 2
+        f_mid = a*mid**2 + b*mid + c - target
+        f_lo  = a*lo**2  + b*lo  + c - target
+        if f_mid * f_lo &lt; 0:
+            hi = mid
+        else:
+            lo = mid
+        steps += 1
+    return (lo + hi) / 2
+
+# Find x where x^2 - 6x + 5 = -3  (left root is x = 2)
+root = bisect_quad(1, -6, 5, -3, 0.5, 3.0)
+print(f'x^2 - 6x + 5 = -3  →  x ≈ {root:.6f}')
+print(f'Verify: {1*root**2 - 6*root + 5:.6f}  (should be -3.000000)')
+
+# Call the function for three different targets
+print()
+r1 = bisect_quad(1, -6, 5, -3, 0.5, 3.0)   # left root of x^2-6x+8=0, x=2
+r2 = bisect_quad(1, -6, 5, -3, 3.0, 4.5)   # right root of x^2-6x+8=0, x=4
+r3 = bisect_quad(1, -6, 5,  0, 0.5, 2.0)   # left root of x^2-6x+5=0,  x=1
+print(f'target=-3, left root:  x ≈ {r1:.4f}')
+print(f'target=-3, right root: x ≈ {r2:.4f}')
+print(f'target= 0, left root:  x ≈ {r3:.4f}')</code></pre><div class="task-box"><strong>✏️ Your Task:</strong> </div><p>Call <code>bisect_quad(1, -6, 5, -5, 0.0, 4.0)</code>. Read the AssertionError message. Why does it fail? (Hint: from Week 5, what is the minimum value of x² − 6x + 5?)</p><ul class="writelines"><li></li><li></li><li></li><li></li></ul><h1 class="section" id="1-25-1-30-wrap-up-ta-check-off">1:25–1:30  —  Wrap-Up &amp; TA Check-Off</h1><p>Show TA all 5 functions from Part 2. Call <code>print_poly_report('Test-A', 1, -6, 5)</code> and show the output.</p>
+  <footer>ENGR 103 &nbsp;·&nbsp; Oregon State University &nbsp;·&nbsp; Studio Week 7 — Student Instructions</footer>
+</body>
+</html>
