@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microscope Usage Log - Electrobiotechlab</title>
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="site-header-content">
+            <img src="images/lablogov1.png" alt="Electrobiotech Lab Logo" class="site-logo">
+            <h1>CX43 Microscope Usage Log</h1>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="teaching.html">Teaching</a></li>
+            <li><a href="team.html">Team</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="instruments.html">Instruments</a></li>
+            <li><a href="contact.html">About Me</a></li>
+        </ul>
+    </nav>
+
+    <div class="page-content">
+
+        <section class="page-section">
+            <h2 class="section-title">Log your session</h2>
+            <div class="intro-card">
+                <p>Please complete this form for every session on the <a href="instruments.html#cx43">Evident CX43 phase-contrast microscope and EP50 camera</a>. Entries are appended to the lab's usage spreadsheet and Dr. Cheng Li receives the updated log automatically. Fields marked <span class="req">*</span> are required.</p>
+                <p class="form-hint">Before you leave: wipe immersion oil from the 100&times; objective with lens paper only, return the 4&times; or 10&times; objective to the light path, switch off the LED illuminator and the EP50, cover the microscope, and remove all samples from the bench.</p>
+            </div>
+        </section>
+
+        <section class="page-section">
+            <form id="scope-log" class="log-form" novalidate>
+
+                <fieldset>
+                    <legend>User</legend>
+                    <div class="form-grid">
+                        <label>Full name <span class="req">*</span>
+                            <input type="text" name="name" required autocomplete="name" maxlength="120">
+                        </label>
+                        <label>Email <span class="req">*</span>
+                            <input type="email" name="email" required autocomplete="email" maxlength="120" placeholder="name@oregonstate.edu">
+                        </label>
+                        <label>Lab / PI / affiliation <span class="req">*</span>
+                            <input type="text" name="affiliation" required maxlength="120" placeholder="e.g., Li Lab, BEE">
+                        </label>
+                        <label>Role
+                            <select name="role">
+                                <option value="">Select…</option>
+                                <option>Undergraduate</option>
+                                <option>Graduate student</option>
+                                <option>Postdoc / staff</option>
+                                <option>Faculty</option>
+                                <option>Visitor / other</option>
+                            </select>
+                        </label>
+                    </div>
+                    <label class="checkbox-row">
+                        <input type="checkbox" name="trained" value="Yes" required>
+                        <span>I have been trained on the CX43 / EP50 and have read the care instructions above. <span class="req">*</span></span>
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Session</legend>
+                    <div class="form-grid">
+                        <label>Date of use <span class="req">*</span>
+                            <input type="date" name="date" required>
+                        </label>
+                        <label>Start time <span class="req">*</span>
+                            <input type="time" name="start_time" required>
+                        </label>
+                        <label>End time (or expected)
+                            <input type="time" name="end_time">
+                        </label>
+                        <label>Project / purpose
+                            <input type="text" name="project" maxlength="160" placeholder="e.g., enrichment culture check, cable bacteria filaments">
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Optics</legend>
+                    <p class="field-label">Objectives used <span class="req">*</span></p>
+                    <div class="checkbox-grid" data-required-group="objectives">
+                        <label class="checkbox-row"><input type="checkbox" name="objectives" value="4x"><span>4&times;</span></label>
+                        <label class="checkbox-row"><input type="checkbox" name="objectives" value="10x"><span>10&times;</span></label>
+                        <label class="checkbox-row"><input type="checkbox" name="objectives" value="20x"><span>20&times;</span></label>
+                        <label class="checkbox-row"><input type="checkbox" name="objectives" value="40x"><span>40&times;</span></label>
+                        <label class="checkbox-row"><input type="checkbox" name="objectives" value="100x oil"><span>100&times; (oil immersion)</span></label>
+                    </div>
+                    <p class="field-label">Observation mode</p>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-row"><input type="checkbox" name="mode" value="Brightfield"><span>Brightfield</span></label>
+                        <label class="checkbox-row"><input type="checkbox" name="mode" value="Phase contrast"><span>Phase contrast</span></label>
+                        <label class="checkbox-row"><input type="checkbox" name="mode" value="Other"><span>Other</span></label>
+                    </div>
+                    <div class="form-grid">
+                        <label>Immersion oil used? <span class="req">*</span>
+                            <select name="oil" id="oil" required>
+                                <option value="">Select…</option>
+                                <option>No</option>
+                                <option>Yes</option>
+                            </select>
+                        </label>
+                        <label class="conditional" data-show-when="oil=Yes">Oil cleaned from objective and stage? <span class="req">*</span>
+                            <select name="oil_cleaned" id="oil_cleaned">
+                                <option value="">Select…</option>
+                                <option>Yes, with lens paper</option>
+                                <option>Not yet — will clean at end of session</option>
+                            </select>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Camera</legend>
+                    <div class="form-grid">
+                        <label>EP50 camera used? <span class="req">*</span>
+                            <select name="camera" id="camera" required>
+                                <option value="">Select…</option>
+                                <option>No</option>
+                                <option>Yes</option>
+                            </select>
+                        </label>
+                        <label class="conditional" data-show-when="camera=Yes">Images saved to
+                            <select name="camera_storage">
+                                <option value="">Select…</option>
+                                <option>USB drive</option>
+                                <option>EPview (phone / laptop)</option>
+                                <option>Network / Ethernet</option>
+                                <option>Not saved</option>
+                            </select>
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Sample</legend>
+                    <div class="form-grid">
+                        <label>Sample type <span class="req">*</span>
+                            <select name="sample_type" required>
+                                <option value="">Select…</option>
+                                <option>Biological — live culture / enrichment</option>
+                                <option>Biological — fixed or stained cells</option>
+                                <option>Environmental — sediment, pore water, or mat</option>
+                                <option>Electrode biofilm / bioelectrochemical reactor sample</option>
+                                <option>Non-biological material (mineral, polymer, electrode)</option>
+                                <option>Other</option>
+                            </select>
+                        </label>
+                        <label>Biosafety / hazard level <span class="req">*</span>
+                            <select name="biosafety" required>
+                                <option value="">Select…</option>
+                                <option>No hazard</option>
+                                <option>BSL-1</option>
+                                <option>BSL-2</option>
+                                <option>Chemical hazard (fixative, stain, solvent)</option>
+                            </select>
+                        </label>
+                    </div>
+                    <label>Sample description
+                        <textarea name="sample_description" rows="2" maxlength="400" placeholder="Organism / matrix, preparation (wet mount, slide, chamber), stain if any"></textarea>
+                    </label>
+                    <label class="checkbox-row">
+                        <input type="checkbox" name="samples_removed" value="Yes">
+                        <span>All samples and slides were removed and the stage was wiped (tick at end of session).</span>
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Condition &amp; notes</legend>
+                    <div class="form-grid">
+                        <label>Instrument condition on arrival
+                            <select name="condition">
+                                <option value="">Select…</option>
+                                <option>Clean and working</option>
+                                <option>Oil left on objective</option>
+                                <option>Left on / uncovered</option>
+                                <option>Problem (describe below)</option>
+                            </select>
+                        </label>
+                    </div>
+                    <label>Issues or comments
+                        <textarea name="notes" rows="3" maxlength="800" placeholder="Focus drift, lamp, camera connectivity, missing lens paper, etc."></textarea>
+                    </label>
+                </fieldset>
+
+                <!-- honeypot: hidden from humans, bots fill it -->
+                <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary" id="submit-btn">Submit log entry</button>
+                    <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+                </div>
+            </form>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Electrobiotech Lab &middot; Oregon State University &middot; Department of Biological &amp; Ecological Engineering</p>
+        <p>Gilmore Hall, 124 SW 26th Street, Corvallis, OR 97331 &middot; <a href="mailto:Cheng.Li@Oregonstate.edu">Cheng.Li@Oregonstate.edu</a></p>
+        <p><a href="https://x.com/OSUelectroB" target="_blank">@OSUelectroB</a> &middot; &copy; 2025 Electrobiotech Lab</p>
+    </footer>
+
+    <script>
+    (function () {
+        // ---------------------------------------------------------------
+        // Paste the Google Apps Script Web App URL here after deploying
+        // (see apps-script/README.md). It looks like:
+        // https://script.google.com/macros/s/AKfycb.../exec
+        // ---------------------------------------------------------------
+        var SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE";
+        var FALLBACK_EMAIL = "cheng.li@oregonstate.edu";
+
+        var form = document.getElementById('scope-log');
+        var status = document.getElementById('form-status');
+        var btn = document.getElementById('submit-btn');
+
+        // Default date to today (local)
+        var d = new Date(), pad = function (n) { return (n < 10 ? '0' : '') + n; };
+        form.date.value = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+        form.start_time.value = pad(d.getHours()) + ':' + pad(d.getMinutes());
+
+        // Conditional fields
+        function syncConditionals() {
+            document.querySelectorAll('.conditional').forEach(function (el) {
+                var rule = el.getAttribute('data-show-when').split('=');
+                var on = form.elements[rule[0]].value === rule[1];
+                el.classList.toggle('is-visible', on);
+                var ctrl = el.querySelector('select, input');
+                if (ctrl) { ctrl.required = on && el.textContent.indexOf('*') !== -1; if (!on) ctrl.value = ''; }
+            });
+        }
+        form.addEventListener('change', syncConditionals);
+        syncConditionals();
+
+        function setStatus(msg, kind) {
+            status.textContent = msg;
+            status.className = 'form-status' + (kind ? ' form-status--' + kind : '');
+        }
+
+        function collect() {
+            var data = {};
+            var fd = new FormData(form);
+            fd.forEach(function (v, k) {
+                if (data[k] === undefined) data[k] = v;
+                else data[k] = (Array.isArray(data[k]) ? data[k] : [data[k]]).concat([v]);
+            });
+            ['objectives', 'mode'].forEach(function (k) {
+                if (Array.isArray(data[k])) data[k] = data[k].join('; ');
+            });
+            data.user_agent = navigator.userAgent;
+            data.page = location.href;
+            return data;
+        }
+
+        form.addEventListener('submit', function (ev) {
+            ev.preventDefault();
+            setStatus('', '');
+
+            // Native validation + required checkbox group
+            if (!form.checkValidity()) { form.reportValidity(); return; }
+            var objs = form.querySelectorAll('input[name="objectives"]:checked');
+            if (objs.length === 0) {
+                setStatus('Please tick at least one objective.', 'error');
+                form.querySelector('input[name="objectives"]').focus();
+                return;
+            }
+            if (form.website.value) { setStatus('Submission blocked.', 'error'); return; }
+
+            var data = collect();
+
+            if (SCRIPT_URL.indexOf('script.google.com') === -1) {
+                // Backend not configured yet: open a pre-filled email as a fallback.
+                var body = Object.keys(data).filter(function (k) { return k !== 'user_agent' && k !== 'page' && k !== 'website'; })
+                    .map(function (k) { return k + ': ' + data[k]; }).join('\n');
+                location.href = 'mailto:' + FALLBACK_EMAIL + '?subject=' + encodeURIComponent('CX43 usage log — ' + data.name + ' ' + data.date) + '&body=' + encodeURIComponent(body);
+                setStatus('The online log is not connected yet; an email draft has been opened instead.', 'warn');
+                return;
+            }
+
+            btn.disabled = true; btn.textContent = 'Submitting…';
+            // Plain-text body avoids a CORS preflight; Apps Script reads e.postData.contents.
+            fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) })
+                .then(function (r) { return r.json(); })
+                .then(function (res) {
+                    if (res && res.ok) {
+                        setStatus('Thank you — your session has been logged (entry #' + res.row + ').', 'ok');
+                        form.reset(); syncConditionals();
+                        form.date.value = data.date;
+                    } else {
+                        throw new Error((res && res.error) || 'Unexpected response');
+                    }
+                })
+                .catch(function (err) {
+                    setStatus('Could not submit the log (' + err.message + '). Please email ' + FALLBACK_EMAIL + ' with your session details.', 'error');
+                })
+                .finally(function () { btn.disabled = false; btn.textContent = 'Submit log entry'; });
+        });
+    })();
+    </script>
+</body>
+</html>
