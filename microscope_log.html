@@ -292,9 +292,11 @@
                 var mailto = 'mailto:' + FALLBACK_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
                 var outlook = 'https://outlook.office.com/mail/deeplink/compose?to=' + encodeURIComponent(FALLBACK_EMAIL) + '&subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
                 status.className = 'form-status form-status--warn';
-                status.innerHTML = 'The online log is not connected yet. Send this entry by email: ' +
-                    '<a href="' + mailto + '">default mail app</a> · <a href="' + outlook + '" target="_blank" rel="noopener">Outlook on the web</a> · ' +
+                status.innerHTML = 'The online log is not connected yet, so an email draft with this entry is being opened in your mail app. ' +
+                    'If nothing opened, use one of these: <a href="' + mailto + '">open email draft</a> · <a href="' + outlook + '" target="_blank" rel="noopener">Outlook on the web</a> · ' +
                     '<button type="button" class="btn-link" id="copy-entry">copy the text</button> and paste it into any email to ' + FALLBACK_EMAIL + '.';
+                // Open the draft in the default mail app (this is what worked before).
+                window.location.href = mailto;
                 document.getElementById('copy-entry').addEventListener('click', function () {
                     var txt = subject + '\n\n' + body;
                     var done = function () { this.textContent = 'copied ✓'; }.bind(this);
