@@ -105,42 +105,48 @@
                         <label class="checkbox-row"><input type="checkbox" name="mode" value="Other"><span>Other</span></label>
                     </div>
                     <div class="form-grid">
-                        <label>Immersion oil used? <span class="req">*</span>
+                        <div class="field">
+                            <label for="oil">Immersion oil used? <span class="req">*</span></label>
                             <select name="oil" id="oil" required>
                                 <option value="">Select…</option>
                                 <option>No</option>
                                 <option>Yes</option>
                             </select>
-                        </label>
-                        <label class="conditional" data-show-when="oil=Yes">Oil cleaned from objective and stage? <span class="req">*</span>
-                            <select name="oil_cleaned" id="oil_cleaned">
+                        </div>
+                        <div class="field">
+                            <label for="oil_cleaned">Oil cleaned from objective and stage? <span class="req">*</span></label>
+                            <select name="oil_cleaned" id="oil_cleaned" required>
                                 <option value="">Select…</option>
+                                <option>Did not use oil</option>
                                 <option>Yes, with lens paper</option>
                                 <option>Not yet — will clean at end of session</option>
                             </select>
-                        </label>
+                        </div>
                     </div>
                 </fieldset>
 
                 <fieldset>
                     <legend>Camera</legend>
                     <div class="form-grid">
-                        <label>EP50 camera used? <span class="req">*</span>
+                        <div class="field">
+                            <label for="camera">EP50 camera used? <span class="req">*</span></label>
                             <select name="camera" id="camera" required>
                                 <option value="">Select…</option>
                                 <option>No</option>
                                 <option>Yes</option>
                             </select>
-                        </label>
-                        <label class="conditional" data-show-when="camera=Yes">Images saved to
-                            <select name="camera_storage">
+                        </div>
+                        <div class="field">
+                            <label for="camera_storage">Images saved to</label>
+                            <select name="camera_storage" id="camera_storage">
                                 <option value="">Select…</option>
+                                <option>Did not use camera</option>
                                 <option>USB drive</option>
                                 <option>EPview (phone / laptop)</option>
                                 <option>Network / Ethernet</option>
                                 <option>Not saved</option>
                             </select>
-                        </label>
+                        </div>
                     </div>
                 </fieldset>
 
@@ -232,18 +238,15 @@
         form.date.value = d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
         form.start_time.value = pad(d.getHours()) + ':' + pad(d.getMinutes());
 
-        // Conditional fields
+        // Auto-fill the follow-up answers when oil / camera were not used.
         function syncConditionals() {
-            document.querySelectorAll('.conditional').forEach(function (el) {
-                var rule = el.getAttribute('data-show-when').split('=');
-                var on = form.elements[rule[0]].value === rule[1];
-                el.classList.toggle('is-visible', on);
-                var ctrl = el.querySelector('select, input');
-                if (ctrl) { ctrl.required = on && el.textContent.indexOf('*') !== -1; if (!on) ctrl.value = ''; }
-            });
+            if (form.oil.value === 'No') form.oil_cleaned.value = 'Did not use oil';
+            else if (form.oil.value === 'Yes' && form.oil_cleaned.value === 'Did not use oil') form.oil_cleaned.value = '';
+            if (form.camera.value === 'No') form.camera_storage.value = 'Did not use camera';
+            else if (form.camera.value === 'Yes' && form.camera_storage.value === 'Did not use camera') form.camera_storage.value = '';
         }
-        form.addEventListener('change', syncConditionals);
-        syncConditionals();
+        form.oil.addEventListener('change', syncConditionals);
+        form.camera.addEventListener('change', syncConditionals);
 
         function setStatus(msg, kind) {
             status.textContent = msg;
@@ -282,11 +285,22 @@
             var data = collect();
 
             if (SCRIPT_URL.indexOf('script.google.com') === -1) {
-                // Backend not configured yet: open a pre-filled email as a fallback.
+                // Backend not configured yet: offer email fallbacks (default mail app, Outlook on the web, or copy to clipboard).
                 var body = Object.keys(data).filter(function (k) { return k !== 'user_agent' && k !== 'page' && k !== 'website'; })
                     .map(function (k) { return k + ': ' + data[k]; }).join('\n');
-                location.href = 'mailto:' + FALLBACK_EMAIL + '?subject=' + encodeURIComponent('CX43 usage log — ' + data.name + ' ' + data.date) + '&body=' + encodeURIComponent(body);
-                setStatus('The online log is not connected yet; an email draft has been opened instead.', 'warn');
+                var subject = 'CX43 usage log — ' + data.name + ' ' + data.date;
+                var mailto = 'mailto:' + FALLBACK_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+                var outlook = 'https://outlook.office.com/mail/deeplink/compose?to=' + encodeURIComponent(FALLBACK_EMAIL) + '&subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+                status.className = 'form-status form-status--warn';
+                status.innerHTML = 'The online log is not connected yet. Send this entry by email: ' +
+                    '<a href="' + mailto + '">default mail app</a> · <a href="' + outlook + '" target="_blank" rel="noopener">Outlook on the web</a> · ' +
+                    '<button type="button" class="btn-link" id="copy-entry">copy the text</button> and paste it into any email to ' + FALLBACK_EMAIL + '.';
+                document.getElementById('copy-entry').addEventListener('click', function () {
+                    var txt = subject + '\n\n' + body;
+                    var done = function () { this.textContent = 'copied ✓'; }.bind(this);
+                    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(done, function () { window.prompt('Copy this text:', txt); });
+                    else window.prompt('Copy this text:', txt);
+                });
                 return;
             }
 
