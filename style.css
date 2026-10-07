@@ -557,8 +557,8 @@ footer a:hover { color: var(--accent); }
 /* === Instruments === */
 .instrument-card {
   display: grid;
-  grid-template-columns: minmax(200px, 30%) 1fr;
-  gap: 2rem;
+  grid-template-columns: 120px 1fr;
+  gap: 1.5rem;
   align-items: start;
   background: var(--white);
   border-radius: var(--radius);
@@ -606,7 +606,7 @@ footer a:hover { color: var(--accent); }
   padding: 1rem;
   font-family: 'Source Serif 4', Georgia, serif;
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   color: var(--accent);
   border: 2px dashed var(--accent);
   border-radius: calc(var(--radius) - 2px);
@@ -690,6 +690,10 @@ footer a:hover { color: var(--accent); }
   margin-bottom: 0.9rem;
   border-bottom: 1px solid var(--border);
 }
+
+/* everything after the floated legend must drop below it */
+.log-form legend + * { clear: both; }
+.log-form fieldset::after { content: ''; display: block; clear: both; }
 
 .form-grid {
   display: grid;
@@ -839,9 +843,13 @@ footer a:hover { color: var(--accent); }
 @media (max-width: 768px) {
   header h1 { font-size: 1.35rem; }
 
-  .research-item,
-  .instrument-card {
+  .research-item {
     grid-template-columns: 1fr;
+  }
+
+  .instrument-card {
+    grid-template-columns: 100px 1fr;
+    gap: 1rem;
   }
 
   .contact-grid {
