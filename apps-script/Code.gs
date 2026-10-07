@@ -1,14 +1,15 @@
 /**
- * Electrobiotech Lab — CX43 microscope usage log backend
- * -------------------------------------------------------
+ * Electrobiotech Lab — CX43 microscope usage log + training backend
+ * ------------------------------------------------------------------
  * Container-bound Google Apps Script. Lives inside the Google Sheet that
- * stores the log (Extensions > Apps Script). Deployed as a Web App that the
- * form on microscope_log.html POSTs to.
+ * stores the records (Extensions > Apps Script). Deployed as a Web App that
+ * both microscope_log.html (usage log) and training.html (quiz passes) POST to.
  *
  * On every submission it:
- *   1. appends one row to the "Log" sheet (creating headers if needed),
+ *   1. appends one row to the "Log" sheet (usage) or "Training" sheet (quiz pass),
+ *      creating headers if needed,
  *   2. exports the whole spreadsheet as .xlsx,
- *   3. emails the .xlsx (cumulative log) + a summary of the new entry to NOTIFY_EMAIL,
+ *   3. emails the .xlsx (cumulative) + a summary of the new entry to NOTIFY_EMAIL,
  *   4. optionally sends the user a short confirmation.
  */
 
@@ -16,7 +17,9 @@ var CONFIG = {
   NOTIFY_EMAIL: 'cheng.li@oregonstate.edu',
   SEND_USER_CONFIRMATION: true,
   SHEET_NAME: 'Log',
+  TRAINING_SHEET_NAME: 'Training',
   SUBJECT_PREFIX: '[CX43 log]',
+  TRAINING_SUBJECT_PREFIX: '[CX43 training]',
   TIMEZONE: 'America/Los_Angeles'
 };
 
@@ -48,6 +51,22 @@ var FIELDS = [
   ['page',               'Submitted from']
 ];
 
+// Columns for the Training sheet (quiz passes from training.html).
+var TRAINING_FIELDS = [
+  ['timestamp',   'Submitted (server time)'],
+  ['name',        'Name'],
+  ['email',       'Email'],
+  ['affiliation', 'Lab / PI / affiliation'],
+  ['course',      'Course'],
+  ['score',       'Score'],
+  ['total',       'Out of'],
+  ['passed',      'Passed'],
+  ['attempts',    'Attempts'],
+  ['questions',   'Question IDs'],
+  ['user_agent',  'Browser'],
+  ['page',        'Submitted from']
+];
+
 function doPost(e) {
   var lock = LockService.getScriptLock();
   lock.waitLock(20000);
@@ -56,6 +75,7 @@ function doPost(e) {
 
     // Spam / sanity checks
     if (payload.website) return respond({ ok: false, error: 'Rejected' });
+    if (payload.form === 'training') return handleTraining_(payload);
     if (!payload.name || !payload.date) return respond({ ok: false, error: 'Missing required fields' });
 
     var sheet = getSheet_();
@@ -90,16 +110,65 @@ function respond(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(ContentService.MimeType.JSON);
 }
 
-function getSheet_() {
+function getSheet_(name, fields) {
+  name = name || CONFIG.SHEET_NAME; fields = fields || FIELDS;
   var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sheet = ss.getSheetByName(CONFIG.SHEET_NAME) || ss.insertSheet(CONFIG.SHEET_NAME);
+  var sheet = ss.getSheetByName(name) || ss.insertSheet(name);
   if (sheet.getLastRow() === 0) {
-    sheet.appendRow(FIELDS.map(function (f) { return f[1]; }));
-    sheet.getRange(1, 1, 1, FIELDS.length).setFontWeight('bold').setBackground('#FAF0DC');
+    sheet.appendRow(fields.map(function (f) { return f[1]; }));
+    sheet.getRange(1, 1, 1, fields.length).setFontWeight('bold').setBackground('#FAF0DC');
     sheet.setFrozenRows(1);
     sheet.getRange('A:A').setNumberFormat('yyyy-mm-dd hh:mm');
   }
   return sheet;
+}
+
+// ---------------------------------------------------------------------------
+// Training quiz passes
+// ---------------------------------------------------------------------------
+function handleTraining_(p) {
+  if (!p.name || !isEmail_(p.email) || String(p.passed) !== 'Yes') return respond({ ok: false, error: 'Missing required fields' });
+  var sheet = getSheet_(CONFIG.TRAINING_SHEET_NAME, TRAINING_FIELDS);
+  var now = new Date();
+  var row = TRAINING_FIELDS.map(function (f) {
+    if (f[0] === 'timestamp') return now;
+    var v = p[f[0]];
+    return (v === undefined || v === null) ? '' : String(v).slice(0, 1000);
+  });
+  sheet.appendRow(row);
+  var rowNumber = sheet.getLastRow() - 1;
+
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var when = Utilities.formatDate(now, CONFIG.TIMEZONE, 'yyyy-MM-dd HH:mm');
+  var html =
+    '<div style="font-family:Arial,sans-serif;font-size:14px;color:#1f2937">' +
+    '<h2 style="color:#15803d;margin:0 0 6px">CX43 training passed — ' + escapeHtml_(p.name) + '</h2>' +
+    '<p style="margin:0 0 12px;color:#555">' + when + ' · record #' + rowNumber + ' · total trained users: ' + rowNumber + '</p>' +
+    '<table style="border-collapse:collapse">' +
+    '<tr><td style="padding:4px 10px 4px 0;color:#555">Email</td><td>' + escapeHtml_(String(p.email)) + '</td></tr>' +
+    '<tr><td style="padding:4px 10px 4px 0;color:#555">Affiliation</td><td>' + escapeHtml_(String(p.affiliation || '')) + '</td></tr>' +
+    '<tr><td style="padding:4px 10px 4px 0;color:#555">Score</td><td>' + escapeHtml_(String(p.score)) + ' / ' + escapeHtml_(String(p.total)) + '</td></tr>' +
+    '<tr><td style="padding:4px 10px 4px 0;color:#555">Attempts</td><td>' + escapeHtml_(String(p.attempts || 1)) + '</td></tr>' +
+    '<tr><td style="padding:4px 10px 4px 0;color:#555">Questions</td><td style="color:#777;font-size:12px">' + escapeHtml_(String(p.questions || '')) + '</td></tr>' +
+    '</table>' +
+    '<p style="margin-top:16px">The complete spreadsheet (usage log + training records) is attached. Live sheet: <a href="' + ss.getUrl() + '">' + escapeHtml_(ss.getName()) + '</a></p></div>';
+  var attachments = [];
+  try { attachments.push(exportXlsx_()); } catch (err) { html += '<p style="color:#b91c1c">Attachment failed: ' + escapeHtml_(String(err)) + '</p>'; }
+  MailApp.sendEmail({
+    to: CONFIG.NOTIFY_EMAIL,
+    subject: CONFIG.TRAINING_SUBJECT_PREFIX + ' PASS — ' + p.name + ' (' + p.score + '/' + p.total + ')',
+    htmlBody: html, attachments: attachments, name: 'Electrobiotech Lab usage log'
+  });
+  if (CONFIG.SEND_USER_CONFIRMATION) {
+    MailApp.sendEmail({
+      to: p.email,
+      subject: 'CX43 microscope training — passed',
+      htmlBody: '<p>Hi ' + escapeHtml_(p.name) + ',</p><p>You passed the CX43 microscope training quiz (' + escapeHtml_(String(p.score)) + '/' + escapeHtml_(String(p.total)) + ') on ' + when + '. Your completion is on record.</p>' +
+        '<p>Please fill in the usage log for every session: https://www.electrobiotechlab.com/microscope_log.html</p><p>— Electrobiotech Lab, Oregon State University</p>',
+      name: 'Electrobiotech Lab usage log'
+    });
+  }
+  return respond({ ok: true, row: rowNumber });
 }
 
 function exportXlsx_() {
@@ -178,6 +247,14 @@ function escapeHtml_(s) {
  * authorization prompt and confirm the email + attachment arrive.
  * Delete the test row from the sheet afterwards if you like.
  */
+function testTrainingSubmission() {
+  var fake = { postData: { contents: JSON.stringify({
+    form: 'training', course: 'CX43 microscope training', name: 'Test User', email: CONFIG.NOTIFY_EMAIL,
+    affiliation: 'Li Lab', score: 7, total: 7, passed: 'Yes', attempts: 1, questions: 'oil-band; bft-focus; na-def', user_agent: 'Apps Script test', page: 'editor'
+  }) } };
+  Logger.log(doPost(fake).getContent());
+}
+
 function testSubmission() {
   var fake = {
     postData: {

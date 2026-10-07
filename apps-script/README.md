@@ -1,9 +1,10 @@
-# CX43 usage log — backend setup (one-time, ~5 minutes)
+# CX43 usage log + training quiz — backend setup (one-time, ~5 minutes)
 
-The form on `microscope_log.html` is static; it needs somewhere to send entries.
-This folder holds the Google Apps Script that receives them, appends them to a
-Google Sheet, and emails you the cumulative log as an Excel attachment after every
-submission.
+The forms on `microscope_log.html` (usage log) and `training.html` (quiz passes)
+are static; they need somewhere to send entries. This folder holds the single
+Google Apps Script that receives both, appends them to a Google Sheet (`Log` and
+`Training` tabs), and emails you the cumulative spreadsheet as an Excel attachment
+after every submission.
 
 ## 1. Create the spreadsheet
 1. In Google Drive (use the Google account you want the emails to come from — your
@@ -32,9 +33,10 @@ submission.
    accepts POSTed log entries and never exposes the sheet).
 3. **Deploy**, then copy the **Web app URL** (`https://script.google.com/macros/s/…/exec`).
 
-## 5. Connect the form
-1. Open `microscope_log.html` and replace `PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE`
-   with the Web app URL.
+## 5. Connect the forms
+1. Open `microscope_log.html` **and** `training.html` and replace
+   `PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE` (near the bottom of each file) with
+   the same Web app URL. Optionally also run `testTrainingSubmission` once.
 2. Commit and push. Until this URL is set, the form falls back to opening a
    pre-filled email draft to `cheng.li@oregonstate.edu`, so nothing is lost.
 3. Test from the live site; the status line under the button should read
@@ -52,6 +54,11 @@ version is the most common reason edits "don't take".
 - The attached `.xlsx` is the **entire** spreadsheet at that moment, so every
   email carries the full history, as requested.
 - To stop the per-user confirmation, set `SEND_USER_CONFIRMATION: false`.
+- Training: only passes (7/7) are recorded. To change the pass mark or the number
+  of questions, edit `N_QUESTIONS` / `PASS_MARK` at the top of the script in
+  `training.html`; to add or edit questions, edit the `BANK` array there. Each
+  entry has `id`, module `m`, question `q`, options `o`, correct index `a`, and an
+  explanation `x` shown when the question is missed.
 - To add a form field: add the `<input>` in `microscope_log.html` and a matching
   `['field_name', 'Column title']` entry to `FIELDS` in `Code.gs`, then redeploy a
   new version. Existing rows keep their columns; add the new header manually.
